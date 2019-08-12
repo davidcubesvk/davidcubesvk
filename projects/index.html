@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    .projectContent {
-      display: inline-block;
-    }
+<style>
+  .projectContent {
+    display: inline-block;
+  }
 
-    .projectBox {
-      filter: grayscale(50%);
-      border-style: solid;
-      transition: border-width 0.5s, border-color 0.5s, filter 0.5s;
-    }
+  .projectBox {
+    filter: grayscale(50%);
+    border-style: solid;
+    transition: border-width 0.5s, border-color 0.5s, filter 0.5s;
+  }
 
-    .projectBox:hover {
-      filter: grayscale(0%);
-      border-color: #0066ff;
-      border-width: 10px;
-    }
+  .projectBox:hover {
+    filter: grayscale(0%);
+    border-color: #0066ff;
+    border-width: 10px;
+  }
 
-    .projectName {
-      padding-top: 0px;
-      font-size: 30px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+  .projectName {
+    padding-top: 0px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-    .projectVer {
-      font-size: 30px;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #595959;
-    }
+  .projectVer {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #595959;
+  }
 
-    .projectDesc {
-      color: #595959;
-    }
+  .projectDesc {
+    color: #595959;
+  }
 
-    .projectImg {
-      padding: 10px;
-      padding-bottom: 0px;
-      display: inline-block;
-    }
-  </style>
+  .projectImg {
+    padding: 10px;
+    padding-bottom: 0px;
+    display: inline-block;
+  }
+</style>
 
-  <head>
-    <link rel="stylesheet" type="text/css" href="../style/public.css">
-    <link rel="icon" href="../uploads/icon.png" type="png">
-    <title>Projects</title>
-  </head>
+<head>
+  <link rel="stylesheet" type="text/css" href="../style/public.css">
+  <link rel="icon" href="../uploads/icon.png" type="png">
+  <title>Projects</title>
+</head>
 
-  <!--Navigation-->
-  <header>
-    <ul class="navigation">
-      <li class="navigation"><img src="../uploads/icon.png" class="navigationImg"></li>
-      <li class="navigation"><a class="hoverable" href="../index.html">Home</a></li>
-      <li class="navigation"><a class="current">Projects</a></li>
-      <li class="navigation"><a class="hoverable" href="../wiki/index.html">Wiki</a></li>
-      <li class="navigation"><a class="hoverable" href="../contact/index.html">Contact</a></li>
-      <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
-    </ul>
-  </header>
+<!--Navigation-->
+<header>
+  <ul class="navigation">
+    <li class="navigation"><img src="../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigation"><a class="hoverable" href="../">Home</a></li>
+    <li class="navigation"><a class="current">Projects</a></li>
+    <li class="navigation"><a class="hoverable" href="../wiki/">Wiki</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
+    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  </ul>
+</header>
 
-  <body>
-    <div class="section" style="width: 90%;margin-left: 5%;">
-      <h1 class="title">Minecraft plugins</h1>
+<footer>
+  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
+</footer>
 
-      <!--ClicksPerSecond-->
-      <div class="projectBox">
-        <a href="https://www.spigotmc.org/resources/clickspersecond-cps-1-7-1-13-mysql-how-fast-can-you-click.57214/" target="_blank">
-          <img src="../uploads/icons/plugins/ClicksPerSecond.png" class="projectImg"></a>
-        <div class="projectContent">
-          <p class="projectName">ClicksPerSecond (CPS) [1.7 - 1.13, MYSQL] - How fast can you click? <a class="projectVer">2.0</a></p>
-          <p class="projectDesc">Do you want to test your CPS ? If yes, there is a solution ! Fully customizable ! MySQL available.</p>
-        </div>
-      </div>
+<body>
+  <div class="section" style="width: 90%;margin-left: 5%;">
+    <h1 class="title">Minecraft plugins</h1>
 
-      <!--IPWhiteList-->
-      <div class="projectBox">
-        <a href="https://www.spigotmc.org/resources/ipwhitelist-1-7-1-14-protect-your-server.65075/" target="_blank">
-          <img src="../uploads/icons/plugins/IPWhiteList.png" class="projectImg"></a>
-        <div class="projectContent">
-          <p class="projectName">IPWhiteList [1.7-1.14] - Protect your server! <a class="projectVer">1.2</a></p>
-          <p class="projectDesc">The best plugin to protect your server! With commands for real-time editing and API!</p>
-        </div>
-      </div>
-
-      <!--IPWhiteListBukkit-->
-      <div class="projectBox">
-        <a href="https://www.spigotmc.org/resources/ipwhitelistbukkit-1-7-1-14-extension-for-ipwhitelist.68030/" target="_blank">
-          <img src="../uploads/icons/plugins/IPWhiteListBukkit.png" class="projectImg"></a>
-        <div class="projectContent">
-          <p class="projectName">IPWhiteListBukkit [1.7-1.14] - Extension for IPWhiteList! <a class="projectVer">1.0</a></p>
-          <p class="projectDesc">IPWhiteList has new extension, which is immune against bypassers. Tested with knew bypass client.</p>
-        </div>
-      </div>
-
-      <!--RepairItem-->
-      <div class="projectBox">
-        <a href="https://www.spigotmc.org/resources/repairitem-1-7-1-14-almost-broken-tool-in-inventory.55890/" target="_blank">
-          <img src="../uploads/icons/plugins/RepairItem.png" class="projectImg"></a>
-        <div class="projectContent">
-          <p class="projectName">RepairItem [1.7 - 1.14] - Almost broken tool in inventory? <a class="projectVer">1.3</a></p>
-          <p class="projectDesc">Simple repair plugin, fully customizable ! Contains API !</p>
-        </div>
+    <!--ClicksPerSecond-->
+    <div class="projectBox">
+      <a href="https://www.spigotmc.org/resources/clickspersecond-cps-1-7-1-13-mysql-how-fast-can-you-click.57214/" target="_blank">
+        <img src="../uploads/icons/plugins/ClicksPerSecond.png" class="projectImg"></a>
+      <div class="projectContent">
+        <p class="projectName">ClicksPerSecond (CPS) [1.7 - 1.13, MYSQL] - How fast can you click? <a class="projectVer">2.4</a></p>
+        <p class="projectDesc">Do you want to test your CPS ? If yes, there is a solution ! Fully customizable ! MySQL available.</p>
       </div>
     </div>
-  </body>
 
-  <footer>
-    <p>Copyright (©) davidcubesvk 2019. All rights reserved.</p>
-  </footer>
+    <!--IPWhiteList-->
+    <div class="projectBox">
+      <a href="https://www.spigotmc.org/resources/ipwhitelist-1-7-1-14-protect-your-server.65075/" target="_blank">
+        <img src="../uploads/icons/plugins/IPWhiteList.png" class="projectImg"></a>
+      <div class="projectContent">
+        <p class="projectName">IPWhiteList [1.7-1.14] - Protect your server! <a class="projectVer">1.5</a></p>
+        <p class="projectDesc">The best plugin to protect your server! With commands for real-time editing and API!</p>
+      </div>
+    </div>
+
+    <!--IPWhiteListBukkit-->
+    <div class="projectBox">
+      <a href="https://www.spigotmc.org/resources/ipwhitelistbukkit-1-7-1-14-extension-for-ipwhitelist.68030/" target="_blank">
+        <img src="../uploads/icons/plugins/IPWhiteListBukkit.png" class="projectImg"></a>
+      <div class="projectContent">
+        <p class="projectName">IPWhiteListBukkit [1.7-1.14] - Extension for IPWhiteList! <a class="projectVer">1.2</a></p>
+        <p class="projectDesc">IPWhiteList has new extension, which is immune against bypassers. Tested with knew bypass client.</p>
+      </div>
+    </div>
+
+    <!--RepairItem-->
+    <div class="projectBox">
+      <a href="https://www.spigotmc.org/resources/repairitem-1-7-1-14-almost-broken-tool-in-inventory.55890/" target="_blank">
+        <img src="../uploads/icons/plugins/RepairItem.png" class="projectImg"></a>
+      <div class="projectContent">
+        <p class="projectName">RepairItem [1.7 - 1.14] - Almost broken tool in inventory? <a class="projectVer">1.5</a></p>
+        <p class="projectDesc">Simple repair plugin, fully customizable ! Contains API !</p>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

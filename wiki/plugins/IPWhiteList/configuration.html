@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - IPWhiteList</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <ul class="navigation">
+    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
+    <li class="navigation"><a class="current">Wiki</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
+    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  </ul>
+</header>
+
+<footer>
+  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
+</footer>
+
+<body>
+  <!--Wiki navigation-->
+  <ul class="wikiNavigation">
+    <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
+    <li class="wikiNavigation hoverable"><a href="/">1. Overview</a></li>
+    <li class="wikiNavigation hoverable"><a href="setup.html">2. Setup</a></li>
+    <li class="wikiNavigation hoverable"><a href="commands.html">3. Commands</a></li>
+    <li class="wikiNavigation current"><a>4. Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="api.html">5. API</a></li>
+  </ul>
+
+  <!--Page navigation-->
+  <ul class="wikiSideBar">
+    <li class="wikiSideBar title"><a>Table of contents:</a></li>
+    <li class="wikiSideBar hoverable"><a href="#config_yml">1. config.yml</a></li>
+  </ul>
+
+  <div class="wikiSection">
+    <h1 id="config_yml">config.yml:</h1>
+
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div style="width: 1000px;">
+        <code class="codeInBlock">
+          <a class="yamlComment">#|&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;-----&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/---\&nbsp;-----</a><br>
+          <a class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#|&nbsp;|---/&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;\---\&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|/&nbsp;&nbsp;\|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|----&nbsp;|&nbsp;\---/&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#Plugin&nbsp;made&nbsp;by&nbsp;davidcubesvk.</a><br>
+          <a class="yamlComment">#</a><br>
+          <a class="yamlComment">#Updates:</a><br>
+          <a class="yamlKey">updates:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Enable&nbsp;checking&nbsp;for&nbsp;updates:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">check:&nbsp;</a><a class="yamlValue">true</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Messages,&nbsp;{latest_version}&nbsp;for&nbsp;latest&nbsp;released&nbsp;version,&nbsp;{current_version}&nbsp;for&nbsp;currently&nbsp;running&nbsp;plugin&nbsp;version:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">messages:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;there&nbsp;is&nbsp;new&nbsp;update&nbsp;available:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">update:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;New&nbsp;update&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7has&nbsp;been&nbsp;released&nbsp;(&b{latest_version}&7).&nbsp;You&nbsp;are&nbsp;using&nbsp;&b{current_version}&7."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;using&nbsp;latest&nbsp;version:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">latest:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;You&nbsp;are&nbsp;using&nbsp;latest&nbsp;version&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7(&b{current_version}&7)."</a><br>
+          <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;port&nbsp;(if&nbsp;type&nbsp;is&nbsp;SOCKET):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">socketPort:&nbsp;</a><a class="yamlValue">4444</a><br>
+          <a class="yamlComment">#Setup&nbsp;mode&nbsp;(toggleable&nbsp;using&nbsp;/ipwl&nbsp;setup):</a><br>
+          <a
+            class="yamlComment">#(set&nbsp;this&nbsp;to&nbsp;false&nbsp;when&nbsp;you&nbsp;set&nbsp;up&nbsp;whitelisted&nbsp;IPs,&nbsp;to&nbsp;make&nbsp;them&nbsp;working.&nbsp;If&nbsp;true,&nbsp;plugin&nbsp;ignores&nbsp;whitelisted&nbsp;IPs)</a><br>
+          <a class="yamlKey">setup:&nbsp;</a><a class="yamlValue">true</a><br>
+          <a class="yamlComment">#WhiteListed&nbsp;IPs:</a><br>
+          <a
+            class="yamlComment">#INFO:&nbsp;1.&nbsp;To&nbsp;enable&nbsp;all&nbsp;hostnames,&nbsp;insert&nbsp;*.&nbsp;prefix&nbsp;before&nbsp;the&nbsp;whitelisted&nbsp;IP,&nbsp;e.g.&nbsp;*.yourserver.com&nbsp;will&nbsp;allow&nbsp;players&nbsp;connecting&nbsp;with</a><br>
+          <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abc.yourserver.com,&nbsp;xyz.yourserver.com...,&nbsp;(useful&nbsp;for&nbsp;servers&nbsp;with&nbsp;AntiDDoS&nbsp;service).</a><br>
+          <a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;To&nbsp;apply&nbsp;whitelisted&nbsp;IP&nbsp;without&nbsp;hostnames,&nbsp;insert&nbsp;only&nbsp;the&nbsp;IP&nbsp;without&nbsp;any&nbsp;prefix,&nbsp;e.g.&nbsp;yourserver.com&nbsp;will&nbsp;allow&nbsp;only&nbsp;players</a><br>
+          <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connecting&nbsp;with&nbsp;yourserver.com.</a><br>
+          <a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;If&nbsp;your&nbsp;server&nbsp;has&nbsp;dynamic&nbsp;IP,&nbsp;use&nbsp;{ip}&nbsp;placeholder&nbsp;as&nbsp;the&nbsp;server's&nbsp;IP&nbsp;(useful&nbsp;for&nbsp;dynamic&nbsp;IP&nbsp;servers).</a><br>
+          <a
+            class="yamlComment">#NOTE:&nbsp;You&nbsp;don't&nbsp;need&nbsp;to&nbsp;write&nbsp;ports&nbsp;there.&nbsp;IPWhiteList&nbsp;will&nbsp;automatically&nbsp;obtain&nbsp;port&nbsp;where&nbsp;is&nbsp;BungeeCord&nbsp;server&nbsp;hosted&nbsp;on.</a><br>
+          <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However,&nbsp;if&nbsp;you&nbsp;write&nbsp;port&nbsp;there,&nbsp;BungeeCord&nbsp;port&nbsp;will&nbsp;be&nbsp;overridden&nbsp;by&nbsp;specified&nbsp;port.</a><br>
+          <a class="yamlKey">whitelisted:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">yourserver.com</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">localhost</a><br>
+          <a class="yamlComment">#Website&nbsp;for&nbsp;obtaining&nbsp;the&nbsp;{ip}&nbsp;placeholder&nbsp;(any&nbsp;website&nbsp;with&nbsp;only&nbsp;one&nbsp;line&nbsp;displayed&nbsp;-&nbsp;your&nbsp;IP):</a><br>
+          <a class="yamlKey">ipWebsite:&nbsp;</a><a class="yamlValue yamlStringValue">"https://checkip.amazonaws.com/"</a><br>
+          <a
+            class="yamlComment">#If&nbsp;IP&nbsp;that&nbsp;player&nbsp;tried&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;server&nbsp;with&nbsp;is&nbsp;not&nbsp;corresponding&nbsp;with&nbsp;any&nbsp;of&nbsp;whitelisted&nbsp;IPs,&nbsp;disconnect&nbsp;with&nbsp;message:</a><br>
+          <a class="yamlComment">#(use&nbsp;\n&nbsp;for&nbsp;new&nbsp;line)</a><br>
+          <a class="yamlKey">disconnect:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;&cPlease&nbsp;connect&nbsp;with&nbsp;IP:&nbsp;yourserver.com!"</a><br>
+          <a class="yamlComment">#Command&nbsp;messages:</a><br>
+          <a class="yamlKey">command:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;player&nbsp;has&nbsp;not&nbsp;permission:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">noPermission:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;You&nbsp;do&nbsp;not&nbsp;have&nbsp;permission."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;sender&nbsp;used&nbsp;invalid&nbsp;format&nbsp;of&nbsp;command:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">invalidFormat:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;Invalid&nbsp;format!&nbsp;Please&nbsp;use&nbsp;&b/ipwl&nbsp;help&nbsp;&7to&nbsp;display&nbsp;list&nbsp;of&nbsp;commands."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;new&nbsp;IP&nbsp;is&nbsp;being&nbsp;added&nbsp;to&nbsp;whitelisted&nbsp;(/ipwl&nbsp;add&nbsp;<ip>):</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Placeholders:&nbsp;{ip}&nbsp;-&nbsp;IP&nbsp;to&nbsp;be&nbsp;added</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">add:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;successfully&nbsp;added:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">added:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;New&nbsp;IP&nbsp;&b{ip}&nbsp;&7added&nbsp;to&nbsp;whitelist!"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;IP&nbsp;already&nbsp;exists:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">exists:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;IP&nbsp;&b{ip}&nbsp;&7already&nbsp;exists."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;IP&nbsp;is&nbsp;being&nbsp;removed&nbsp;from&nbsp;whitelisted&nbsp;(/ipwl&nbsp;remove&nbsp;<ip>):</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Placeholders:&nbsp;{ip}&nbsp;-&nbsp;IP&nbsp;to&nbsp;be&nbsp;removed:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">remove:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;successfully&nbsp;removed:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">removed:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;IP&nbsp;&b{ip}&nbsp;&7has&nbsp;been&nbsp;removed&nbsp;from&nbsp;whitelist!"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;IP&nbsp;is&nbsp;not&nbsp;in&nbsp;whitelisted&nbsp;IPs:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">notFound:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;IP&nbsp;&b{ip}&nbsp;&7not&nbsp;found."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;all&nbsp;whitelisted&nbsp;IPs&nbsp;are&nbsp;being&nbsp;listed&nbsp;(/ipwl&nbsp;list&nbsp;<page>):</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Placeholders:&nbsp;{total}&nbsp;-&nbsp;amount&nbsp;of&nbsp;IPs</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{page}&nbsp;-&nbsp;page&nbsp;to&nbsp;be&nbsp;displayed</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{pages}&nbsp;-&nbsp;pages&nbsp;available</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">list:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#How&nbsp;many&nbsp;IPs&nbsp;to&nbsp;be&nbsp;displayed&nbsp;per&nbsp;page:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">perPage:&nbsp;</a><a class="yamlValue">20</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Header&nbsp;of&nbsp;the&nbsp;displaying:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">header:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;&7Total&nbsp;IPs:&nbsp;&b{total}&nbsp;&7(page&nbsp;{page}/{pages})."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#IP&nbsp;display&nbsp;line:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Placeholders:&nbsp;{ip}&nbsp;-&nbsp;whitelisted&nbsp;IP</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">line:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;&7-&nbsp;&b{ip}"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Footer&nbsp;of&nbsp;displaying:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">footer:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#When&nbsp;sender&nbsp;specified&nbsp;not&nbsp;existing&nbsp;page:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">pageNotFound:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;&7Page&nbsp;&b{page}&nbsp;&7not&nbsp;found.&nbsp;There&nbsp;are&nbsp;&b{pages}&nbsp;&7pages&nbsp;available."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;plugin&nbsp;configuration&nbsp;is&nbsp;being&nbsp;reloaded&nbsp;(/ipwl&nbsp;reload):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">reload:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;Plugin&nbsp;successfully&nbsp;reloaded!&nbsp;Please&nbsp;note&nbsp;that&nbsp;&bconnect.type&nbsp;&7was&nbsp;not&nbsp;reloaded&nbsp;since&nbsp;it&nbsp;can&nbsp;cause&nbsp;internal&nbsp;errors."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#If&nbsp;the&nbsp;setup&nbsp;mode&nbsp;is&nbsp;being&nbsp;toggled&nbsp;(/ipwl&nbsp;setup):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">setup:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;setup&nbsp;mode&nbsp;has&nbsp;been&nbsp;toggled&nbsp;on:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">true:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;Setup&nbsp;mode&nbsp;toggled&nbsp;on!"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;setup&nbsp;mode&nbsp;has&nbsp;been&nbsp;toggled&nbsp;off:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">false:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;Setup&nbsp;mode&nbsp;toggled&nbsp;off!"</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Help&nbsp;page&nbsp;(/ipwl&nbsp;help):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">help:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;&b&lHelp&nbsp;page&nbsp;&7-&nbsp;plugin&nbsp;by&nbsp;&bdavidcubesvk"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;add&nbsp;<ip>&nbsp;&7-&nbsp;adds&nbsp;IP&nbsp;to&nbsp;whitelist"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;remove&nbsp;<ip>&nbsp;&7-&nbsp;removes&nbsp;IP&nbsp;from&nbsp;whitelist"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;list&nbsp;<page>&nbsp;&7-&nbsp;lists&nbsp;whitelisted&nbsp;IPs"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;reload&nbsp;&7-&nbsp;reloads&nbsp;plugin"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;setup&nbsp;&7-&nbsp;toggles&nbsp;setup&nbsp;mode"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue yamlStringValue">"&b/ipwl&nbsp;help&7-&nbsp;displays&nbsp;this&nbsp;help&nbsp;page"</a><br>
+        </code>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

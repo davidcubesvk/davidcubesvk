@@ -1,0 +1,16 @@
+.yamlComment {
+  color: green;
+}
+
+.yamlKey {
+  color: blue;
+  font-weight: bold;
+}
+
+.yamlValue {
+  color: black;
+}
+
+.yamlStringValue {
+  color: red;
+}

@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-  font-family: Trebuchet MS, sans-serif;
+  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;;
 }
 
 h3 {
@@ -84,10 +84,10 @@ footer {
   background-color: #404040;
   color: #ffffff;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
   text-align: center;
   font-size: 12px;
+  position: fixed;
+  bottom: 0px;
 }
 
 .navigationImg {
@@ -145,20 +145,39 @@ td {
   font-weight: bold;
 }
 
-code.code {
-  padding: 5px;
+div.codeBlock {
   background-color: #e1e1e3;
   border-style: solid;
   border-radius: 5px;
   border-color: #c0c0c4;
+  overflow: auto;
+  max-height: 1000px;
+}
+
+code.codeInBlock {
+  padding: 5px;
+}
+
+.wikiTextCode {
+  font-family: monospace;
+  font-size: 15px;
+}
+
+code.code {
+  background-color: #e1e1e3;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #c0c0c4;
+  padding: 5px;
 }
 
 div.wikiSection {
   padding: 20px;
+  padding-top: 30px;
   margin-top: 30px;
   padding-left: 18%;
   padding-right: 18%;
-  padding-bottom: 0px;
+  margin-bottom: 30px;
   text-align: justify;
 }
 
@@ -198,6 +217,28 @@ ul.wikiSideBar li.hoverable {
 
 ul.wikiSideBar li:hover.hoverable {
   background-color: #0066ff;
+}
+
+table.wikiTable {
+  border-collapse: collapse;
+  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+}
+
+table.wikiTable tr {
+  border: 1px solid black;
+}
+
+table.wikiTable td {
+  border: 1px solid black;
+  padding: 2px;
+  font-weight: normal;
+}
+
+table.wikiTable th {
+  border: 1px solid black;
+  font-weight: bold;
+  padding: 2px;
+  text-align: center;
 }
 
 div.wikiCommand {

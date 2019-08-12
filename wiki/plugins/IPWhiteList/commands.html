@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/public.css">
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - IPWhiteList</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <ul class="navigation">
+    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
+    <li class="navigation"><a class="current">Wiki</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
+    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  </ul>
+</header>
+
+<footer>
+  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
+</footer>
+
+<body>
+  <!--Wiki navigation-->
+  <ul class="wikiNavigation">
+    <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
+    <li class="wikiNavigation hoverable"><a href="/">1. Overview</a></li>
+    <li class="wikiNavigation hoverable"><a href="setup.html">2. Setup</a></li>
+    <li class="wikiNavigation current"><a>3. Commands</a></li>
+    <li class="wikiNavigation hoverable"><a href="configuration.html">4. Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="api.html">5. API</a></li>
+  </ul>
+
+  <!--Page navigation-->
+  <ul class="wikiSideBar">
+    <li class="wikiSideBar title"><a>Table of contents:</a></li>
+    <li class="wikiSideBar hoverable"><a href="#commands">1. Commands</a></li>
+  </ul>
+
+  <div class="wikiSection">
+    <h1 id="commands">Commands:</h1>
+    <p>The base command is <code class="code">/ipWhiteList</code> and <code class="code">/ipwl</code> . All commands can be ran by player and console.
+    you can also use permission <code>ipWhiteList.*</code> which will grant you permission for all commands.</p>
+
+    <table class="wikiTable" style="width: 100%;">
+      <tr>
+        <th>Command:</th>
+        <th>Permission:</th>
+        <th>Arguments:</th>
+        <th>Description:</th>
+      </tr>
+      <!--/ipwl add-->
+      <tr>
+        <td>/ipwl add &#60;ip&#62;</td>
+        <td>ipWhiteList.add</td>
+        <td>&#60;ip&#62; - IP to add</td>
+        <td>Adds the specified IP to the whitelist.</td>
+      </tr>
+      <!--/ipwl remove-->
+      <tr>
+        <td>/ipwl remove &#60;ip&#62;</td>
+        <td>ipWhiteList.remove</td>
+        <td>&#60;ip&#62; - IP to remove</td>
+        <td>Removes the specified IP from the whitelist.</td>
+      </tr>
+      <!--/ipwl list-->
+      <tr>
+        <td>/ipwl list &#60;page&#62;</td>
+        <td>ipWhiteList.list</td>
+        <td>&#60;page&#62; - page to display</td>
+        <td>Lists the whitelisted IPs on the specified page.</td>
+      </tr>
+      <!--/ipwl setup-->
+      <tr>
+        <td>/ipwl setup</td>
+        <td>ipWhiteList.setup</td>
+        <td></td>
+        <td>Toggles the setup mode.</td>
+      </tr>
+      <!--/ipwl reload-->
+      <tr>
+        <td>/ipwl reload</td>
+        <td>ipWhiteList.reload</td>
+        <td></td>
+        <td>Reloads the plugin, excluding connection with the extension.</td>
+      </tr>
+      <!--/ipwl help-->
+      <tr>
+        <td>/ipwl help</td>
+        <td>ipWhiteList.help</td>
+        <td></td>
+        <td>Displays help page.</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
