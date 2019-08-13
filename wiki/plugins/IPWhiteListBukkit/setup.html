@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - IPWhiteListBukkit</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <!--Web navigation-->
+  <ul class="navigation">
+    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
+    <li class="navigation"><a class="current">Wiki</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
+    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  </ul>
+</header>
+
+<footer>
+  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
+</footer>
+
+<body>
+  <!--Wiki navigation-->
+  <ul class="wikiNavigation">
+    <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
+    <li class="wikiNavigation hoverable"><a href="../IPWhiteListBukkit/">1. Overview</a></li>
+    <li class="wikiNavigation current"><a>2. Setup</a></li>
+    <li class="wikiNavigation hoverable"><a href="configuration.html">3. Configuration</a></li>
+  </ul>
+
+  <!--Page navigation-->
+  <ul class="wikiSideBar">
+    <li class="wikiSideBar title"><a>Table of contents:</a></li>
+    <li class="wikiSideBar hoverable"><a href="#importantConfiguration">1. Important configuration</a></li>
+    <li class="wikiSideBar hoverable"><a href="#connectingToIPWhiteList">2. Connecting to the IPWhiteList</a></li>
+    <li class="wikiSideBar hoverable"><a href="#bungeePath">3. Path to the BungeeCord</a></li>
+    <li class="wikiSideBar hoverable"><a href="#socketConnection">4. Socket connection</a></li>
+  </ul>
+
+  <div class="wikiSection">
+    <h1 id="importantConfiguration">Important configuration:</h1>
+    <p>The configuration file is really small and most of it are messages for commands. Please see <a href="configuration.html">configuration</a> for further reference.
+      Anyways, the most important part of the configuration which needs to be set up is:</p>
+
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div style="width: 1000px;">
+        <code class="codeInBlock">
+          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Full&nbsp;path&nbsp;to&nbsp;data.yml&nbsp;file&nbsp;in&nbsp;IPWhiteList's&nbsp;folder&nbsp;(on&nbsp;BungeeCord):</a><br>
+          &nbsp;&nbsp;<a
+            class="yamlComment">#NOTE!&nbsp;You&nbsp;can&nbsp;use&nbsp;../&nbsp;strings&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;path&nbsp;to&nbsp;go&nbsp;one&nbsp;folder&nbsp;up&nbsp;(begins&nbsp;at&nbsp;folder&nbsp;where&nbsp;this&nbsp;plugin's&nbsp;.jar&nbsp;file&nbsp;is).</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;directory&nbsp;and&nbsp;file&nbsp;separator&nbsp;please&nbsp;use&nbsp;\\&nbsp;(on&nbsp;Windows)&nbsp;or&nbsp;/&nbsp;(on&nbsp;Linux).</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">bungeePath:&nbsp;</a><a class="yamlValue">'home\BungeeCord\plugins\IPWhiteList\data.yml'</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">socket:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#IP&nbsp;of&nbsp;the&nbsp;server&nbsp;(IP&nbsp;of&nbsp;the&nbsp;machine&nbsp;where&nbsp;is&nbsp;server&nbsp;with&nbsp;IPWhiteList&nbsp;plugin&nbsp;hosted,&nbsp;or&nbsp;127.0.0.1&nbsp;if&nbsp;on&nbsp;the&nbsp;same&nbsp;machine):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">ip:&nbsp;</a><a class="yamlValue">127.0.0.1</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port&nbsp;of&nbsp;the&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue">4444</a><br>
+        </code>
+      </div>
+    </div>
+
+    <!--Connneting to the extension-->
+    <h1 id="connectingToIPWhiteList">Connecting to the IPWhiteList:</h1>
+    <p>The first few lines with the section name "connect" are configuration of connection with the IPWhiteList. If you don't have it installed, go and do it.</p>
+    <p><strong>type:</strong> There you need to write the type of the connection. You have two options, <code>YML</code> and <code>SOCKET</code> .</p>
+    <ul>
+      <li>
+        <p><code class="code">YML</code> - The file communication is old,
+          hard to setup for some people and may be slow, but is really reliable. This way of communication is provided by extension obtaining <code>data.yml</code> file which is generated in the IPWhiteList's plugin folder.</p>
+      </li>
+      <li>
+        <p><code class="code">SOCKET</code> - Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable to be set up.
+          The only problem is it can cause delays, mainly if using between two different messages, for example when internet connection failes, however, this should not happen.</p>
+      </li>
+    </ul>
+
+    <!--BungeeCord path-->
+    <h1 id="bungeePath">Path to the BungeeCord:</h1>
+    <p>Please read about this type of communication above. If you selected this communication, you must set the system path to the <code>data.yml</code> file which is located in the IPWhiteList's plugin folder at the "bungeePath" tag.</p>
+    <p>Please mind following:</p>
+    <ul>
+      <li>
+        <p><strong>Path needs to be full system path</strong> - This means path can be <code>C:\abc\def\data.yml</code>, <code>home/abc/def/data.yml</code>, etc...</p>
+      </li>
+      <li>
+        <p><strong>Parent folder ../ code is supported</strong> - At the beggining of the path you can specify <code>../</code> code which will go to the upper (parent) folder. If used, the path begins in the <code>/plugins/</code> server folder.
+         <strong>For example</strong>, you have IPWhiteListBukkit located in <code>home/Spigot/plugins/</code> and IPWhiteList <code>data.yml</code> file in <code>home/BungeeCord/plugins/IPWhiteList/data.yml</code>. You start in <code>home/Spigot/plugins/</code> folder.
+       You would use first <code>../</code>, you would go from <code>home/Spigot/plugins/</code> to <code>home/Spigot/</code>. After that you would use the second one, which would get you to the <code>home/</code> folder. And now you are in folder
+       where the BungeeCord is. So add that part <code>BungeeCord/plugins/IPWhiteList/data.yml</code> to the path. The path should look like <code>../../BungeeCord/plugins/IPWhiteList/data.yml</code>. Here you go!</p>
+      </li>
+      <li>
+        <p><strong>Different OS, different file separator</strong> - If using Windows, please use <code>\\</code> file separator (example usage: <code>C:\\Desktop\\abc.yml</code>), if using Linux, Debian or Ubuntu, please use <code>/</code> (example usage: <code>home/abc/def.yml</code>).
+        Also, <code>\</code> file separator should be working, but it's not guaranteed to work everywhere.</p>
+      </li>
+    </ul>
+
+    <!--Socket connection-->
+    <h1 id="socketConnection">Socket connection:</h1>
+    <p>If you chose the socket communication, you need to configure two things under the section named "socket".</p>
+    <p><strong>ip:</strong> The IP on which is is BungeeCord server hosted on, or <code>127.0.0.1</code> if hosted on the same machine.</p>
+    <p><strong>port:</strong> The port on which is IPWhiteList's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socketPort</code> in <code>config.yml</code> of IPWhiteList; learn more <a href="../IPWhiteList/setup.html#connectingToExtension">here</a>.</p>
+  </div>
+</body>
+
+</html>

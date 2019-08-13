@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - IPWhiteListBukkit</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <ul class="navigation">
+    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
+    <li class="navigation"><a class="current">Wiki</a></li>
+    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
+    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  </ul>
+</header>
+
+<footer>
+  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
+</footer>
+
+<body>
+  <!--Wiki navigation-->
+  <ul class="wikiNavigation">
+    <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
+    <li class="wikiNavigation hoverable"><a href="../IPWhiteListBukkit/">1. Overview</a></li>
+    <li class="wikiNavigation hoverable"><a href="setup.html">2. Setup</a></li>
+    <li class="wikiNavigation current"><a>3. Configuration</a></li>
+  </ul>
+
+  <!--Page navigation-->
+  <ul class="wikiSideBar">
+    <li class="wikiSideBar title"><a>Table of contents:</a></li>
+    <li class="wikiSideBar hoverable"><a href="#config_yml">1. config.yml</a></li>
+  </ul>
+
+  <div class="wikiSection">
+    <h1 id="config_yml">config.yml:</h1>
+
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div style="width: 1000px;">
+        <code class="codeInBlock">
+          <a
+            class="yamlComment">#|&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;-----&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/---\&nbsp;-----&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;/&nbsp;|&nbsp;&nbsp;/&nbsp;|&nbsp;-----</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;/&nbsp;&nbsp;|&nbsp;/&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|---/&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;\---\&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|/&nbsp;&nbsp;&nbsp;|/&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;\&nbsp;&nbsp;|&nbsp;\&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|/&nbsp;&nbsp;\|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|----&nbsp;|&nbsp;\---/&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|---/&nbsp;\---/&nbsp;|&nbsp;&nbsp;\&nbsp;|&nbsp;&nbsp;\&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#Plugin&nbsp;made&nbsp;by&nbsp;davidcubesvk.</a><br>
+          <a class="yamlComment">#</a><br>
+          <a class="yamlComment">#Disconnect&nbsp;message:</a><br>
+          <a class="yamlKey">disconnect:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;&cPlease&nbsp;connect&nbsp;with&nbsp;IP:&nbsp;yourserver.com!"</a><br>
+          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Full&nbsp;path&nbsp;to&nbsp;data.yml&nbsp;file&nbsp;in&nbsp;IPWhiteList's&nbsp;folder&nbsp;(on&nbsp;BungeeCord):</a><br>
+          &nbsp;&nbsp;<a
+            class="yamlComment">#NOTE!&nbsp;You&nbsp;can&nbsp;use&nbsp;../&nbsp;strings&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;path&nbsp;to&nbsp;go&nbsp;one&nbsp;folder&nbsp;up&nbsp;(begins&nbsp;at&nbsp;folder&nbsp;where&nbsp;this&nbsp;plugin's&nbsp;.jar&nbsp;file&nbsp;is).</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;directory&nbsp;and&nbsp;file&nbsp;separator&nbsp;please&nbsp;use&nbsp;\\&nbsp;(on&nbsp;Windows)&nbsp;or&nbsp;/&nbsp;(on&nbsp;Linux).</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">bungeePath:&nbsp;</a><a class="yamlValue">'home\BungeeCord\plugins\IPWhiteList\data.yml'</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">socket:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#IP&nbsp;of&nbsp;the&nbsp;server&nbsp;(IP&nbsp;of&nbsp;the&nbsp;machine&nbsp;where&nbsp;is&nbsp;server&nbsp;with&nbsp;IPWhiteList&nbsp;plugin&nbsp;hosted,&nbsp;or&nbsp;127.0.0.1&nbsp;if&nbsp;on&nbsp;the&nbsp;same&nbsp;machine):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">ip:&nbsp;</a><a class="yamlValue">127.0.0.1</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port&nbsp;of&nbsp;the&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue">4444</a><br>
+        </code>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
