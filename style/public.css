@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -28,7 +30,7 @@ li.navigation a {
   padding-right: 14px;
   padding-left: 14px;
   color: #ffffff;
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 20px;
   font-weight: none;
   transition: background-color 0.5s;
@@ -44,28 +46,28 @@ li.navigation a.current {
 }
 
 p {
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 h1 {
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: normal;
 }
 
 h2 {
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;;
+  font-family: 'Noto Sans', sans-serif;;
 }
 
 h3 {
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 h4 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 h5 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 div.section {
@@ -113,7 +115,7 @@ ul.wikiNavigation {
 
 li.wikiNavigation a {
   color: #000000;
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   text-decoration: none;
 }
 
@@ -199,7 +201,7 @@ ul.wikiSideBar {
 
 li.wikiSideBar a {
   color: #000000;
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   text-decoration: none;
 }
 
@@ -221,7 +223,7 @@ ul.wikiSideBar li:hover.hoverable {
 
 table.wikiTable {
   border-collapse: collapse;
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 table.wikiTable tr {
@@ -245,7 +247,7 @@ div.wikiCommand {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: normal;
-  font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 img.wikiInfoImg {
