@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../../style/public.css">
   <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteListBukkit</title>
 </head>
@@ -11,19 +12,15 @@
 <!--Navigation-->
 <header>
   <!--Web navigation-->
-  <ul class="navigation">
-    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
-    <li class="navigation"><a class="current">Wiki</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
-    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  <ul id="scrollNavigation" class="navigation">
+    <li class="navigationItem navigationImg"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigationItem hoverable"><a href="../../../">HOME</a></li>
+    <li class="navigationItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
+    <li class="navigationItem current">WIKI</li>
+    <li class="navigationItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
   </ul>
 </header>
-
-<footer>
-  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
-</footer>
 
 <body>
   <!--Wiki navigation-->
@@ -31,20 +28,21 @@
     <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
     <li class="wikiNavigation hoverable"><a href="../IPWhiteListBukkit/">1. Overview</a></li>
     <li class="wikiNavigation current"><a>2. Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">3. Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="commands.html">3. Commands</a></li>
+    <li class="wikiNavigation hoverable"><a href="configuration.html">4. Configuration</a></li>
   </ul>
 
   <!--Page navigation-->
   <ul class="wikiSideBar">
     <li class="wikiSideBar title"><a>Table of contents:</a></li>
     <li class="wikiSideBar hoverable"><a href="#importantConfiguration">1. Important configuration</a></li>
-    <li class="wikiSideBar hoverable"><a href="#connectingToIPWhiteList">2. Connecting to the IPWhiteList</a></li>
+    <li class="wikiSideBar hoverable"><a href="#connectingToIPWhiteList">2. Connecting to IPWhiteList</a></li>
     <li class="wikiSideBar hoverable"><a href="#bungeePath">3. Path to the BungeeCord</a></li>
     <li class="wikiSideBar hoverable"><a href="#socketConnection">4. Socket connection</a></li>
   </ul>
 
   <div class="wikiSection">
-    <h1 id="importantConfiguration">Important configuration:</h1>
+    <h1 id="importantConfiguration">1. Important configuration:</h1>
     <p>The configuration file is really small and most of it are messages for commands. Please see <a href="configuration.html">configuration</a> for further reference.
       Anyways, the most important part of the configuration which needs to be set up is:</p>
 
@@ -74,7 +72,7 @@
     </div>
 
     <!--Connneting to the extension-->
-    <h1 id="connectingToIPWhiteList">Connecting to the IPWhiteList:</h1>
+    <h1 id="connectingToIPWhiteList">2. Connecting to the IPWhiteList:</h1>
     <p>The first few lines with the section name "connect" are configuration of connection with the IPWhiteList. If you don't have it installed, go and do it.</p>
     <p><strong>type:</strong> There you need to write the type of the connection. You have two options, <code>YML</code> and <code>SOCKET</code> .</p>
     <ul>
@@ -89,7 +87,7 @@
     </ul>
 
     <!--BungeeCord path-->
-    <h1 id="bungeePath">Path to the BungeeCord:</h1>
+    <h1 id="bungeePath">3. Path to the BungeeCord:</h1>
     <p>Please read about this type of communication above. If you selected this communication, you must set the system path to the <code>data.yml</code> file which is located in the IPWhiteList's plugin folder at the "bungeePath" tag.</p>
     <p>Please mind following:</p>
     <ul>
@@ -109,11 +107,16 @@
     </ul>
 
     <!--Socket connection-->
-    <h1 id="socketConnection">Socket connection:</h1>
+    <h1 id="socketConnection">4. Socket connection:</h1>
     <p>If you chose the socket communication, you need to configure two things under the section named "socket".</p>
     <p><strong>ip:</strong> The IP on which is is BungeeCord server hosted on, or <code>127.0.0.1</code> if hosted on the same machine.</p>
     <p><strong>port:</strong> The port on which is IPWhiteList's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socketPort</code> in <code>config.yml</code> of IPWhiteList; learn more <a href="../IPWhiteList/setup.html#connectingToExtension">here</a>.</p>
   </div>
 </body>
+
+<!--Footer-->
+<footer>
+  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+</footer>
 
 </html>

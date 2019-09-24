@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="../../../style/public.css">
   <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
   <link rel="icon" href="../../../uploads/icon.png" type="png">
-  <title>Wiki - IPWhiteList</title>
+  <title>Wiki - IPWhiteListBukkit</title>
 </head>
 
 <!--Navigation-->
@@ -26,20 +26,36 @@
     <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
     <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">1. Overview</a></li>
     <li class="wikiNavigation hoverable"><a href="setup.html">2. Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">3. Commands</a></li>
+    <li class="wikiNavigation current"><a>3. Commands</a></li>
     <li class="wikiNavigation hoverable"><a href="configuration.html">4. Configuration</a></li>
-    <li class="wikiNavigation current"><a>5. API</a></li>
   </ul>
 
   <!--Page navigation-->
   <ul class="wikiSideBar">
     <li class="wikiSideBar title"><a>Table of contents:</a></li>
-    <li class="wikiSideBar hoverable"><a href="#api">1. API</a></li>
+    <li class="wikiSideBar hoverable"><a href="#commands">1. Commands</a></li>
   </ul>
 
   <div class="wikiSection">
-    <h1 id="api">API:</h1>
-    <p>Please go to the main plugin page.</p>
+    <h1 id="commands">Commands:</h1>
+    <p>The base command is <code class="code">/ipWhiteListBukkit</code> and <code class="code">/ipwlb</code> . All commands can be ran by player and console.
+    you can also use permission <code>ipWhiteListBukkit.*</code> which will grant you permission for all commands.</p>
+
+    <table class="wikiTable" style="width: 100%;">
+      <tr>
+        <th>Command:</th>
+        <th>Permission:</th>
+        <th>Arguments:</th>
+        <th>Description:</th>
+      </tr>
+      <!--/ipwl add-->
+      <tr>
+        <td>Base command</td>
+        <td>ipWhiteListBukkit.command</td>
+        <td></td>
+        <td>Reloads the connection to IPWhiteList. <strong>Not config!</strong></td>
+      </tr>
+    </table>
   </div>
 </body>
 

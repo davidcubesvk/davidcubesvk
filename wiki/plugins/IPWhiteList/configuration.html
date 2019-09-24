@@ -4,25 +4,22 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../../style/public.css">
   <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul class="navigation">
-    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
-    <li class="navigation"><a class="current">Wiki</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
-    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  <ul id="scrollNavigation" class="navigation">
+    <li class="navigationItem navigationImg"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigationItem hoverable"><a href="../../../">HOME</a></li>
+    <li class="navigationItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
+    <li class="navigationItem current">WIKI</li>
+    <li class="navigationItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
   </ul>
 </header>
-
-<footer>
-  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
-</footer>
 
 <body>
   <!--Wiki navigation-->
@@ -49,7 +46,8 @@
       <div style="width: 1000px;">
         <code class="codeInBlock">
           <a class="yamlComment">#|&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;-----&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/---\&nbsp;-----</a><br>
-          <a class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a><br>
           <a class="yamlComment">#|&nbsp;|---/&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;\---\&nbsp;&nbsp;&nbsp;|</a><br>
           <a
             class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
@@ -88,11 +86,17 @@
           <a
             class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;If&nbsp;your&nbsp;server&nbsp;has&nbsp;dynamic&nbsp;IP,&nbsp;use&nbsp;{ip}&nbsp;placeholder&nbsp;as&nbsp;the&nbsp;server's&nbsp;IP&nbsp;(useful&nbsp;for&nbsp;dynamic&nbsp;IP&nbsp;servers).</a><br>
           <a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;To&nbsp;allow&nbsp;not&nbsp;case-sensitive&nbsp;hostname&nbsp;comparing&nbsp;for&nbsp;the&nbsp;current&nbsp;IP,&nbsp;insert&nbsp;"[NOT_CASE_SENSITIVE]"&nbsp;or&nbsp;"[CASE_SENSITIVE]"</a><br>
+          <a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(for&nbsp;case-sensitive&nbsp;comparing)&nbsp;right&nbsp;before&nbsp;the&nbsp;IP&nbsp;as&nbsp;shown&nbsp;in&nbsp;example&nbsp;whitelisted&nbsp;IPs&nbsp;list.&nbsp;If&nbsp;not&nbsp;inserted,&nbsp;the&nbsp;default</a><br>
+          <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setting&nbsp;is&nbsp;case-sensitive.</a><br>
+          <a
             class="yamlComment">#NOTE:&nbsp;You&nbsp;don't&nbsp;need&nbsp;to&nbsp;write&nbsp;ports&nbsp;there.&nbsp;IPWhiteList&nbsp;will&nbsp;automatically&nbsp;obtain&nbsp;port&nbsp;where&nbsp;is&nbsp;BungeeCord&nbsp;server&nbsp;hosted&nbsp;on.</a><br>
           <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However,&nbsp;if&nbsp;you&nbsp;write&nbsp;port&nbsp;there,&nbsp;BungeeCord&nbsp;port&nbsp;will&nbsp;be&nbsp;overridden&nbsp;by&nbsp;specified&nbsp;port.</a><br>
           <a class="yamlKey">whitelisted:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">yourserver.com</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">localhost</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'yourserver.com'</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'localhost'</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'[NOT_CASE_SENSITIVE]abc.yourserver.com'</a><br>
           <a class="yamlComment">#Website&nbsp;for&nbsp;obtaining&nbsp;the&nbsp;{ip}&nbsp;placeholder&nbsp;(any&nbsp;website&nbsp;with&nbsp;only&nbsp;one&nbsp;line&nbsp;displayed&nbsp;-&nbsp;your&nbsp;IP):</a><br>
           <a class="yamlKey">ipWebsite:&nbsp;</a><a class="yamlValue yamlStringValue">"https://checkip.amazonaws.com/"</a><br>
           <a
@@ -160,5 +164,10 @@
     </div>
   </div>
 </body>
+
+<!--Footer-->
+<footer>
+  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+</footer>
 
 </html>

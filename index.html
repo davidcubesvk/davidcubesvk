@@ -1,42 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 
 <head>
   <link rel="stylesheet" type="text/css" href="style/public.css">
+  <script src="script/navigation.js"></script>
+
   <link rel="icon" href="uploads/icon.png" type="png">
   <title>Home</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Indie+Flower|Lobster|Pacifico&display=swap');
+
+    div.banner {
+      height: 600px;
+      width: 100%;
+      background-color: navy;
+      text-align: center;
+    }
+
+    p.bannerTitle {
+      font-family: 'Pacifico', cursive;
+      color: #ffffff;
+      vertical-align: middle;
+    }
+
+    div.transitionNavigation {
+      background-color: #404040;
+    }
+  </style>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul class="navigation">
-    <li class="navigation"><img src="uploads/icon.png" class="navigationImg"></li>
-    <li class="navigation"><a class="current">Home</a></li>
-    <li class="navigation"><a class="hoverable" href="projects/">Projects</a></li>
-    <li class="navigation"><a class="hoverable" href="wiki/">Wiki</a></li>
-    <li class="navigation"><a class="hoverable" href="support/">Support</a></li>
-    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  <ul id="scrollNavigation" class="navigation">
+    <li class="navigationItem navigationImg"><img src="uploads/icon.png" class="navigationImg"></li>
+    <li class="navigationItem current">HOME</li>
+    <li class="navigationItem hoverable"><a href="projects/">PROJECTS</a></li>
+    <li class="navigationItem hoverable"><a href="wiki/">WIKI</a></li>
+    <li class="navigationItem hoverable"><a href="support/">SUPPORT</a></li>
+    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
   </ul>
 </header>
 
-<footer>
-  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
-</footer>
-
 <body>
-  <div class="section">
-    <h1 class="title">Get started</h1>
-    <p>Welcome to davidcubesvk's webpage! There you can see my plugins,
-      their description (what they are used for), wiki for my libraries,
-      how to contact me (how to report bugs, or suggest new feature) and so on.
-      Just use navigation above to get started. Please keep in mind that
-      this page is in development process.</p>
-    <h1 class="title">About me</h1>
-    <p>Hi there! Nice to meet you. I am David, also known as davidcubesvk.
-      My motto is creating unique content. I have been programming in Java 3 years already.
-      But still, I am slowly learning new things! However, I created few epic Minecraft plugins,
-      which can be downloaded <a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">here</a>.</p>
+  <!--Banner with title-->
+  <div class="banner">
+    <p class="bannerTitle" style="font-size: 50px; margin: 0px; padding-top: 200px;">Davidcubesvk's development</p>
+    <p class="bannerTitle" style="font-size: 25px;">Unique content. Always different.</p>
   </div>
+
+  <!--Cutting divs-->
+  <div style="position: relative; width: 100%">
+    <div style="position: absolute; height: 7vh; width: 100%; transform: skewY(0deg); background-color: #ffffff;">
+    </div>
+    <div style="position: absolute; height: 7vh; width: 100%; transform: skewY(0deg); background-color: #ffffff;">
+    </div>
+  </div>
+
+  <!--Basic info-->
+  <div class="section" style="margin-top: 100px; margin-left: 0px; border-style: solid solid solid none; border-color: green; border-width: 5px;">
+    <div>
+      <h1 class="title">About me</h1>
+      <p>Hi there! Nice to meet you. I am David, also known as davidcubesvk.
+        My motto is creating unique content. I have been programming in Java 3 years already.
+        But still, I am slowly learning new things! However, I created few epic Minecraft plugins,
+        which can be downloaded <a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">here</a>.</p>
+    </div>
+  </div>
+
+  <!--Work progress-->
+  <div class="section" style="float: right; border-style: solid none solid solid; border-color: navy; border-width: 5px;">
+    <div>
+      <h1 class="title">Work progress</h1>
+      <p>Plugin and it's features are written down on the paper at first. From that point, programming part begins. During the code-making,
+      functionality is being tested multiple times. After this, major testing happens, every discovered bug gets fixed. The plugin is ready to
+     be released.</p>
+    </div>
+  </div>
+
 </body>
+
+<!--Footer-->
+<footer>
+  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+</footer>
 
 </html>

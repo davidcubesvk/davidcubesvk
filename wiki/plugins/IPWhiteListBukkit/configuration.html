@@ -4,25 +4,23 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../../style/public.css">
   <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteListBukkit</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul class="navigation">
-    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
-    <li class="navigation"><a class="current">Wiki</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
-    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  <!--Web navigation-->
+  <ul id="scrollNavigation" class="navigation">
+    <li class="navigationItem navigationImg"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigationItem hoverable"><a href="../../../">HOME</a></li>
+    <li class="navigationItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
+    <li class="navigationItem current">WIKI</li>
+    <li class="navigationItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
   </ul>
 </header>
-
-<footer>
-  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
-</footer>
 
 <body>
   <!--Wiki navigation-->
@@ -30,7 +28,8 @@
     <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
     <li class="wikiNavigation hoverable"><a href="../IPWhiteListBukkit/">1. Overview</a></li>
     <li class="wikiNavigation hoverable"><a href="setup.html">2. Setup</a></li>
-    <li class="wikiNavigation current"><a>3. Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="commands.html">3. Commands</a></li>
+    <li class="wikiNavigation current"><a>4. Configuration</a></li>
   </ul>
 
   <!--Page navigation-->
@@ -76,10 +75,24 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">ip:&nbsp;</a><a class="yamlValue">127.0.0.1</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port&nbsp;of&nbsp;the&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue">4444</a><br>
+          <a class="yamlComment">#Command&nbsp;configuration:</a><br>
+          <a class="yamlKey">command:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#No&nbsp;permission&nbsp;message:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">noPermission:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteListBukkit&7]&nbsp;You&nbsp;do&nbsp;not&nbsp;have&nbsp;permission&nbsp;to&nbsp;run&nbsp;this&nbsp;command!"</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Invalid&nbsp;format&nbsp;message:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">invalidFormat:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteListBukkit&7]&nbsp;Invalid&nbsp;format.&nbsp;Please&nbsp;use&nbsp;&b/ipWhiteListBukkit&nbsp;&7to&nbsp;reload&nbsp;the&nbsp;connection."</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Successful&nbsp;execution:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">connectionReload:&nbsp;</a><a class="yamlValue yamlStringValue">"&7[&bIPWhiteListBukkit&7]&nbsp;Connection&nbsp;reloaded!"</a><br>
         </code>
       </div>
     </div>
   </div>
 </body>
+
+<!--Footer-->
+<footer>
+  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+</footer>
 
 </html>

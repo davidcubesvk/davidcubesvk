@@ -4,26 +4,22 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../../style/public.css">
   <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <!--Web navigation-->
-  <ul class="navigation">
-    <li class="navigation"><img src="../../../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigation"><a class="hoverable" href="../../../">Home</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../projects/">Projects</a></li>
-    <li class="navigation"><a class="current">Wiki</a></li>
-    <li class="navigation"><a class="hoverable" href="../../../support/">Support</a></li>
-    <li class="navigation"><a class="hoverable" href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">Spigot</a></li>
+  <ul id="scrollNavigation" class="navigation">
+    <li class="navigationItem navigationImg"><img src="../../../uploads/icon.png" class="navigationImg"></li>
+    <li class="navigationItem hoverable"><a href="../../../">HOME</a></li>
+    <li class="navigationItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
+    <li class="navigationItem current">WIKI</li>
+    <li class="navigationItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
   </ul>
 </header>
-
-<footer>
-  <p>Copyright (©) davidcubesvk 2019. All rights reserved. This page does not collect any personal data about you.</p>
-</footer>
 
 <body>
   <!--Wiki navigation-->
@@ -40,21 +36,42 @@
   <ul class="wikiSideBar">
     <li class="wikiSideBar title"><a>Table of contents:</a></li>
     <li class="wikiSideBar hoverable"><a href="#importantConfiguration">1. Important configuration</a></li>
-    <li class="wikiSideBar hoverable"><a href="#connectingToExtension">2. Connecting to the extension</a></li>
+    <li class="wikiSideBar hoverable"><a href="#connectingToExtension">2. Connecting to extension</a></li>
     <li class="wikiSideBar hoverable"><a href="#setupMode">3. Setup mode</a></li>
     <li class="wikiSideBar hoverable"><a href="#whitelisted">4. Whitelisted IPs</a></li>
   </ul>
 
   <div class="wikiSection">
-    <h1 id="importantConfiguration">Important configuration:</h1>
+    <h1 id="importantConfiguration">1. Important configuration:</h1>
     <p>The configuration file is really small and most of it are messages for commands. Please see <a href="configuration.html">configuration</a> for further reference.
       Anyways, the most important part of the configuration which needs to be set up is:</p>
 
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
-      <div style="width: 975px;">
+      <div style="width: 1000px;">
         <code class="codeInBlock">
+          <a class="yamlComment">#|&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;-----&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/---\&nbsp;-----</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#|&nbsp;|---/&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;\---\&nbsp;&nbsp;&nbsp;|</a><br>
+          <a
+            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|/&nbsp;&nbsp;\|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|----&nbsp;|&nbsp;\---/&nbsp;&nbsp;&nbsp;|</a><br>
+          <a class="yamlComment">#Plugin&nbsp;made&nbsp;by&nbsp;davidcubesvk.</a><br>
+          <a class="yamlComment">#</a><br>
+          <a class="yamlComment">#Updates:</a><br>
+          <a class="yamlKey">updates:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Enable&nbsp;checking&nbsp;for&nbsp;updates:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">check:&nbsp;</a><a class="yamlValue">true</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Messages,&nbsp;{latest_version}&nbsp;for&nbsp;latest&nbsp;released&nbsp;version,&nbsp;{current_version}&nbsp;for&nbsp;currently&nbsp;running&nbsp;plugin&nbsp;version:</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">messages:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;there&nbsp;is&nbsp;new&nbsp;update&nbsp;available:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">update:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;New&nbsp;update&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7has&nbsp;been&nbsp;released&nbsp;(&b{latest_version}&7).&nbsp;You&nbsp;are&nbsp;using&nbsp;&b{current_version}&7."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;using&nbsp;latest&nbsp;version:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">latest:&nbsp;</a><a
+            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;You&nbsp;are&nbsp;using&nbsp;latest&nbsp;version&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7(&b{current_version}&7)."</a><br>
           <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
           <a class="yamlKey">connect:</a><br>
           &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
@@ -73,21 +90,25 @@
             class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;To&nbsp;apply&nbsp;whitelisted&nbsp;IP&nbsp;without&nbsp;hostnames,&nbsp;insert&nbsp;only&nbsp;the&nbsp;IP&nbsp;without&nbsp;any&nbsp;prefix,&nbsp;e.g.&nbsp;yourserver.com&nbsp;will&nbsp;allow&nbsp;only&nbsp;players</a><br>
           <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connecting&nbsp;with&nbsp;yourserver.com.</a><br>
           <a
-            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;If&nbsp;your&nbsp;server&nbsp;has&nbsp;dynamic&nbsp;IP,&nbsp;use&nbsp;{ip}&nbsp;placeholder&nbsp;as&nbsp;the&nbsp;server's&nbsp;IP&nbsp;(useful&nbsp;for&nbsp;dynamic&nbsp;IP&nbsp;servers).&nbsp;If&nbsp;you&nbsp;are&nbsp;using&nbsp;this,</a><br>
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;If&nbsp;your&nbsp;server&nbsp;has&nbsp;dynamic&nbsp;IP,&nbsp;use&nbsp;{ip}&nbsp;placeholder&nbsp;as&nbsp;the&nbsp;server's&nbsp;IP&nbsp;(useful&nbsp;for&nbsp;dynamic&nbsp;IP&nbsp;servers).</a><br>
           <a
-            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;please&nbsp;make&nbsp;sure&nbsp;that&nbsp;listeners.host&nbsp;in&nbsp;BungeeCord&nbsp;config.yml&nbsp;is&nbsp;not&nbsp;0.0.0.0,&nbsp;but&nbsp;real&nbsp;IP&nbsp;address&nbsp;of&nbsp;machine.</a><br>
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;To&nbsp;allow&nbsp;not&nbsp;case-sensitive&nbsp;hostname&nbsp;comparing&nbsp;for&nbsp;the&nbsp;current&nbsp;IP,&nbsp;insert&nbsp;"[NOT_CASE_SENSITIVE]"&nbsp;or&nbsp;"[CASE_SENSITIVE]"</a><br>
+          <a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(for&nbsp;case-sensitive&nbsp;comparing)&nbsp;right&nbsp;before&nbsp;the&nbsp;IP&nbsp;as&nbsp;shown&nbsp;in&nbsp;example&nbsp;whitelisted&nbsp;IPs&nbsp;list.&nbsp;If&nbsp;not&nbsp;inserted,&nbsp;the&nbsp;default</a><br>
+          <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setting&nbsp;is&nbsp;case-sensitive.</a><br>
           <a
             class="yamlComment">#NOTE:&nbsp;You&nbsp;don't&nbsp;need&nbsp;to&nbsp;write&nbsp;ports&nbsp;there.&nbsp;IPWhiteList&nbsp;will&nbsp;automatically&nbsp;obtain&nbsp;port&nbsp;where&nbsp;is&nbsp;BungeeCord&nbsp;server&nbsp;hosted&nbsp;on.</a><br>
           <a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However,&nbsp;if&nbsp;you&nbsp;write&nbsp;port&nbsp;there,&nbsp;BungeeCord&nbsp;port&nbsp;will&nbsp;be&nbsp;overridden&nbsp;by&nbsp;specified&nbsp;port.</a><br>
           <a class="yamlKey">whitelisted:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">yourserver.com</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">localhost</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'yourserver.com'</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'localhost'</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">-&nbsp;</a><a class="yamlValue">'[NOT_CASE_SENSITIVE]abc.yourserver.com'</a><br>
         </code>
       </div>
     </div>
 
     <!--Connneting to the extension-->
-    <h1 id="connectingToExtension">Connecting to the extension:</h1>
+    <h1 id="connectingToExtension">2. Connecting to the extension:</h1>
     <p>The first few lines with the section name "connect" are configuration of connection with the extension. If you don't have it installed, go and do it.</p>
     <p><strong>type:</strong> There you need to write the type of the connection. You have two options, <code>YML</code> and <code>SOCKET</code> . </p>
     <ul>
@@ -98,17 +119,13 @@
       </li>
       <li>
         <p><code class="code">SOCKET</code> - Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable to be set up.
-          The only problem is it can cause delays, mainly if using between two different messages, for example when internet connection failes, however, this should not happen.</p>
+          The only problem is it can cause delays, mainly if using between two different machines, for example when internet connection failes, however, this should not happen.</p>
       </li>
     </ul>
     <p><strong>socketPort:</strong> This number tells the plugin which port should be the socket server hosted on. Do not use any port in use.</p>
 
-    <!--Setup mode-->
-    <h1 id="setupMode">Setup mode:</h1>
-    <p>The setup mode can be toggled by setting <code>setup:</code> to <code>true</code> (on) or <code>false</code> (off). If on, plugin will accept all connections not depending on if they are whitelisted or not.</p>
-
     <!--Whitelisted-->
-    <h1 id="whitelisted">Whitelisted IPs:</h1>
+    <h1 id="whitelisted">3. Whitelisted IPs:</h1>
     <p>Whitelisted IPs can be added to the list under <code>whitelisted:</code> tag. Players connecting with any of these IPs will be allowed to connect, however, the others will be declined.
       You are allowed to whitelist IPs, but also hostnames and ports. Documentation is already in configuration, but let's take a closer look.</p>
     <ul>
@@ -128,7 +145,17 @@
           replace it by the machine's IP. It also means, it is just replacement for IP, so you can specify ports, hostnames, without any problems.</p>
       </li>
     </ul>
+
+    <!--Setup mode-->
+    <h1 id="setupMode">4. Setup mode:</h1>
+    <p>The setup mode can be toggled by setting <code>setup:</code> to <code>true</code> (on) or <code>false</code> (off). If on, plugin will accept all connections not depending on if they are whitelisted or not. <strong>If you completed all steps
+     before, turn it off.</strong></p>
   </div>
 </body>
+
+<!--Footer-->
+<footer>
+  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+</footer>
 
 </html>
