@@ -2,33 +2,39 @@
 <html legal>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../style/global.css">
+  <link rel="stylesheet" type="text/css" href="../style/navigation.css">
+  <script src="../script/footer.js"></script>
+
   <link rel="icon" href="../uploads/icon.png" type="png">
-  <title>Projects</title>
+  <title>Support</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul id="scrollNavigation" class="navigation">
-    <li class="navigationItem navigationImg"><img src="../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigationItem hoverable"><a href="../">HOME</a></li>
-    <li class="navigationItem hoverable"><a href="../projects/">PROJECTS</a></li>
-    <li class="navigationItem hoverable"><a href="../wiki/">WIKI</a></li>
-    <li class="navigationItem current">SUPPORT</li>
-    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
-  </ul>
+  <nav id="navigation" class="navigation">
+    <div class="menuImg">
+      <img src="../uploads/icon.png" class="menuImg">
+    </div>
+    Davidcubesvk
+
+    <ul id="menu" class="menu">
+      <li class="menuItem hoverable"><a href="../">HOME</a></li>
+      <li class="menuItem hoverable"><a href="../projects/">PROJECTS</a></li>
+      <li class="menuItem hoverable"><a href="../wiki/">WIKI</a></li>
+      <li class="menuItem current"><a>SUPPORT</a></li>
+    </ul>
+  </nav>
 </header>
 
-<body>
+<body onload="positionFooter()">
   <div class="section">
-	<h3 style="color: red;">The support will not be provided in days 25th - 29th Semptember 2019, I will not be at home. Thank you for understanding!</h3>
-
     <!--Info-->
     <p>I provide support in multiple ways, as you can see below. I will answer you in 48 hours (24 hours in common). In the time when I can't provide support (I am not home), the notice should be visible above this text.</p>
     <!--Space-->
     <p></p>
 
-    <!--Ways to contact-->
+    <!--Ways of contacting-->
     <ul style="font-family: 'Noto Sans', sans-serif;">
       <li><strong>Spigot PM</strong> - davidcubesvk</li>
       <li><strong>Mail</strong> - davidcubesvkdev@gmail.com</li>
@@ -40,7 +46,8 @@
 
 <!--Footer-->
 <footer>
-  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 
 </html>

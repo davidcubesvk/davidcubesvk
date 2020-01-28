@@ -2,24 +2,32 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../style/global.css">
+  <link rel="stylesheet" type="text/css" href="../style/navigation.css">
+  <script src="../script/footer.js"></script>
+
   <link rel="icon" href="../uploads/icon.png" type="png">
   <title>Wiki</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul id="scrollNavigation" class="navigation">
-    <li class="navigationItem navigationImg"><img src="../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigationItem hoverable"><a href="../">HOME</a></li>
-    <li class="navigationItem hoverable"><a href="../projects/">PROJECTS</a></li>
-    <li class="navigationItem current">WIKI</li>
-    <li class="navigationItem hoverable"><a href="../support/">SUPPORT</a></li>
-    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
-  </ul>
+  <nav id="navigation" class="navigation">
+    <div class="menuImg">
+      <img src="../uploads/icon.png" class="menuImg">
+    </div>
+    Davidcubesvk
+
+    <ul id="menu" class="menu">
+      <li class="menuItem hoverable"><a href="../">HOME</a></li>
+      <li class="menuItem hoverable"><a href="../projects/">PROJECTS</a></li>
+      <li class="menuItem current"><a>WIKI</a></li>
+      <li class="menuItem hoverable"><a href="../support/">SUPPORT</a></li>
+    </ul>
+  </nav>
 </header>
 
-<body>
+<body onload="positionFooter()">
   <div class="section">
     <p>Welcome to the wiki for davidcubesvk's plugins! Continue by clicking on the selected project. Please note that many pages are in progress.</p>
     <h1 style="text-height: 10px">Minecraft plugins:</h1>
@@ -33,7 +41,8 @@
 
 <!--Footer-->
 <footer>
-  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 
 </html>

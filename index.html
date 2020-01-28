@@ -2,8 +2,10 @@
 <html lang="sk">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="style/public.css">
+  <link rel="stylesheet" type="text/css" href="style/global.css">
+  <link rel="stylesheet" type="text/css" href="style/homeNavigation.css">
   <script src="script/navigation.js"></script>
+  <script src="script/footer.js"></script>
 
   <link rel="icon" href="uploads/icon.png" type="png">
   <title>Home</title>
@@ -12,10 +14,12 @@
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Indie+Flower|Lobster|Pacifico&display=swap');
 
     div.banner {
-      height: 600px;
+      height: 90vh;
       width: 100%;
-      background-color: navy;
       text-align: center;
+
+      background-image: url("uploads/backgrounds/background2.png");
+      background-attachment: fixed;
     }
 
     p.bannerTitle {
@@ -27,62 +31,102 @@
     div.transitionNavigation {
       background-color: #404040;
     }
+
+    @-webkit-keyframes arrow {
+      from {
+        top: 0px;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 1;
+      }
+
+      to {
+        top: 50px;
+        opacity: 0;
+      }
+    }
+
+    @keyframes arrow {
+      from {
+        top: 0px;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 1;
+      }
+
+      to {
+        top: 50px;
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul id="scrollNavigation" class="navigation">
-    <li class="navigationItem navigationImg"><img src="uploads/icon.png" class="navigationImg"></li>
-    <li class="navigationItem current">HOME</li>
-    <li class="navigationItem hoverable"><a href="projects/">PROJECTS</a></li>
-    <li class="navigationItem hoverable"><a href="wiki/">WIKI</a></li>
-    <li class="navigationItem hoverable"><a href="support/">SUPPORT</a></li>
-    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
-  </ul>
+  <nav id="navigation" class="navigation">
+    <div class="menuImg">
+      <img src="uploads/icon.png" class="menuImg">
+    </div>
+    Davidcubesvk
+
+    <ul id="menu" class="menu">
+      <li class="menuItem current"><a>HOME</a></li>
+      <li class="menuItem hoverable"><a href="projects/">PROJECTS</a></li>
+      <li class="menuItem hoverable"><a href="wiki/">WIKI</a></li>
+      <li class="menuItem hoverable"><a href="support/">SUPPORT</a></li>
+    </ul>
+  </nav>
 </header>
 
-<body>
+<body onload="positionFooter()">
   <!--Banner with title-->
   <div class="banner">
     <p class="bannerTitle" style="font-size: 50px; margin: 0px; padding-top: 200px;">Davidcubesvk's development</p>
-    <p class="bannerTitle" style="font-size: 25px;">Unique content. Always different.</p>
+    <p class="bannerTitle" style="font-size: 25px;">Student and DEV.</p>
+
+    <!--Down arrows-->
+    <a href="#about-me">
+      <svg style="opacity: 0; position: relative; animation: arrow 1.5s 2s infinite; fill: white; width: 40px; height: 40px">
+        <path d="M0 5 L5 0 L25 20 L20 25 L0 5 M15 20    L35 0 L40 5 L20 25 L15 20
+               M0 20 L5 15 L25 35 L20 40 L0 20 M15 35    L35 15 L40 20 L20 40 L15 35 Z" />
+      </svg>
+    </a>
   </div>
 
-  <!--Cutting divs-->
-  <div style="position: relative; width: 100%">
-    <div style="position: absolute; height: 7vh; width: 100%; transform: skewY(0deg); background-color: #ffffff;">
+  <div style="width: 80%; height: 150px; padding: 75px 10% 75px 10%;" id="about-me">
+    <div style="width: 50%; height: auto; display: inline-block; text-align: justify; vertical-align: bottom;">
+      <p style="margin: 0;">Hello! My name is David and I live in Europe. My main hobby is electronics, of one of which is programming. I am the author of few plugins available for download on the internet.</p>
+      <h2 style="font-family: 'Montserrat'; text-align: center; margin: 20px;">4 resources • 4000+ downloads</h2>
     </div>
-    <div style="position: absolute; height: 7vh; width: 100%; transform: skewY(0deg); background-color: #ffffff;">
-    </div>
-  </div>
-
-  <!--Basic info-->
-  <div class="section" style="margin-top: 100px; margin-left: 0px; border-style: solid solid solid none; border-color: green; border-width: 5px;">
-    <div>
-      <h1 class="title">About me</h1>
-      <p>Hi there! Nice to meet you. I am David, also known as davidcubesvk.
-        My motto is creating unique content. I have been programming in Java 3 years already.
-        But still, I am slowly learning new things! However, I created few epic Minecraft plugins,
-        which can be downloaded <a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">here</a>.</p>
-    </div>
-  </div>
-
-  <!--Work progress-->
-  <div class="section" style="float: right; border-style: solid none solid solid; border-color: navy; border-width: 5px;">
-    <div>
-      <h1 class="title">Work progress</h1>
-      <p>Plugin and it's features are written down on the paper at first. From that point, programming part begins. During the code-making,
-      functionality is being tested multiple times. After this, major testing happens, every discovered bug gets fixed. The plugin is ready to
-     be released.</p>
+    <div style="width: 200px; height: auto; display: inline-block; text-align: justify; font-size: 20px; float: right;">
+      <img src="uploads/icon.png" alt="Can't load image." style="height: 150px; width: 150px; border-radius: 10px; padding">
     </div>
   </div>
 
+  <div class="banner" style="height: 200px; width: 84%; text-align: left; color: white; padding: 40px 8% 40px 8%;">
+    <h1 style="font-family: 'Montserrat';">New website released!</h1>
+    <p style="margin: 20px;"><span class="tab"></span>New website design was released! This includes total change of navigation bar, the main page and wiki pages. Besides design changes,
+    wiki pages for plugins have also been updated with more friendly text with explained words that you might've not know what they mean!</p>
+  </div>
 </body>
 
 <!--Footer-->
-<footer>
-  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+<footer style="margin-top: 0">
+  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 
 </html>

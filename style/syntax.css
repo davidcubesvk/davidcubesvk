@@ -1,3 +1,4 @@
+/*YAML*/
 .yamlComment {
   color: green;
 }
@@ -13,4 +14,43 @@
 
 .yamlStringValue {
   color: red;
+}
+
+/*JAVA*/
+.javaKeyword {
+  color: purple;
+  font-weight: bold;
+}
+
+.javaComment {
+  color: grey;
+  font-style: italic;
+}
+
+.javaDocs {
+  color: green;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.javaPrimitiveType {
+  color: blue;
+  font-weight: bold;
+}
+
+.javaString {
+  color: green;
+}
+
+.javaNumber {
+  color: lightblue;
+}
+
+.javaBoolean {
+  color: orange;
+  font-weight: bold;
+}
+
+.javaChar {
+  color: green;
 }

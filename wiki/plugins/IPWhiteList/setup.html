@@ -2,86 +2,109 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/public.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
   <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
   <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wikiNavigation.js"></script>
+
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
 </head>
 
 <!--Navigation-->
 <header>
-  <ul id="scrollNavigation" class="navigation">
-    <li class="navigationItem navigationImg"><img src="../../../uploads/icon.png" class="navigationImg"></li>
-    <li class="navigationItem hoverable"><a href="../../../">HOME</a></li>
-    <li class="navigationItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-    <li class="navigationItem current">WIKI</li>
-    <li class="navigationItem hoverable"><a href="../../../support/">SUPPORT</a></li>
-    <li class="navigationItem hoverable"><a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">SPIGOT</a></li>
-  </ul>
+  <nav id="navigation" class="navigation">
+    <div class="menuImg">
+      <img src="../../../uploads/icon.png" class="menuImg">
+    </div>
+    Davidcubesvk
+
+    <ul id="menu" class="menu">
+      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
+      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
+      <li class="menuItem current"><a>WIKI</a></li>
+      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    </ul>
+  </nav>
 </header>
 
-<body>
+<body onload="positionFooter(); wikiNavigation();">
   <!--Wiki navigation-->
   <ul class="wikiNavigation">
-    <li class="wikiNavigation title"><a>Wiki navigation:</a></li>
-    <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">1. Overview</a></li>
-    <li class="wikiNavigation current"><a>2. Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">3. Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">4. Configuration</a></li>
-    <li class="wikiNavigation hoverable"><a href="api.html">5. API</a></li>
+    <li class="wikiNavigation title">
+      <svg>
+        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
+        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
+        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
+      </svg>
+      <a>Pages</a></li>
+    <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">Overview</a></li>
+    <li class="wikiNavigation current"><a>Setup</a></li>
+    <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
+    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="api.html">API</a></li>
   </ul>
 
   <!--Page navigation-->
   <ul class="wikiSideBar">
-    <li class="wikiSideBar title"><a>Table of contents:</a></li>
-    <li class="wikiSideBar hoverable"><a href="#importantConfiguration">1. Important configuration</a></li>
-    <li class="wikiSideBar hoverable"><a href="#connectingToExtension">2. Connecting to extension</a></li>
-    <li class="wikiSideBar hoverable"><a href="#setupMode">3. Setup mode</a></li>
-    <li class="wikiSideBar hoverable"><a href="#whitelisted">4. Whitelisted IPs</a></li>
+    <li class="wikiSideBar title">
+      <svg>
+        <path d="M0 0 L10 0 L10 2 L0 2 L0 0             M0 4 L5 4 L5 6 L0 6 L0 4      M0 8 L8 8 L8 10 L0 10 L0 8 Z">
+      </svg>
+      <a>Contents</a></li>
+    <li class="wikiSideBar hoverable"><a href="#importantConfiguration">Installation</a></li>
+    <li class="wikiSideBar hoverable"><a href="#connectingToExtension">Connecting to extension</a></li>
+    <li class="wikiSideBar hoverable"><a href="#whitelisted">Whitelisted IPs</a></li>
+    <li class="wikiSideBar hoverable"><a href="#setupMode">Setup mode</a></li>
+    <li class="wikiSideBar hoverable"><a href="#ipWhiteListBukkit">IPWhiteListBukkit</a></li>
   </ul>
 
   <div class="wikiSection">
-    <h1 id="importantConfiguration">1. Important configuration:</h1>
-    <p>The configuration file is really small and most of it are messages for commands. Please see <a href="configuration.html">configuration</a> for further reference.
-      Anyways, the most important part of the configuration which needs to be set up is:</p>
+    <h1 class="sectionTitle" id="importantConfiguration">1. Installation:</h1>
+    <p>Download the latest version of the plugin available from the official plugin page on SpigotMC. Put the .jar file into the plugins folder of your BungeeCord server and restart it.
+      Next steps will guide you through the configuration itself.</p>
 
+    <!--Connneting to the extension-->
+    <h1 class="sectionTitle" id="connectingToExtension">2. Connecting to extension:</h1>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
-      <div style="width: 1000px;">
+      <div>
         <code class="codeInBlock">
-          <a class="yamlComment">#|&nbsp;|---\&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;-----&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/---\&nbsp;-----</a><br>
-          <a
-            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a><br>
-          <a class="yamlComment">#|&nbsp;|---/&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|---|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;\---\&nbsp;&nbsp;&nbsp;|</a><br>
-          <a
-            class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</a><br>
-          <a class="yamlComment">#|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|/&nbsp;&nbsp;\|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|----&nbsp;|----&nbsp;|&nbsp;\---/&nbsp;&nbsp;&nbsp;|</a><br>
-          <a class="yamlComment">#Plugin&nbsp;made&nbsp;by&nbsp;davidcubesvk.</a><br>
-          <a class="yamlComment">#</a><br>
-          <a class="yamlComment">#Updates:</a><br>
-          <a class="yamlKey">updates:</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Enable&nbsp;checking&nbsp;for&nbsp;updates:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">check:&nbsp;</a><a class="yamlValue">true</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Messages,&nbsp;{latest_version}&nbsp;for&nbsp;latest&nbsp;released&nbsp;version,&nbsp;{current_version}&nbsp;for&nbsp;currently&nbsp;running&nbsp;plugin&nbsp;version:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">messages:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;there&nbsp;is&nbsp;new&nbsp;update&nbsp;available:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">update:&nbsp;</a><a
-            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;New&nbsp;update&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7has&nbsp;been&nbsp;released&nbsp;(&b{latest_version}&7).&nbsp;You&nbsp;are&nbsp;using&nbsp;&b{current_version}&7."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;using&nbsp;latest&nbsp;version:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">latest:&nbsp;</a><a
-            class="yamlValue yamlStringValue">"&7[&bIPWhiteList&7]&nbsp;►&nbsp;You&nbsp;are&nbsp;using&nbsp;latest&nbsp;version&nbsp;of&nbsp;&bIPWhiteList&nbsp;plugin&nbsp;&7(&b{current_version}&7)."</a><br>
           <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
           <a class="yamlKey">connect:</a><br>
           &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
           &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
           &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;port&nbsp;(if&nbsp;type&nbsp;is&nbsp;SOCKET):</a><br>
           &nbsp;&nbsp;<a class="yamlKey">socketPort:&nbsp;</a><a class="yamlValue">4444</a><br>
-          <a class="yamlComment">#Setup&nbsp;mode&nbsp;(toggleable&nbsp;using&nbsp;/ipwl&nbsp;setup):</a><br>
-          <a
-            class="yamlComment">#(set&nbsp;this&nbsp;to&nbsp;false&nbsp;when&nbsp;you&nbsp;set&nbsp;up&nbsp;whitelisted&nbsp;IPs,&nbsp;to&nbsp;make&nbsp;them&nbsp;working.&nbsp;If&nbsp;true,&nbsp;plugin&nbsp;ignores&nbsp;whitelisted&nbsp;IPs)</a><br>
-          <a class="yamlKey">setup:&nbsp;</a><a class="yamlValue">true</a><br>
+        </code>
+      </div>
+    </div>
+    <p>At first we need to connect the IPWhiteList to IPWhiteListBukkit. The first few lines with the section name "connect" are configuration we need for this.</p>
+    <p><strong>type:</strong> This specifies how the plugins will be connected. You have two options, <code>YML</code> and <code>SOCKET</code> . </p>
+    <ul>
+      <li>
+        <p><code class="code">YML</code> - The file communication is old,
+          hard to setup for some people and may be slow, but is really reliable. This way of communication is provided by <code>data.yml</code> file which is generated in the folder as where <code>config.yml</code>
+          file is.</p>
+      </li>
+      <li>
+        <p><code class="code">SOCKET<sup><a href="#term1">1</a></sup></code> - Recommended for shared / multi-machine server hosting. Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable to be set up.
+          It may cause delays, mainly if using between two different machines, for example when internet connection fails.
+        </p>
+      </li>
+    </ul>
+    <p><strong>socketPort:</strong> This number tells the plugin which port should be the socket server hosted on. This is not port of your server. Your server is created on some port, so IPWhiteList's is. See <sup><a href="#term1">1</a></sup>.</p>
+
+    <!--Whitelisted-->
+    <h1 class="sectionTitle" id="whitelisted">3. Whitelisted IPs:</h1>
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div>
+        <code class="codeInBlock">
           <a class="yamlComment">#WhiteListed&nbsp;IPs:</a><br>
           <a
             class="yamlComment">#INFO:&nbsp;1.&nbsp;To&nbsp;enable&nbsp;all&nbsp;hostnames,&nbsp;insert&nbsp;*.&nbsp;prefix&nbsp;before&nbsp;the&nbsp;whitelisted&nbsp;IP,&nbsp;e.g.&nbsp;*.yourserver.com&nbsp;will&nbsp;allow&nbsp;players&nbsp;connecting&nbsp;with</a><br>
@@ -106,27 +129,8 @@
         </code>
       </div>
     </div>
-
-    <!--Connneting to the extension-->
-    <h1 id="connectingToExtension">2. Connecting to the extension:</h1>
-    <p>The first few lines with the section name "connect" are configuration of connection with the extension. If you don't have it installed, go and do it.</p>
-    <p><strong>type:</strong> There you need to write the type of the connection. You have two options, <code>YML</code> and <code>SOCKET</code> . </p>
-    <ul>
-      <li>
-        <p><code class="code">YML</code> - The file communication is old,
-          hard to setup for some people and may be slow, but is really reliable. This way of communication is provided by <code>data.yml</code> file which is generated in the folder as where <code>config.yml</code>
-          file is.</p>
-      </li>
-      <li>
-        <p><code class="code">SOCKET</code> - Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable to be set up.
-          The only problem is it can cause delays, mainly if using between two different machines, for example when internet connection failes, however, this should not happen.</p>
-      </li>
-    </ul>
-    <p><strong>socketPort:</strong> This number tells the plugin which port should be the socket server hosted on. Do not use any port in use.</p>
-
-    <!--Whitelisted-->
-    <h1 id="whitelisted">3. Whitelisted IPs:</h1>
-    <p>Whitelisted IPs can be added to the list under <code>whitelisted:</code> tag. Players connecting with any of these IPs will be allowed to connect, however, the others will be declined.
+    <p>Now we need to specify the IPs we want players to connect with. Whitelisted IPs can be added to the list under <code>whitelisted:</code> tag. Players connecting with any of these IPs will be allowed to connect, however, the others will be
+      kicked.
       You are allowed to whitelist IPs, but also hostnames and ports. Documentation is already in configuration, but let's take a closer look.</p>
     <ul>
       <li>
@@ -147,15 +151,38 @@
     </ul>
 
     <!--Setup mode-->
-    <h1 id="setupMode">4. Setup mode:</h1>
-    <p>The setup mode can be toggled by setting <code>setup:</code> to <code>true</code> (on) or <code>false</code> (off). If on, plugin will accept all connections not depending on if they are whitelisted or not. <strong>If you completed all steps
-     before, turn it off.</strong></p>
+    <h1 class="sectionTitle" id="setupMode">4. Setup mode:</h1>
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div>
+        <code class="codeInBlock">
+          <a class="yamlComment">#Setup&nbsp;mode&nbsp;(toggleable&nbsp;using&nbsp;/ipwl&nbsp;setup):</a><br>
+          <a
+            class="yamlComment">#(set&nbsp;this&nbsp;to&nbsp;false&nbsp;when&nbsp;you&nbsp;set&nbsp;up&nbsp;whitelisted&nbsp;IPs,&nbsp;to&nbsp;make&nbsp;them&nbsp;working.&nbsp;If&nbsp;true,&nbsp;plugin&nbsp;ignores&nbsp;whitelisted&nbsp;IPs)</a><br>
+          <a class="yamlKey">setup:&nbsp;</a><a class="yamlValue">true</a><br>
+        </code>
+      </div>
+    </div>
+    <p>Finally, we need to turn the setup mode off, so IPWhiteList will start doing it's work. The setup mode can be toggled by setting <code>setup:</code> to <code>true</code> (on) or <code>false</code> (off). If on, plugin will accept all
+      connections not depending on if they are whitelisted or not.</p>
+
+    <!--IPWhiteListBukkit-->
+    <h1 class="sectionTitle" id="ipWhiteListBukkit">5. IPWhiteListBukkit:</h1>
+    <p>If you completed all steps above, configure IPWhiteListBukkit.</p>
+
+    <div class="termDesc">
+      <p id="term1"><sup>1</sup><strong>socket</strong> - type of communication over the internet which consists of one server
+        and clients (server is IPWhiteList and clients IPWhiteListBukkit plugins in this case). Server is hosted on some port and clients connect to this server so they can share information between each other. Pretty the same like you
+        join any game server as a client.</p>
+    </div>
   </div>
 </body>
 
 <!--Footer-->
-<footer>
-  <p>Copyright (c) 2019 davidcubesvk, All Rights Reserved. This page does not collect any personal data about you.</p>
+<footer style="margin-top: 0">
+  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 
 </html>
