@@ -26,6 +26,11 @@ h2 {
   font-weight: normal;
 }
 
+h3 {
+  font-family: 'Noto Sans';
+  font-weight: normal;
+}
+
 span.tab {
   width: 30px;
   display: inline-block;

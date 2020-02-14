@@ -56,6 +56,7 @@
       <a>Contents</a></li>
     <li class="wikiSideBar hoverable"><a href="#importantConfiguration">Installation</a></li>
     <li class="wikiSideBar hoverable"><a href="#connectingToExtension">Connecting to extension</a></li>
+    <li class="wikiSideBar hoverable"><a href="#connectionConfiguration">Connection configuration</a></li>
     <li class="wikiSideBar hoverable"><a href="#whitelisted">Whitelisted IPs</a></li>
     <li class="wikiSideBar hoverable"><a href="#setupMode">Setup mode</a></li>
     <li class="wikiSideBar hoverable"><a href="#ipWhiteListBukkit">IPWhiteListBukkit</a></li>
@@ -71,35 +72,104 @@
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
-      <div>
+      <div style="width: 1000px;">
         <code class="codeInBlock">
           <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
           <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(YML&nbsp;-&nbsp;for&nbsp;connecting&nbsp;through&nbsp;files&nbsp;as&nbsp;it's&nbsp;been&nbsp;till&nbsp;now,&nbsp;SOCKET&nbsp;-&nbsp;using&nbsp;sockets):</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(more&nbsp;and&nbsp;detailed&nbsp;info&nbsp;can&nbsp;be&nbsp;found&nbsp;on&nbsp;the&nbsp;wiki):</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;YML:&nbsp;connection&nbsp;provided&nbsp;by&nbsp;data.yml&nbsp;file&nbsp;created&nbsp;in&nbsp;plugin's&nbsp;data&nbsp;folder</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;SOCKET:&nbsp;connection&nbsp;using&nbsp;sockets</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;MYSQL:&nbsp;connection&nbsp;using&nbsp;MySQL&nbsp;database</a><br>
           &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;port&nbsp;(if&nbsp;type&nbsp;is&nbsp;SOCKET):</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">socketPort:&nbsp;</a><a class="yamlValue">4444</a><br>
+          &nbsp;&nbsp;...
         </code>
       </div>
     </div>
     <p>At first we need to connect the IPWhiteList to IPWhiteListBukkit. The first few lines with the section name "connect" are configuration we need for this.</p>
-    <p><strong>type:</strong> This specifies how the plugins will be connected. You have two options, <code>YML</code> and <code>SOCKET</code> . </p>
+    <p><strong>type:</strong> This specifies how the plugins will be connected. We have three options. </p>
     <ul>
       <li>
-        <p><code class="code">YML</code> - The file communication is old,
-          hard to setup for some people and may be slow, but is really reliable. This way of communication is provided by <code>data.yml</code> file which is generated in the folder as where <code>config.yml</code>
-          file is.</p>
+        <p><code class="code">YML</code> - The file communication is really basic,
+          may be hard to setup and may be slow, but is really reliable. This way of communication is provided by <code>data.yml</code> file which is generated in the folder as where <code>config.yml</code>
+          file is. IPWhiteListBukkit then reads this file.</p>
       </li>
       <li>
-        <p><code class="code">SOCKET<sup><a href="#term1">1</a></sup></code> - Recommended for shared / multi-machine server hosting. Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable to be set up.
+        <p><code class="code">SOCKET<sup><a href="#term1">1</a></sup></code> - Recommended for shared / multi-machine server hosting. Communication is provided over internet, it's fast and supports MultiCraft, multi-machine servers and is comfortable
+          to set up.
           It may cause delays, mainly if using between two different machines, for example when internet connection fails.
+        </p>
+        <p><code class="code">MYSQL</code> - Pretty the same as YML, except data is stored in a database.
         </p>
       </li>
     </ul>
-    <p><strong>socketPort:</strong> This number tells the plugin which port should be the socket server hosted on. This is not port of your server. Your server is created on some port, so IPWhiteList's is. See <sup><a href="#term1">1</a></sup>.</p>
+
+    <h1 class="sectionTitle" id="connectionConfiguration">3. Connection configuration:</h1>
+    <!--File configuration-->
+    <h2>3A. YML configuration:</h2>
+    <p>There is no configuration for this type of connection on IPWhiteList's side.</p>
+
+    <!--Socket configuration-->
+    <h2>3B. Socket configuration:</h2>
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div style="width: 1000px;">
+        <code class="codeInBlock">
+          <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;port&nbsp;(if&nbsp;type&nbsp;=&nbsp;SOCKET):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">socketPort:&nbsp;</a><a class="yamlValue">4444</a><br>
+          &nbsp;&nbsp;...
+        </code>
+      </div>
+    </div>
+    <p>If we chose <code>SOCKET</code> connection type, we need to configure only one thing:</p>
+    <p><strong>socketPort:</strong> This number tells the plugin which port should be the socket server hosted on. This is not port of your server. Your server is run on some port, so IPWhiteList's is. See <sup><a href="#term1">1</a></sup>.</p>
+
+    <!--MySQL configuration-->
+    <h2>3C. MySQL configuration:</h2>
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div style="width: 1000px;">
+        <code class="codeInBlock">
+          <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;...
+          &nbsp;&nbsp;<a class="yamlComment">#MySQL&nbsp;connection&nbsp;(if&nbsp;type&nbsp;=&nbsp;MYSQL):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Host:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">host:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Username</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">username:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Password:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">password:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Database:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">database:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Table&nbsp;name&nbsp;to&nbsp;use:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">table:&nbsp;</a><a class="yamlValue yamlStringValue">"ipwhitelist"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">useSSL:&nbsp;</a><a class="yamlValue">true</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">3</a><br>
+        </code>
+      </div>
+    </div>
+    <p>If we chose <code>MYSQL</code> connection type, we need to configure all connection data and also what table we want IPWhiteList and IPWhiteListBukkit to use and the reconnect delay.</p>
+    <p><strong>host:</strong> IP of the database host.</p>
+    <p><strong>port:</strong> Port on which is the database hosted.</p>
+    <p><strong>username:</strong> Username to connect with to the database.</p>
+    <p><strong>password:</strong> Password for the username.</p>
+    <p><strong>database:</strong> Name of the database to use.</p>
+    <p><strong>table:</strong> Table to be used by IPWhiteList. <strong>Do not create the specified table! IPWhiteList will create it by itself with needed columns.</strong></p>
+    <p><strong>useSSL:</strong> Use SSL certificate to connect.</p>
+    <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed or failed to connect and trying again.</p>
 
     <!--Whitelisted-->
-    <h1 class="sectionTitle" id="whitelisted">3. Whitelisted IPs:</h1>
+    <h1 class="sectionTitle" id="whitelisted">4. Whitelisted IPs:</h1>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
@@ -151,7 +221,7 @@
     </ul>
 
     <!--Setup mode-->
-    <h1 class="sectionTitle" id="setupMode">4. Setup mode:</h1>
+    <h1 class="sectionTitle" id="setupMode">5. Setup mode:</h1>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
@@ -168,7 +238,7 @@
       connections not depending on if they are whitelisted or not.</p>
 
     <!--IPWhiteListBukkit-->
-    <h1 class="sectionTitle" id="ipWhiteListBukkit">5. IPWhiteListBukkit:</h1>
+    <h1 class="sectionTitle" id="ipWhiteListBukkit">6. IPWhiteListBukkit:</h1>
     <p>If you completed all steps above, configure IPWhiteListBukkit.</p>
 
     <div class="termDesc">
