@@ -44,11 +44,12 @@
     <li class="wikiNavigation hoverable"><a href="setup.html">Setup</a></li>
     <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
     <li class="wikiNavigation current"><a>Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
     <li class="wikiNavigation hoverable"><a href="api.html">API</a></li>
   </ul>
 
   <div class="wikiSection">
-    <h1 class="sectionTitle" id="config_yml">config.yml (v2.0):</h1>
+    <h1 class="sectionTitle" id="config_yml">config.yml (v2.3):</h1>
 
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
@@ -152,17 +153,40 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">database:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Table&nbsp;name&nbsp;to&nbsp;use:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">table:&nbsp;</a><a class="yamlValue yamlStringValue">"ipwhitelist"</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication,&nbsp;please&nbsp;read&nbsp;the&nbsp;official&nbsp;MySQL&nbsp;wiki&nbsp;how&nbsp;to&nbsp;configure&nbsp;SSL&nbsp;communication):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">useSSL:&nbsp;</a><a class="yamlValue">true</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Whitelisted&nbsp;IPs&nbsp;synchronization:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#INFO!&nbsp;Very&nbsp;useful&nbsp;for&nbsp;large&nbsp;networks&nbsp;with&nbsp;more&nbsp;than&nbsp;one&nbsp;proxy.&nbsp;In&nbsp;this&nbsp;case&nbsp;you&nbsp;don't&nbsp;need&nbsp;to&nbsp;copy&nbsp;whitelisted&nbsp;IPs</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anytime&nbsp;you&nbsp;change&nbsp;them&nbsp;to&nbsp;every&nbsp;config,&nbsp;just&nbsp;synchronize&nbsp;whitelisted&nbsp;IPs&nbsp;(all&nbsp;IPWhiteList&nbsp;plugins)&nbsp;with&nbsp;one</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;central&nbsp;IPWhiteList.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">whitelistedSync:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Synchronization&nbsp;mode:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#-&nbsp;NONE:&nbsp;do&nbsp;not&nbsp;query&nbsp;/&nbsp;upload&nbsp;whitelisted&nbsp;IPs&nbsp;to&nbsp;the&nbsp;database&nbsp;and&nbsp;use&nbsp;the&nbsp;config.yml&nbsp;file&nbsp;for&nbsp;them</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#-&nbsp;HOST:&nbsp;host&nbsp;the&nbsp;whitelisted&nbsp;IPs&nbsp;(central&nbsp;IPWhiteList)&nbsp;-&nbsp;upload&nbsp;whitelisted&nbsp;IPs&nbsp;from&nbsp;config.yml&nbsp;file&nbsp;to&nbsp;the&nbsp;database</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;so&nbsp;other&nbsp;IPWhiteList&nbsp;plugins&nbsp;set&nbsp;on&nbsp;SYNC&nbsp;mode&nbsp;can&nbsp;query&nbsp;them&nbsp;and&nbsp;synchronize&nbsp;them</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WARNING!&nbsp;If&nbsp;changes&nbsp;in&nbsp;whitelisted&nbsp;IPs&nbsp;were&nbsp;made&nbsp;between&nbsp;restarts,&nbsp;central&nbsp;IPWhiteList's&nbsp;server&nbsp;must&nbsp;start&nbsp;as&nbsp;first.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#-&nbsp;SYNC:&nbsp;synchronize&nbsp;whitelisted&nbsp;IPs&nbsp;with&nbsp;the&nbsp;central&nbsp;IPWhiteList&nbsp;by&nbsp;querying&nbsp;the&nbsp;database</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">mode:&nbsp;</a><a class="yamlValue">NONE</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Table&nbsp;name&nbsp;to&nbsp;store&nbsp;whitelisted&nbsp;IPs&nbsp;in:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">table:&nbsp;</a><a class="yamlValue yamlStringValue">"ipwhitelist_ips"</a><br>
           <a class="yamlComment">#Updates:</a><br>
           <a class="yamlKey">updates:</a><br>
           &nbsp;&nbsp;<a class="yamlComment">#Enable&nbsp;checking&nbsp;for&nbsp;updates:</a><br>
           &nbsp;&nbsp;<a class="yamlKey">check:&nbsp;</a><a class="yamlValue">true</a><br>
           &nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;re-checking&nbsp;for&nbsp;updates&nbsp;in&nbsp;minutes&nbsp;(-1&nbsp;to&nbsp;disable):</a><br>
           &nbsp;&nbsp;<a class="yamlKey">checkDelay:&nbsp;</a><a class="yamlValue">60</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Messages,&nbsp;{latest_version}&nbsp;for&nbsp;latest&nbsp;released&nbsp;version,&nbsp;{current_version}&nbsp;for&nbsp;currently&nbsp;running&nbsp;plugin&nbsp;version:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Messages:</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#Placeholders:&nbsp;{latest_version}&nbsp;-&nbsp;latest&nbsp;released&nbsp;plugin&nbsp;version</a><br>
+          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{current_version}&nbsp;-&nbsp;current&nbsp;plugin&nbsp;version</a><br>
           &nbsp;&nbsp;<a class="yamlKey">messages:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#If&nbsp;there&nbsp;is&nbsp;new&nbsp;update&nbsp;available:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">update:&nbsp;</a><a

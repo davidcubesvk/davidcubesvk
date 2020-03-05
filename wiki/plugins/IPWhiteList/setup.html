@@ -44,6 +44,7 @@
     <li class="wikiNavigation current"><a>Setup</a></li>
     <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
     <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
+    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
     <li class="wikiNavigation hoverable"><a href="api.html">API</a></li>
   </ul>
 
@@ -58,8 +59,8 @@
     <li class="wikiSideBar hoverable"><a href="#connectingToExtension">Connecting to extension</a></li>
     <li class="wikiSideBar hoverable"><a href="#connectionConfiguration">Connection configuration</a></li>
     <li class="wikiSideBar hoverable"><a href="#whitelisted">Whitelisted IPs</a></li>
+    <li class="wikiSideBar hoverable"><a href="#MySQLSynchronization">MySQL synchronization</a></li>
     <li class="wikiSideBar hoverable"><a href="#setupMode">Setup mode</a></li>
-    <li class="wikiSideBar hoverable"><a href="#ipWhiteListBukkit">IPWhiteListBukkit</a></li>
   </ul>
 
   <div class="wikiSection">
@@ -136,7 +137,7 @@
         <code class="codeInBlock">
           <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
           <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;...
+          &nbsp;&nbsp;...<br>
           &nbsp;&nbsp;<a class="yamlComment">#MySQL&nbsp;connection&nbsp;(if&nbsp;type&nbsp;=&nbsp;MYSQL):</a><br>
           &nbsp;&nbsp;<a class="yamlKey">mysql:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Host:</a><br>
@@ -155,6 +156,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">useSSL:&nbsp;</a><a class="yamlValue">true</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;...
         </code>
       </div>
     </div>
@@ -199,7 +201,7 @@
         </code>
       </div>
     </div>
-    <p>Now we need to specify the IPs we want players to connect with. Whitelisted IPs can be added to the list under <code>whitelisted:</code> tag. Players connecting with any of these IPs will be allowed to connect, however, the others will be
+    <p>Now we need to specify the IPs we want players to connect with. Whitelisted IPs can be added to the list under <code>whitelisted:</code> tag. Players connecting with any of these IPs will be allowed to connect, however, others will be
       kicked.
       You are allowed to whitelist IPs, but also hostnames and ports. Documentation is already in configuration, but let's take a closer look.</p>
     <ul>
@@ -220,8 +222,61 @@
       </li>
     </ul>
 
+    <!--MySQL synchronization-->
+    <h1 class="sectionTitle" id="MySQLSynchronization">5. MySQL synchronization:</h1>
+    <!--Config.yml part-->
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="codeBlock">
+      <div>
+        <code class="codeInBlock">
+          <a class="yamlComment">#Connection&nbsp;with&nbsp;extension&nbsp;IPWhiteListBukkit:</a><br>
+          <a class="yamlKey">connect:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yamlComment">#MySQL&nbsp;connection&nbsp;(if&nbsp;type&nbsp;=&nbsp;MYSQL):</a><br>
+          &nbsp;&nbsp;<a class="yamlKey">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Whitelisted&nbsp;IPs&nbsp;synchronization:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#INFO!&nbsp;Very&nbsp;useful&nbsp;for&nbsp;large&nbsp;networks&nbsp;with&nbsp;more&nbsp;than&nbsp;one&nbsp;proxy.&nbsp;In&nbsp;this&nbsp;case&nbsp;you&nbsp;don't&nbsp;need&nbsp;to&nbsp;copy&nbsp;whitelisted&nbsp;IPs</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anytime&nbsp;you&nbsp;change&nbsp;them&nbsp;to&nbsp;every&nbsp;config,&nbsp;just&nbsp;synchronize&nbsp;whitelisted&nbsp;IPs&nbsp;(all&nbsp;IPWhiteList&nbsp;plugins)&nbsp;with&nbsp;one</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;central&nbsp;IPWhiteList.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">whitelistedSync:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Synchronization&nbsp;mode:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#-&nbsp;NONE:&nbsp;do&nbsp;not&nbsp;query&nbsp;/&nbsp;upload&nbsp;whitelisted&nbsp;IPs&nbsp;to&nbsp;the&nbsp;database&nbsp;and&nbsp;use&nbsp;the&nbsp;config.yml&nbsp;file&nbsp;for&nbsp;them</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#-&nbsp;HOST:&nbsp;host&nbsp;the&nbsp;whitelisted&nbsp;IPs&nbsp;(central&nbsp;IPWhiteList)&nbsp;-&nbsp;upload&nbsp;whitelisted&nbsp;IPs&nbsp;from&nbsp;config.yml&nbsp;file&nbsp;to&nbsp;the&nbsp;database</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;so&nbsp;other&nbsp;IPWhiteList&nbsp;plugins&nbsp;set&nbsp;on&nbsp;SYNC&nbsp;mode&nbsp;can&nbsp;query&nbsp;them&nbsp;and&nbsp;synchronize&nbsp;them</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WARNING!&nbsp;If&nbsp;changes&nbsp;in&nbsp;whitelisted&nbsp;IPs&nbsp;were&nbsp;made&nbsp;between&nbsp;restarts,&nbsp;central&nbsp;IPWhiteList's&nbsp;server&nbsp;must&nbsp;start&nbsp;as&nbsp;first.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#-&nbsp;SYNC:&nbsp;synchronize&nbsp;whitelisted&nbsp;IPs&nbsp;with&nbsp;the&nbsp;central&nbsp;IPWhiteList&nbsp;by&nbsp;querying&nbsp;the&nbsp;database</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">mode:&nbsp;</a><a class="yamlValue">NONE</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Table&nbsp;name&nbsp;to&nbsp;store&nbsp;whitelisted&nbsp;IPs&nbsp;in:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">table:&nbsp;</a><a class="yamlValue yamlStringValue">"ipwhitelist_ips"</a>
+        </code>
+      </div>
+    </div>
+    <p>Do you have network with more than one proxy, use <code>MYSQL</code> connection type and want to have whitelisted IPs synchronized across all of them? Well, that's not any problem. We just need to configure two things.</p>
+    <p><strong>mode:</strong> This specifies in which mode - which role current IPWhiteList plugin has in the synchronization process. We have three options. You must have only one central IPWhiteList (set on mode <code>HOST</code>), with which
+      will all other IPWhiteList plugins (set on mode <code>SYNC</code>) synchronize.</p>
+    <ul>
+      <li>
+        <p><code class="code">NONE</code> - No synchronization, using whitelisted IPs saved in config.yml.</p>
+      </li>
+      <li>
+        <p><code class="code">HOST</code> - Host the synchronization (central IPWhiteList), upload whitelisted IPs from config.yml to the database, so other IPWhiteList plugins can synchronize with these uploaded whitelisted IPs.</p>
+      </li>
+      <li>
+        <p><code class="code">SYNC</code> - Synchronize whitelisted IPs with the central IPWhiteList, get whitelisted IPs from the database and save them into this plugin's config.yml file.</p>
+      </li>
+    </ul>
+    <p><strong>table:</strong> Table to be used by IPWhiteList for whitelisted IPs synchronization. <strong>Do not create the specified table! IPWhiteList will create it by itself with needed columns.</strong></p>
+    </p>
+
     <!--Setup mode-->
-    <h1 class="sectionTitle" id="setupMode">5. Setup mode:</h1>
+    <h1 class="sectionTitle" id="setupMode">6. Setup mode:</h1>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
     <div class="codeBlock">
@@ -236,10 +291,6 @@
     </div>
     <p>Finally, we need to turn the setup mode off, so IPWhiteList will start doing it's work. The setup mode can be toggled by setting <code>setup:</code> to <code>true</code> (on) or <code>false</code> (off). If on, plugin will accept all
       connections not depending on if they are whitelisted or not.</p>
-
-    <!--IPWhiteListBukkit-->
-    <h1 class="sectionTitle" id="ipWhiteListBukkit">6. IPWhiteListBukkit:</h1>
-    <p>If you completed all steps above, configure IPWhiteListBukkit.</p>
 
     <div class="termDesc">
       <p id="term1"><sup>1</sup><strong>socket</strong> - type of communication over the internet which consists of one server
