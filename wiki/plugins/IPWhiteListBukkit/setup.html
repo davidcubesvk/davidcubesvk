@@ -188,6 +188,13 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">useSSL:&nbsp;</a><a class="yamlValue">true</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Waiting&nbsp;timeout&nbsp;before&nbsp;reading&nbsp;from&nbsp;the&nbsp;database&nbsp;when&nbsp;player&nbsp;joins&nbsp;the&nbsp;server&nbsp;(in&nbsp;milliseconds).</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#INFO!&nbsp;If&nbsp;you&nbsp;have&nbsp;trouble&nbsp;connecting,&nbsp;this&nbsp;may&nbsp;be&nbsp;the&nbsp;solution.&nbsp;Value&nbsp;should&nbsp;be&nbsp;a&nbsp;bit&nbsp;bigger&nbsp;than&nbsp;the&nbsp;time&nbsp;MySQL</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert&nbsp;operation&nbsp;(when&nbsp;the&nbsp;player&nbsp;joins&nbsp;the&nbsp;network)&nbsp;run&nbsp;by&nbsp;IPWhiteList&nbsp;takes.&nbsp;Please&nbsp;read&nbsp;the&nbsp;wiki&nbsp;for&nbsp;more</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;information.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">waitRead:&nbsp;</a><a class="yamlValue">0</a><br>
         </code>
       </div>
     </div>
@@ -200,6 +207,10 @@
     <p><strong>table:</strong> Table to be used by IPWhiteList. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
     <p><strong>useSSL:</strong> Use SSL certificate to connect.</p>
     <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed or failed to connect and trying again.</p>
+    <p><strong>waitRead:</strong> Timeout in milliseconds to wait before reading from the database when a player is joining the server. This connection uses the fact that IPWhiteList's login event is called before IPWhiteListBukkit's,
+    in this case IPWhiteList runs an operation in the database and IPWhiteListBukkit depends on it. That means, that operation needs to be finished before the IPWhiteListBukkit processes player's login event. Unfortunately, in some cases
+    the IPWhiteList's database operation finished after IPWhiteListBukkit processed the login event, so the player couldn't join. To solve this, you can specify the time to wait before reading from the database when the login event is called, 
+    so the IPWhiteList's operation has finished already before at the processing time. During this, the player is freezed in ,,Logging in..." screen.</p>
 
     <!--Finish-->
     <h1 class="sectionTitle" id="finish">4. Finish:</h1>
