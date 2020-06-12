@@ -2,130 +2,124 @@
 <html lang="sk">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="style/global.css">
-  <link rel="stylesheet" type="text/css" href="style/homeNavigation.css">
-  <script src="script/navigation.js"></script>
+  <link rel="stylesheet" type="text/css" href="style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="style/css/home/home.css">
+  <link rel="stylesheet" type="text/css" href="style/css/home/navigation.css">
   <script src="script/footer.js"></script>
+  <script src="script/home/navigation.js"></script>
 
   <link rel="icon" href="uploads/icon.png" type="png">
   <title>Home</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Indie+Flower|Lobster|Pacifico&display=swap');
+  <script type="text/javascript">
+    //Element
+    typewriterText = document.getElementsByClassName("typewriter-text");
 
-    div.banner {
-      height: 90vh;
-      width: 100%;
-      text-align: center;
+    //Messages
+    messages = ["PLUGINS", "DISCORD BOTS", "WEBSITES"];
+    //Current loop index
+    loop = 0;
+    //Current message
+    message = 0;
+    //Cursor visibility
+    cursor = false;
 
-      background-image: url("uploads/backgrounds/background2.png");
-      background-attachment: fixed;
+    //Typewriter method
+    function typewriter() {
+      setTimeout(function() {
+        if (typewriterText[0].innerText != messages[message]) {
+          //Display the new message
+          typewriterText[0].innerText = messages[message].substring(0, loop + 1);
+        } else if (loop >= messages[message].length + 12) {
+          //Reset typewriter
+          loop = -1;
+          //Reset text
+          typewriterText[0].innerText = "";
+
+          //Change the message
+          message++;
+          //If out of range
+          if (message >= messages.length) {
+            message = 0;
+          }
+        }
+
+        //Add loop index
+        loop++;
+        //Call the function again
+        typewriter();
+      }, 100)
     }
-
-    p.bannerTitle {
-      font-family: 'Pacifico', cursive;
-      color: #ffffff;
-      vertical-align: middle;
-    }
-
-    div.transitionNavigation {
-      background-color: #404040;
-    }
-
-    @-webkit-keyframes arrow {
-      from {
-        top: 0px;
-        opacity: 0;
-      }
-
-      40% {
-        opacity: 1;
-      }
-
-      60% {
-        opacity: 1;
-      }
-
-      to {
-        top: 50px;
-        opacity: 0;
-      }
-    }
-
-    @keyframes arrow {
-      from {
-        top: 0px;
-        opacity: 0;
-      }
-
-      40% {
-        opacity: 1;
-      }
-
-      60% {
-        opacity: 1;
-      }
-
-      to {
-        top: 50px;
-        opacity: 0;
-      }
-    }
-  </style>
+  </script>
 </head>
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="uploads/icon.png" class="menuImg">
+  <div id="navigation" class="navigation">
+    <div class="left">
+      <img src="../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem current"><a>HOME</a></li>
-      <li class="menuItem hoverable"><a href="projects/">PROJECTS</a></li>
-      <li class="menuItem hoverable"><a href="wiki/">WIKI</a></li>
-      <li class="menuItem hoverable"><a href="support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item current"><a>Home</a></li>
+      <li class="item hoverable"><a href="projects">Projects</a></li>
+      <li class="item hoverable"><a href="wiki">Wiki</a></li>
+      <li class="item hoverable"><a href="support">Support</a></li>
     </ul>
-  </nav>
+    </div>
 </header>
 
-<body onload="positionFooter()">
+<body onload="typewriter();">
   <!--Banner with title-->
-  <div class="banner">
-    <p class="bannerTitle" style="font-size: 50px; margin: 0px; padding-top: 200px;">Davidcubesvk's development</p>
-    <p class="bannerTitle" style="font-size: 25px;">Student and DEV.</p>
-
-    <!--Down arrows-->
-    <a href="#about-me">
-      <svg style="opacity: 0; position: relative; animation: arrow 1.5s 2s infinite; fill: white; width: 40px; height: 40px">
-        <path d="M0 5 L5 0 L25 20 L20 25 L0 5 M15 20    L35 0 L40 5 L20 25 L15 20
-               M0 20 L5 15 L25 35 L20 40 L0 20 M15 35    L35 15 L40 20 L20 40 L15 35 Z" />
-      </svg>
-    </a>
-  </div>
-
-  <div style="width: 80%; height: 150px; padding: 75px 10% 75px 10%;" id="about-me">
-    <div style="width: 50%; height: auto; display: inline-block; text-align: justify; vertical-align: bottom;">
-      <p style="margin: 0;">Hello! My name is David and I live in Europe. My main hobby is electronics, of one of which is programming. I am the author of few plugins available for download on the internet.</p>
-      <h2 style="font-family: 'Montserrat'; text-align: center; margin: 20px;">4 resources • 4000+ downloads</h2>
-    </div>
-    <div style="width: 200px; height: auto; display: inline-block; text-align: justify; font-size: 20px; float: right;">
-      <img src="uploads/icon.png" alt="Can't load image." style="height: 150px; width: 150px; border-radius: 10px; padding">
+  <div class="banner vertical-align-parent">
+    <div class="banner-text vertical-align-child">
+      <h1 class="title">DAVIDCUBESVK'S DEVELOPMENT</h1>
+      <h1 class="subtitle"><a class="typewriter-text"> </a></h1>
     </div>
   </div>
 
-  <div class="banner" style="height: 200px; width: 84%; text-align: left; color: white; padding: 40px 8% 40px 8%;">
-    <h1 style="font-family: 'Montserrat';">New website released!</h1>
-    <p style="margin: 20px;"><span class="tab"></span>New website design was released! This includes total change of navigation bar, the main page and wiki pages. Besides design changes,
-    wiki pages for plugins have also been updated with more friendly text with explained words that you might've not know what they mean!</p>
+  <div class="info">
+    <!--About me-->
+    <div class="info-box" id="about-me">
+      <div class="grid-div">
+        <h1>About me</h1>
+        <p>Hello! My name is David and I live in Europe. On the internet I am known as davidcubesvk.
+          My hobby is electronics - designing and making my own circuits, messing up with microcomputers
+          and also programming. I am the author of this website (obviously :D) and also plugins designed
+          for Minecraft game servers. You can download them <a href="https://www.spigotmc.org/resources/authors/davidcubesvk.387302/" target="_blank">here</a>.
+          Although I am still a student, I try to put all my effort into programming, into every resource, into every update...
+          and also into this website. To make usage of my plugins easier, I created a lot wiki pages including setup instructions,
+          simply everything you need. If you are still lost, I am here to help you!</p>
+      </div>
+    </div>
+    <!--Projects-->
+    <div class="info-box" id="projects">
+      <div class="grid-div">
+        <h1>My projects</h1>
+        <p>These buttons will redirect you to plugin pages. For more links, go to tab ,,Projects".</p>
+        <div class="projects">
+          <p><a href="https://www.spigotmc.org/resources/65075" target="_blank">IPWhiteList</a></p>
+          <p><a href="https://www.spigotmc.org/resources/68030" target="_blank">IPWhiteListBukkit</a></p>
+          <p><a href="https://www.spigotmc.org/resources/57214" target="_blank">ClicksPerSecond</a></p>
+          <p><a href="https://www.spigotmc.org/resources/55890" target="_blank">RepairItem</a></p>
+        </div>
+      </div>
+    </div>
+    <!--Support-->
+    <div class="info-box" id="support">
+      <div class="grid-div">
+        <h1>Support (contact)</h1>
+        <p>Have you found any problem or want to suggest any new feature? Contact me through Discord (optimal), or straight through the SpigotMC site. All methods are listed on the
+          ,,Support" tab. Although my plugins are currently all free, I provide really fast and reliable support (answering commonly in 24 hours).</p>
+      </div>
+    </div>
   </div>
 </body>
 
 <!--Footer-->
-<footer style="margin-top: 0">
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+<footer>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="actions.html">Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
+          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="current"><a>Placeholders</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Plugin commands-->
+    <p>ClicksPerSecond provides many ,,outdoor" placeholders (which can be used in another plugins)
+      through PlaceholderAPI. For this feature to work, you must have it installed.</p>
+
+    <h1 class="title" id="usage">Usage:</h1>
+    <p>CPS placeholder's structure looks like this - you can request data from certain place in a scoreboard, or player data in a scoreboard:</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Placeholder structure</p>
+      </div>
+      <div class="content">
+        <code>%cps_&#60;right|left|hack&#62;_&#60;place|player-name|player-uuid&#62;_&#60;value&#62;_&#60;place|player-name|player-uuid|cps-int|cps-decimal|date|time&#62;%</code>
+      </div>
+    </div>
+    <p>Parameter specification:</p>
+    <ul>
+      <li><code>&#60;right|left|hack&#62;</code> - scoreboard from which are the data requested</li>
+      <li><code>&#60;place|player-name|player-uuid&#62;</code> - key to the requested content (place in scoreboard, player's name or UUID)</li>
+      <li><code>&#60;value&#62;</code> - the actual key to the requested content of type specified before (<code>place</code> - place in scoreboard,
+        <code>player_name</code> - player's name, <code>player_uuid</code> - player's UUID)</li>
+      <li><code>&#60;place|player-name|player-uuid|cps-int|cps-decimal|date|time&#62;</code> - type of the requested content (scoreboard record)
+        to return (place of the record in scoreboard, player's name or UUID associated to this record, CPS in integer or decimal format, date or time at which was the record created)</li>
+    </ul>
+    <p>If any problem in the placeholder specification occurs, or the player's name specified as key can't be found (the player has not played on this server before),
+      an empty string ("") is always returned. If the requested content was not found, returns the corresponding replacement to the type of the requested content (place,
+      date...) from the config.yml.</p>
+
+    <h1 class="title" id="example">Example:</h1>
+    <p>To get player's name and CPS achieved on the 1st place in left-mode scoreboard, we'd use these placeholders:</p>
+    <ul>
+      <li><code>%cps_left_place_1_player_name%</code> - returns player's name associated with the record on the 1st place in left-mode scoreboard. We specify left scoreboard and place as
+        the data key. Then we use 1 as the data key itself (<code>&#60;value&#62;</code>) and <code>player_name</code> will return us what we want.</li>
+      <li><code>%cps_left_place_1_cps_int%</code> - returns player's CPS (in integer format) associated with the record on the 1st place in left-mode scoreboard. We do the same, except we
+        use <code>cps_int</code> instead of <code>player_name</code> because we want to request CPS.</li>
+    </ul>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

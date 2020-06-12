@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Noto+Sans&display=swap");
+html {
+  /*Smooth scrolling*/
+  scroll-behavior: smooth;
+}
+
+body {
+  /*Reset paddings and margins*/
+  padding: 0;
+  margin: 0;
+}
+
+/*Fonts*/
+p {
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+
+h1 {
+  font-family: "Noto Sans";
+  font-weight: normal;
+}
+
+h2 {
+  font-family: "Noto Sans";
+  font-weight: normal;
+}
+
+h3 {
+  font-family: "Noto Sans";
+  font-weight: normal;
+}
+
+div.vertical-align-parent {
+  position: relative;
+}
+
+div.vertical-align-child {
+  /*Position*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+span.tab {
+  /*Size*/
+  width: 30px;
+  /*Display*/
+  display: inline-block;
+}
+
+.navigation-space {
+  /*Shift down a little bit due to navigation*/
+  margin-top: 40px;
+}
+
+.main-font {
+  /*Font*/
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+
+/*Site section style*/
+div.page-section {
+  /*Size*/
+  width: 50%;
+  /*General spacing*/
+  padding: 20px;
+  /*Shift down a little bit due to navigation*/
+  margin: 30px 25% 50px;
+  /*Align text*/
+  text-align: justify;
+}
+
+footer {
+  /*Size*/
+  width: 100%;
+  /*Position*/
+  z-index: 1000;
+  /*Colors and font*/
+  background: #162947;
+  color: white;
+  text-align: center;
+}
+footer p {
+  /*Display*/
+  display: inline-block;
+  /*Font*/
+  font-size: 14px;
+}

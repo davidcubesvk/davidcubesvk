@@ -2,12 +2,13 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wikiNavigation.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
 
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
@@ -15,70 +16,105 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../../../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-  </nav>
+    </div>
 </header>
 
-<body onload="positionFooter(); wikiNavigation();">
-  <!--Wiki navigation-->
-  <ul class="wikiNavigation">
-    <li class="wikiNavigation title">
-      <svg>
-        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
-        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
-        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
-      </svg>
-      <a>Pages</a></li>
-    <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">Overview</a></li>
-    <li class="wikiNavigation hoverable"><a href="setup.html">Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
-    <li class="wikiNavigation current"><a>Logging</a></li>
-    <li class="wikiNavigation hoverable"><a href="api.html">API</a></li>
-  </ul>
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/ip-whitelist.png" alt="IPWhiteList's logo">
+      <p>IPWhiteList v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../IPWhiteList">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="current"><a>Logging</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
 
-  <!--Page navigation-->
-  <ul class="wikiSideBar">
-    <li class="wikiSideBar title">
-      <svg>
-        <path d="M0 0 L10 0 L10 2 L0 2 L0 0             M0 4 L5 4 L5 6 L0 6 L0 4      M0 8 L8 8 L8 10 L0 10 L0 8 Z">
-      </svg>
-      <a>Contents</a></li>
-    <li class="wikiSideBar hoverable"><a href="#basicInformation">Basic information</a></li>
-    <li class="wikiSideBar hoverable"><a href="#logFiles">Log files</a></li>
-    <li class="wikiSideBar hoverable"><a href="#levels">Levels</a></li>
-    <li class="wikiSideBar hoverable"><a href="#prefixes">Prefixes</a></li>
-    <li class="wikiSideBar hoverable"><a href="#readingTheLogs">Reading the logs</a></li>
-  </ul>
-
-  <div class="wikiSection">
+  <div class="wiki-section">
     <!--Basic information-->
-    <h1 class="sectionTitle" id="basicInformation">Basic information:</h1>
+    <h1 class="title" id="basic-information">Basic information:</h1>
     <p>IPWhiteList has logging system built-in for easier troubleshooting from both
       user's and developer's side. Customization is available in IPWhiteList's config.yml
-      file. It is heavily recommended to have logs enabled.</p>
+      file. It is recommended to have logs disabled if you don't experience any problems with the plugin
+      to save disk space.</p>
     <!--Log files-->
-    <h1 class="sectionTitle" id="logFiles">Log files:</h1>
+    <h1 class="title" id="file-system">File system:</h1>
     <p>Each log file represents one lifecycle of the plugin - from time when it's enabled
       till it's disabled. All log files are saved in folder named ,,logs" located in plugin's
-      folder and are saved in format <code class="code">yyyy-MM-dd_HH:mm:ss.log</code> represeting date and time when
-      was the log file created. All entries in log file are saved in format <code class="code">[yyyy-MM-dd HH:mm:ss]
-        LEVEL: [PREFIX] message</code>, please continue reading for all levels and prefixes.</p>
+      folder and are saved in format <code>yyyy-MM-dd_HH:mm:ss.log</code> represeting date and time
+      of the file creation. All entries in log file are saved in format:</p>
+      <div class="code-block">
+        <div class="header">
+          <p>Log file entry format</p>
+        </div>
+        <div class="code">
+          <code>[yyyy-MM-dd HH:mm:ss.SSS] LEVEL: [PREFIX] message</code>
+        </div>
+      </div>
+      <p>Please continue reading the wiki for more information about levels and prefixes.</p>
+    <!--Log entry parts-->
+    <h1 class="title" id="log-entry">Log entry parts:</h1>
+    <!--Timestamp-->
+    <h2 class="subtitle" id="log-entry-timestamp">Timestamp:</h2>
+    <p>Log entry timestamp is formatted into following format: <code>[yyyy-MM-dd HH:mm:ss.SSS]</code>. The following table
+    describes each replacement:</p>
+    <table class="wiki-table center-table">
+      <tr>
+        <th>Replacement</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>yyyy</td>
+        <td>Year</td>
+      </tr>
+      <tr>
+        <td>MM</td>
+        <td>Month</td>
+      </tr>
+      <tr>
+        <td>dd</td>
+        <td>Day</td>
+      </tr>
+      <tr>
+        <td>HH</td>
+        <td>Hour</td>
+      </tr>
+      <tr>
+        <td>mm</td>
+        <td>Minute</td>
+      </tr>
+      <tr>
+        <td>ss</td>
+        <td>Second</td>
+      </tr>
+      <tr>
+        <td>SSS</td>
+        <td>Millisecond</td>
+      </tr>
+    </table>
+
     <!--Levels-->
-    <h1 class="sectionTitle" id="levels">Levels:</h1>
-    <p>Information in logging files are logged on 3 different levels:</p>
-    <table class="wikiTable">
+    <h2 class="subtitle" id="log-entry-levels">Levels:</h2>
+    <p>Information in log files are logged on 3 different levels:</p>
+    <table class="wiki-table">
       <tr>
         <th>Level</th>
         <th>Description</th>
@@ -97,9 +133,9 @@
       </tr>
     </table>
     <!--Prefixes-->
-    <h1 class="sectionTitle" id="prefixes">Prefixes:</h1>
+    <h2 class="subtitle" id="log-entry-prefixes">Prefixes:</h2>
     <p>Every logged message has it's own prefix representing the source of the message:</p>
-    <table class="wikiTable">
+    <table class="wiki-table">
       <tr>
         <th>Prefix (source)</th>
         <th>Description</th>
@@ -133,25 +169,36 @@
         <td>Messages related to plugin's API (example: ,,Getting BungeeCord's port.").</td>
       </tr>
     </table>
-    <!--Reading the logs-->
-    <h1 class="sectionTitle" id="readingTheLogs">Reading the logs:</h1>
-    <p>Very important messages about connection status, or new update messages are also printed
-      into the console, but in longer format. In logs messages are shorter because there are
-      prefixes, which specify the source of the message. Example:</p>
-    <p>Console: <code class="code">14:01:51 [INFO] [IPWhiteList] ServerSocket started on port 4444.</code></p>
-    <p>Log: <code class="code">[2020-03-05 14:01:51] INFO: [SOCKET] Started on port 4444.</code></p>
-    <p>Console logging also brings one disadvantage, there aren't logged the full error stacktraces, only message
-      describing that some error has occurred and in which operation. In this case you should open the latest log
-      locate the message and look at the stacktrace message. If it is something that you are not familiar with and
-      can't fix it, please send the error to the developer.</p>
-    <p>Other case when you should look into the logs is when you think something doesn't work or on the other side,
-      make sure if everything works properly, for example, whitelisted IPs synchronization messages.</p>
+    <!--Comparision to console-->
+    <h1 class="title" id="comparision">Comparision to console:</h1>
+    <p>The most important messages are also printed into the console.
+      However, if you want to find something, it always better to look into IPWhiteList's log files,
+      as they are more organised.
+      Example:</p>
+      <div class="code-block">
+        <div class="header">
+          <p>Log example from console</p>
+        </div>
+        <div class="code">
+          <code>14:01:51 [INFO] [IPWhiteList] ServerSocket started on port 4444.</code>
+        </div>
+      </div>
+      <div class="code-block">
+        <div class="header">
+          <p>Log example from IPWhiteList's log file</p>
+        </div>
+        <div class="code">
+          <code>[2020-03-05 14:01:51.182] INFO: [SOCKET] Started on port 4444.</code>
+        </div>
+      </div>
+    <p>Also, to keep console clear and to prevent error floods, no error stacktraces are logged into the console.
+    Since this fact, if you find any problem, please look into log files.</p>
   </div>
 </body>
 
 <!--Footer-->
 <footer>
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

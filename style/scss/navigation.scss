@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap');
+$height: 40px;
+$background: #162947;
+$text: white;
+$hover-pad-color: white;
+
+div.navigation {
+  /*Size*/
+  height: $height;
+  width: 100%;
+  box-sizing: border-box;
+  /*Position*/
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  padding: 0 100px;
+  /*Background*/
+  background: $background;
+
+  div.left {
+    /*Size*/
+    height: $height;
+    box-sizing: border-box;
+    /*Position*/
+    float: left;
+    padding: 5px;
+
+    img {
+      /*Size*/
+      height: 100%;
+      /*Position*/
+      display: inline;
+    }
+
+    p {
+      /*Size*/
+      line-height: 30px;
+      /*Position*/
+      vertical-align: super;
+      display: inline;
+      /*Font*/
+      font-family: 'Raleway';
+      font-weight: 900;
+      font-size: 20px;
+      color: $text;
+    }
+  }
+
+  ul.right {
+    /*Size*/
+    height: 100%;
+    /*Position*/
+    margin: 0;
+    float: right;
+
+    li.item {
+      /*Size*/
+      height: 38.5px;
+      /*Position*/
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+      margin: 0 0.5px 0 0;
+
+      a {
+        /*Size*/
+        line-height: 38.5px;
+        /*Font*/
+        font-family: 'Raleway';
+        font-weight: 600;
+        color: $text;
+        text-decoration: none;
+      }
+    }
+
+    li.item:after {
+      /*Size*/
+      height: 1.5px;
+      width: 0;
+      /*Position*/
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      /*Background*/
+      background-color: $hover-pad-color;
+      /*Content*/
+      content: "";
+      /*Animations*/
+      transition: 0.5s;
+    }
+
+    li.current:after {
+      /*Size*/
+      width: 100%;
+    }
+
+    li.hoverable:hover:after {
+      /*Size*/
+      width: 100%;
+    }
+  }
+}

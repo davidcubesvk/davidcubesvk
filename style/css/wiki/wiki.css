@@ -1,0 +1,247 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Open+Sans:wght@300&family=Roboto&display=swap");
+div.wiki-side-bar {
+  /*Size*/
+  height: 100%;
+  width: 300px;
+  /*Position*/
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin-top: 40px;
+  /*Background*/
+  background: #e6e6e6;
+  /*Border*/
+  border-right: solid 1px #cccccc;
+}
+div.wiki-side-bar div.header-box {
+  /*Size*/
+  width: 300px;
+  box-sizing: border-box;
+  /*Position*/
+  padding: 20px 20px 0;
+}
+div.wiki-side-bar div.header-box img {
+  /*Size*/
+  height: 100px;
+  /*Position*/
+  display: block;
+  margin: 0 auto;
+}
+div.wiki-side-bar div.header-box p {
+  /*Position*/
+  text-align: center;
+  /*Font*/
+  font-family: "Roboto";
+  font-weight: 800;
+  font-size: 15px;
+}
+div.wiki-side-bar div.wiki-navigation {
+  /*Position*/
+  margin: 20px;
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 300;
+  /*List style*/
+  list-style: none;
+}
+div.wiki-side-bar div.wiki-navigation div.current,
+div.wiki-side-bar div.wiki-navigation div.hoverable {
+  /*Size*/
+  min-width: 45%;
+  box-sizing: border-box;
+  /*Position*/
+  padding: 5px;
+  margin: 0 auto 5px;
+  /*Font*/
+  text-align: center;
+  /*Border*/
+  border: solid 1px black;
+}
+div.wiki-side-bar div.wiki-navigation div.current a,
+div.wiki-side-bar div.wiki-navigation div.hoverable a {
+  /*Font*/
+  color: black;
+  text-decoration: none;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.header p:before {
+  content: "→";
+  padding-right: 5px;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.header p:after {
+  content: "←";
+  padding-left: 5px;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.header p {
+  margin: 0;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item.open div.header p:before {
+  content: "↓";
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item.open div.header p:after {
+  content: "↓";
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.content {
+  text-align: left;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.content div.item a {
+  font-weight: normal;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.content div.item a:before {
+  content: "•";
+  padding-right: 5px;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.content div.item:first-child {
+  margin-top: 15px;
+}
+div.wiki-side-bar div.wiki-navigation div.expandable-navigation-item div.content div.item.currentItem a {
+  font-weight: 600;
+}
+div.wiki-side-bar div.wiki-navigation div.current {
+  /*Border*/
+  border: solid 2px black;
+}
+div.wiki-side-bar div.wiki-navigation div.current a,
+div.wiki-side-bar div.wiki-navigation div.current p {
+  /*Font*/
+  font-weight: 600;
+}
+
+div.expandable .content {
+  /*Size*/
+  max-height: 0;
+  overflow: hidden;
+  /*Animation*/
+  transition: max-height 0.5s ease-in-out;
+}
+
+div.wiki-section {
+  /*Position*/
+  margin: 60px 30px 0 320px;
+  /*Font*/
+  text-align: justify;
+}
+div.wiki-section h1.title {
+  /*Position*/
+  padding-bottom: 5px;
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  font-size: 25px;
+  /*Border*/
+  border-bottom: 1px solid lightgrey;
+}
+div.wiki-section h2.subtitle {
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  font-size: 20px;
+}
+div.wiki-section p {
+  /*Font*/
+  font-size: 15px;
+}
+div.wiki-section ul li {
+  /*Font*/
+  font-family: "Open sans";
+  font-weight: 300;
+  font-size: 15px;
+}
+
+table.wiki-table {
+  /*Size*/
+  width: 100%;
+  /*Font*/
+  font-family: "Open sans";
+  font-weight: 300;
+  font-size: 15px;
+  /*Border*/
+  border: solid 1px #cccccc;
+  border-collapse: collapse;
+}
+table.wiki-table tr:nth-child(even) {
+  /*Background*/
+  background: #e6e6e6;
+}
+table.wiki-table td,
+table.wiki-table th {
+  /*Position*/
+  padding: 5px;
+  /*Border*/
+  border: solid 0 #cccccc;
+}
+table.wiki-table th {
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  text-align: center;
+}
+
+table.command-table tr td:nth-child(1) {
+  text-align: left;
+}
+
+table.center-table {
+  /*Font*/
+  text-align: center;
+}
+
+img.wiki-image {
+  /*Size*/
+  width: 100%;
+}
+
+div.no-margin h1,
+div.no-margin h2,
+div.no-margin p {
+  /*Position*/
+  margin: 0;
+}
+
+div.term-desc p {
+  /*Font*/
+  font-size: 14px;
+}
+
+code {
+  /*Font*/
+  font-weight: normal;
+}
+
+div.expandable-block.expandable div.header {
+  /*Border*/
+  border: 1px solid black;
+}
+div.expandable-block.expandable div.header p {
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  text-align: center;
+  /*Position*/
+  margin: 0;
+}
+div.expandable-block.expandable div.header p::after {
+  /*Position*/
+  float: left;
+  /*Content*/
+  content: "→(Click to show)";
+  color: grey;
+}
+div.expandable-block.expandable div.content {
+  /*Size*/
+  max-height: 0;
+  overflow: hidden;
+  /*Border*/
+  border: 1px solid black;
+  border-top: none;
+  /*Animation*/
+  transition: max-height 0.5s ease-in-out;
+}
+div.expandable-block.expandable.open div.header p::after {
+  /*Content*/
+  content: "↓(Click to hide)";
+}
+div.expandable-block.expandable.open div.content {
+  /*Size*/
+  overflow: auto;
+}

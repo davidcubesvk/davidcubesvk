@@ -2,11 +2,12 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wikiNavigation.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
 
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteListBukkit</title>
@@ -14,55 +15,42 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../../../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-  </nav>
+  </div>
 </header>
 
-<body onload="positionFooter(); wikiNavigation();">
-  <!--Wiki navigation-->
-  <ul class="wikiNavigation">
-    <li class="wikiNavigation title">
-      <svg>
-        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
-        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
-        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
-      </svg>
-      <a>Pages</a></li>
-    <li class="wikiNavigation current"><a>Overview</a></li>
-    <li class="wikiNavigation hoverable"><a href="setup.html">Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
-    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
-  </ul>
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/ip-whitelist-bukkit.png" alt="IPWhiteListBukkit's logo">
+      <p>IPWhiteListBukkit v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="current"><a>Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+    </div>
+  </div>
 
-  <!--Page navigation-->
-  <ul class="wikiSideBar">
-    <li class="wikiSideBar title">
-      <svg>
-        <path d="M0 0 L10 0 L10 2 L0 2 L0 0             M0 4 L5 4 L5 6 L0 6 L0 4      M0 8 L8 8 L8 10 L0 10 L0 8 Z">
-      </svg>
-    <a>Contents</a></li>
-    <li class="wikiSideBar hoverable"><a href="#importantConfiguration">Plugin in a nutshell</a></li>
-    <li class="wikiSideBar hoverable"><a href="#beforeReading">Before reading</a></li>
-  </ul>
-
-  <div class="wikiSection">
-    <h1 class="sectionTitle" id="pluginInANutshell">Plugin in a nutshell:</h1>
+  <div class="wiki-section">
     <p>This plugin extension is designed to keep your server safe with the assitance of the main plugin <a href="https://www.spigotmc.org/resources/65075/">IPWhiteList</a>.
-      If using this extension plugin, you are granted with resistance against bypassers; cheat clients always get better and better, if you find new method, make sure to tell me!</p>
+      If using this extension plugin, you are granted with resistance against bypassers.</p>
 
-    <h1 class="sectionTitle" id="beforeReading">Before reading:</h1>
+    <h1 class="title" id="before-reading">Before reading:</h1>
     <p>Before reading this wiki page, please take a look at the <a href="../IPWhiteList/">IPWhiteList's wiki page</a>. There you will find everything you will not find there,
      from features to the developer API and a lot of more.</p>
   </div>
@@ -70,7 +58,7 @@
 
 <!--Footer-->
 <footer>
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

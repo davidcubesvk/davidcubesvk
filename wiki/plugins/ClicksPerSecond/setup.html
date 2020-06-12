@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="current"><a>Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="actions.html">Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
+          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Installation-->
+    <h1 class="title" id="step-1">1. Installation:</h1>
+    <p>Download the latest version of the plugin available from the official plugin page on SpigotMC.
+      If not installed, download the required dependency
+      <a href="https://www.spigotmc.org/resources/protocollib.1997/" target="_blank">ProtocolLib</a>, too.
+      Put the .jar file(s) into the plugins folder of your Spigot server and restart it.
+      This plugin is drag-and-drop, so after finished installation it is ready to use. However, you
+      may want to continue reading.</p>
+
+    <h1 class="title" id="step-2">2. Choosing storage type:</h1>
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#Data&nbsp;storage&nbsp;used&nbsp;by&nbsp;ClicksPerSecond&nbsp;plugin:</a><br>
+          <a class="yaml-comment">#-&nbsp;YML:&nbsp;the&nbsp;scoreboard.yml&nbsp;file</a><br>
+          <a class="yaml-comment">#-&nbsp;MYSQL:&nbsp;a&nbsp;MySQL&nbsp;database&nbsp;(NOTE!&nbsp;Make&nbsp;sure&nbsp;you&nbsp;have&nbsp;configured&nbsp;the&nbsp;connection&nbsp;below.)</a><br>
+          <a class="yaml-key">dataStorage:&nbsp;</a><a class="yaml-value">YML</a><br>
+        </code>
+      </div>
+    </div>
+    <p>Test scoreboards need to be saved somewhere. You can choose between 2 options:</p>
+    <ul>
+      <li>
+        <p><code>YML</code> - plugin saves scoreboards inside the <code>scoreboard.yml</code> file generated
+          in plugin's folder.</p>
+      </li>
+      <li>
+        <p><code>MYSQL</code> - plugin saves scoreboards inside a MySQL database.</p>
+      </li>
+    </ul>
+
+    <!--Comparision-->
+    <h2 class="subtitle" id="step-2-comparision">Comparision:</h2>
+    <p>Here are pros and cons of each storage type:</p>
+    <table class="wiki-table">
+      <tr>
+        <th>Storage type</th>
+        <th>Pros (+)</th>
+        <th>Cons (-)</th>
+      </tr>
+      <tr>
+        <td><code>YML</code></td>
+        <td>Reliable, suitable for networks with only one server with ClicksPerSecond plugin.</td>
+        <td>May be slow (does not affect perfomance in case of low refresh speed).</td>
+      </tr>
+      <tr>
+        <td><code>MYSQL</code></td>
+        <td>Fast, reliable, can use SSL, easy and familiar to set up, database is standard for many servers.
+          Supports synchronization across multiple ClicksPerSecond plugins.</td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <!--MySQL setup-->
+    <h1 class="title" id="step-3">3. Setting up the MySQL database:</h1>
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL&nbsp;CONNECTION</a><br>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Host:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">host:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Port:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Username:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">username:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Password:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">password:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Database:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">database:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication,&nbsp;only&nbsp;if&nbsp;you&nbsp;have&nbsp;it):</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">useSSL:&nbsp;</a><a class="yaml-value">true</a><br>
+          &nbsp;&nbsp;<a
+            class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(internet&nbsp;connection&nbsp;failure&nbsp;etc.),&nbsp;wait&nbsp;for&nbsp;this&nbsp;amount&nbsp;of&nbsp;seconds&nbsp;before&nbsp;connecting&nbsp;again:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Database&nbsp;table&nbsp;name&nbsp;for&nbsp;each&nbsp;scoreboard:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">table:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;right&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"rightTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">right:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_right"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;left&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"leftTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">left:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_left"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;hack&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"hackTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">hack:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_hack"</a><br>
+        </code>
+      </div>
+    </div>
+    <p>If we chose <code>MYSQL</code> storage type, we need to configure everything needed for MySQL connection.</p>
+    <div class="no-margin">
+      <p><strong>host:</strong> IP of the database host.</p>
+      <p><strong>port:</strong> Port on which is the database hosted (usually <code>3306</code>).</p>
+      <p><strong>username:</strong> Username to connect with to the database.</p>
+      <p><strong>password:</strong> Password for the username.</p>
+      <p><strong>database:</strong> Name of the database to use.</p>
+      <p><strong>useSSL:</strong> Use SSL certificate to connect.</p>
+      <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</p>
+      <p><strong>table:</strong> Tables to be used by ClicksPerSecond for storing data of each scoreboard. Do not create the specified tables! ClicksPerSecond plugin will create it by itself with needed columns.</p>
+    </div>
+
+    <p><strong>Are you updating from older version of the plugin? Set table names, as mentioned in the config.yml, like that:</strong></p>
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml - required table name configuration if updating from an older version of the plugin</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Database&nbsp;table&nbsp;name&nbsp;for&nbsp;each&nbsp;scoreboard:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">table:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;right&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"rightTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">right:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_right"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;left&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"leftTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">left:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_left"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Table&nbsp;name&nbsp;for&nbsp;hack&nbsp;scoreboard&nbsp;(if&nbsp;updating&nbsp;from&nbsp;an&nbsp;older&nbsp;version&nbsp;of&nbsp;the&nbsp;plugin,&nbsp;set&nbsp;this&nbsp;to&nbsp;"hackTable"):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">hack:&nbsp;</a><a class="yaml-value yaml-string-value">"cps_hack"</a><br>
+        </code>
+      </div>
+    </div>
+    <p>One final word, if using MySQL to store data, synchronization across multiple ClicksPerSecond plugins is supported.
+      Simply, if you have more than one server in your network that uses this plugin, connect them to the same database (and tables)
+      and all plugin instances will have data synchronized.</p>
+
+    <!--If updating from an older version of the plugin-->
+    <h1 class="title" id="step-4">4. Updating from an older version of the plugin?</h1>
+    <p>When ClicksPerSecond plugin enables, it checks for data format version. As of plugin version 2.5, stored data have changed,
+      <code>scoreboard.yml</code> file formatting and database table structure has changed. If ClicksPerSecond plugin detects an outdated
+      format version, it will lock all operations (commands, CPS-tests...) except the reformat and reload command, until you use <code>/cps reformat</code>
+      and the operation finishes. Please see the <a href="data_operations/reformat.html">reformatting page</a> for more information.</p>
+    <!--Finish-->
+    <h1 class="title" id="step-5">5. Finish:</h1>
+    <p>Restart the server. Pretty short setup instructions right? Have fun competing in who has higher CPS!</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="current"><a>Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
+          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Basic info-->
+    <h1 class="title" id="basic-info">What are they?</h1>
+    <p>Actions are something like programmable block of code. ClicksPerSecond plugin
+      uses actions to replace messy and large configuration with a simple and clear one.
+      By using actions you are able to send titles, action bars, sounds, effects etc. to a player,
+      for example when the player's CPS-test ends.</p>
+
+    <!--Specification-->
+    <h1 class="title" id="specification">Specification:</h1>
+    <p>Each action block is a list of strings, each string contains one action. Each action has this format:</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[TYPE]value</code>
+      </div>
+    </div>
+    <p>Above this list there's always a comment descibing when the action is run (and some useful information - placeholders...). It should look like this:</p>
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="code-block">
+      <div class="header">
+        <p>Example actions from config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;START</a><br>
+          <a class="yaml-comment">#Actions&nbsp;to&nbsp;run&nbsp;when&nbsp;player&nbsp;started&nbsp;the&nbsp;CPS-test.</a><br>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a class="yaml-key">start:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Actions&nbsp;to&nbsp;send&nbsp;once:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">once:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a
+            class="yaml-value yaml-string-value">"[MESSAGE]&7[&bCPS&7]&nbsp;Click&nbsp;to&nbsp;start&nbsp;the&nbsp;test,&nbsp;or&nbsp;use&nbsp;&b/cpstest&nbsp;&7again&nbsp;to&nbsp;cancel&nbsp;the&nbsp;test."</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Actions&nbsp;which&nbsp;are&nbsp;sent&nbsp;to&nbsp;player&nbsp;every&nbsp;1&nbsp;tick&nbsp;until&nbsp;the&nbsp;player's&nbsp;first&nbsp;click:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#NOTE!&nbsp;If&nbsp;using&nbsp;titles,&nbsp;fade-in&nbsp;and&nbsp;stay&nbsp;property&nbsp;should&nbsp;be&nbsp;set&nbsp;as&nbsp;following:&nbsp;fade-in=0,&nbsp;stay=3.</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">permanent:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"[TITLE]&7Waiting...///&bfor&nbsp;the&nbsp;first&nbsp;click.///0///3///20"</a><br>
+        </code>
+      </div>
+    </div>
+    <p>Also, do pay attention to <code>NOTE!</code> and <code>INFO!</code> signs. They show you
+      important information - what should be configured as what. They should not be ignored.
+      <strong>Please note, </strong> that <code>///</code> character sequence is reserved for
+      separating action parameters. Therefore, they should not be used in any other form. If an action
+      is specified wrongly, it will not be run.</p>
+
+    <!--Placeholder support-->
+    <h1 class="title" id="placeholders">Placeholder support:</h1>
+    <p>PlaceholderAPI (if installed) is supported in action values. Also, as mentioned, in comments you can find which ClicksPerSecond's
+      placeholders can be used, too. For example, if <code>{cps_int}</code> placeholder is allowed, you can set player's experience
+      level to the value of the placeholder by using the placeholder as action's value - e.g. <code>"[EXP_LEVEL]{cps_int}"</code> (all
+      specifications and formattings can be found below).</p>
+
+    <!--Once and permanent actions-->
+    <h1 class="title" id="action-styles">,,Once" and ,,permanent" actions:</h1>
+    <p>Once actions are actions that will run only once on a certain event (for example when player clicks in a CPS-test).</p>
+    <p>Permanent actions are actions that are sent to player every 1 tick (0,05s) from and to a certain event (for example from
+      the point where a CPS-test started to the player's first click).</p>
+
+    <!--Action types-->
+    <h1 class="title" id="action-types">Actions:</h1>
+    <p>Actions are always executed towards certain player - CPS-test actions are executed towards the player doing the CPS-test.</p>
+    <!--Running a command as the player-->
+    <h2 class="subtitle" id="action-command">Running a command as the player:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[COMMAND]command</code>
+      </div>
+    </div>
+    <ul>
+      <li>command - (string) the command to run, should be specified without the first slash</li>
+    </ul>
+
+    <!--Running a command as the console-->
+    <h2 class="subtitle" id="action-console-command">Running a command as the console:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[CONSOLE_COMMAND]command</code>
+      </div>
+    </div>
+    <ul>
+      <li>command - (string) the command to run, should be specified without the first slash</li>
+    </ul>
+
+    <!--Sending a message to the player-->
+    <h2 class="subtitle" id="action-message">Sending a message to the player:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[MESSAGE]message</code>
+      </div>
+    </div>
+    <ul>
+      <li>message - (string) the message to send</li>
+    </ul>
+
+    <!--Sending a title to the player-->
+    <h2 class="subtitle" id="action-title">Sending a title message to the player:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[TITLE]title///sub-title///fade-in///stay///fade-out</code>
+      </div>
+    </div>
+    <ul>
+      <li>title - (string) the message to send as title</li>
+      <li>sub-title - (string) the message to send as sub-title</li>
+      <li>fade-in - (int) fade-in timing in ticks - how long should it take for the message to appear</li>
+      <li>stay - (int) stay timing in ticks - how long should the message be on the screen after the fade-in phase</li>
+      <li>fade-out - (int) fade-out timing in ticks - how long should it take for the message to disappear after the stay phase</li>
+    </ul>
+
+    <!--Sending an action bar message to the player-->
+    <h2 class="subtitle" id="action-actionbar">Sending an actionbar message to the player:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[ACTIONBAR]message</code>
+      </div>
+    </div>
+    <ul>
+      <li>message - (string) the message to send</li>
+    </ul>
+
+    <!--Chatting as the player-->
+    <h2 class="subtitle" id="action-chat">Chatting as the player:</h2>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[CHAT]message</code>
+      </div>
+    </div>
+    <ul>
+      <li>message - (string) the message to send as the player</li>
+    </ul>
+
+    <!--Particle effect-->
+    <h2 class="subtitle" id="action-particle">Spawning a particle effect to the player:</h2>
+    <p>Spawns a particle effect at player's location which can be seen only by the player himself.</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[PARTICLE]type</code>
+      </div>
+    </div>
+    <ul>
+      <li>type - (string) the <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Effect.html" target="_blank">type</a> of the particle to spawn only on player's screen</li>
+    </ul>
+
+    <!--Public particle effect-->
+    <h2 class="subtitle" id="action-particle-public">Spawning a public particle effect:</h2>
+    <p>Spawns a particle effect at player's location which can be seen by everyone.</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[PARTICLE_PUBLIC]type</code>
+      </div>
+    </div>
+    <ul>
+      <li>type - (string) the <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Effect.html" target="_blank">type</a> of the particle to spawn</li>
+    </ul>
+
+    <!--Sound effect-->
+    <h2 class="subtitle" id="action-sound">Playing a sound effect to the player:</h2>
+    <p>Plays a sound effect at player's location with the specified volume and speed. Sound can be heard only by the player himself.</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[SOUND]type///volume///speed</code>
+      </div>
+    </div>
+    <ul>
+      <li>type - (string) the <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html" target="_blank">type</a> of the sound to play</li>
+      <li>volume - (float) the volume of the sound</li>
+      <li>speed - (float) the speed of the sound (between <code>0.5</code> - 0.5x speed, <code>2.0</code> - 2x speed)</li>
+    </ul>
+
+    <!--Sound effect-->
+    <h2 class="subtitle" id="action-sound-public">Playing a public sound effect:</h2>
+    <p>Plays a sound effect at player's location with the specified volume and speed. Sound can be heard by everyone.</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[SOUND_PUBLIC]type///volume///speed</code>
+      </div>
+    </div>
+    <ul>
+      <li>type - (string) the <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html" target="_blank">type</a> of the sound to play</li>
+      <li>volume - (float) the volume of the sound</li>
+      <li>speed - (float) the speed of the sound (between <code>0.5</code> - 0.5x speed, <code>2.0</code> - 2x speed)</li>
+    </ul>
+
+    <!--Setting player's EXP level-->
+    <h2 class="subtitle" id="action-exp-level">Setting player's experience level:</h2>
+    <p>Sets player's experience to the specified level.</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action format</p>
+      </div>
+      <div class="code">
+        <code>[EXP_LEVEL]level</code>
+      </div>
+    </div>
+    <ul>
+      <li>level - (int) the new experience level</li>
+    </ul>
+
+    <!--Teleporting the player-->
+    <h2 class="subtitle" id="action-teleport">Teleporting the player:</h2>
+    <p>Teleports the player to the specified location (this action has two versions - one with
+      yaw and pitch - facing - and the second one without these parameters).</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Action formats</p>
+      </div>
+      <div class="code">
+        <code>[TELEPORT]world///x///y///z<br>[TELEPORT]world///x///y///z///yaw///pitch</code>
+      </div>
+    </div>
+    <ul>
+      <li>world - (string) world's name</li>
+      <li>x - (double) X coordinate</li>
+      <li>y - (double) Y coordinate</li>
+      <li>z - (double) Z coordinate</li>
+      <li>yaw - (float) yaw - facing (use F3 to see your current location, yaw and pitch)</li>
+      <li>pitch - (float) pitch - facing (use F3 to see your current location, yaw and pitch)</li>
+    </ul>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

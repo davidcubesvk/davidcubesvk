@@ -2,8 +2,8 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../style/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../style/css/navigation.css">
   <script src="../script/footer.js"></script>
 
   <link rel="icon" href="../uploads/icon.png" type="png">
@@ -12,36 +12,36 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../">Home</a></li>
+      <li class="item hoverable"><a href="../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../support">Support</a></li>
     </ul>
-  </nav>
+  </div>
 </header>
 
-<body onload="positionFooter()">
-  <div class="section">
-    <p>Welcome to the wiki for davidcubesvk's plugins! Continue by clicking on the selected project. Please note that many pages are in progress.</p>
-    <h1 style="text-height: 10px">Minecraft plugins:</h1>
+<body>
+  <div class="page-section">
+    <p>Please continue by clicking on the selected project.</p>
 
-    <ul style="font-family: 'Noto Sans', sans-serif;">
+    <ul class="main-font">
       <li><a href="plugins/IPWhiteList/">IPWhiteList</a></li>
       <li><a href="plugins/IPWhiteListBukkit/">IPWhiteListBukkit</a></li>
+      <li><a href="plugins/ClicksPerSecond/">ClicksPerSecond</a></li>
     </ul>
   </div>
 </body>
 
 <!--Footer-->
 <footer>
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

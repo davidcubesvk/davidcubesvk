@@ -2,12 +2,14 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wikiNavigation.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
 
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteListBukkit</title>
@@ -15,112 +17,103 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../../../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-  </nav>
+    </div>
 </header>
 
-<body onload="positionFooter(); wikiNavigation();">
-  <!--Wiki navigation-->
-  <ul class="wikiNavigation">
-    <li class="wikiNavigation title">
-      <svg>
-        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
-        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
-        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
-      </svg>
-      <a>Pages</a></li>
-    <li class="wikiNavigation hoverable"><a href="../IPWhiteListBukkit/">Overview</a></li>
-    <li class="wikiNavigation current"><a>Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
-    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
-  </ul>
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/ip-whitelist-bukkit.png" alt="IPWhiteListBukkit's logo">
+      <p>IPWhiteListBukkit v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../IPWhiteListBukkit">Overview</a></div>
+      <div class="current"><a>Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+    </div>
+  </div>
 
-  <!--Page navigation-->
-  <ul class="wikiSideBar">
-    <li class="wikiSideBar title">
-      <svg>
-        <path d="M0 0 L10 0 L10 2 L0 2 L0 0             M0 4 L5 4 L5 6 L0 6 L0 4      M0 8 L8 8 L8 10 L0 10 L0 8 Z">
-      </svg>
-      <a>Contents</a></li>
-    <li class="wikiSideBar hoverable"><a href="#importantConfiguration">Installation</a></li>
-    <li class="wikiSideBar hoverable"><a href="#connectingToIPWhiteList">Connecting to IPWhiteList</a></li>
-    <li class="wikiSideBar hoverable"><a href="#connectionConfiguration">Connection configuration</a></li>
-    <li class="wikiSideBar hoverable"><a href="#finish">Finish</a></li>
-  </ul>
-
-  <div class="wikiSection">
-    <h1 class="sectionTitle" id="importantConfiguration">1. Installation:</h1>
+  <div class="wiki-section">
+    <h1 class="title" id="step-1">1. Installation:</h1>
     <p><strong>Setup IPWhiteList before reading this.</strong> Download the latest version of the plugin available from the official plugin page on SpigotMC. Put the .jar file into the plugins folder of all your Spigot servers (which are connected to
       the BungeeCord server where IPWhiteList is installed) and restart them.
       Next steps will guide you through the configuration itself.</p>
 
     <!--Connneting to the extension-->
-    <h1 class="sectionTitle" id="connectingToIPWhiteList">2. Connecting to IPWhiteList:</h1>
+    <h1 class="title" id="step-2">2. Connecting to IPWhiteList:</h1>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
-    <div class="codeBlock">
-      <div style="width: 1000px;">
-        <code class="codeInBlock">
-          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
-          <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(more&nbsp;and&nbsp;detailed&nbsp;info&nbsp;can&nbsp;be&nbsp;found&nbsp;on&nbsp;the&nbsp;wiki):</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;YML:&nbsp;connection&nbsp;provided&nbsp;by&nbsp;data.yml&nbsp;file&nbsp;created&nbsp;in&nbsp;plugin's&nbsp;data&nbsp;folder</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;SOCKET:&nbsp;connection&nbsp;using&nbsp;sockets</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#-&nbsp;MYSQL:&nbsp;connection&nbsp;using&nbsp;MySQL&nbsp;database</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">type:&nbsp;</a><a class="yamlValue">SOCKET</a><br>
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yaml-key">connect:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(more&nbsp;and&nbsp;detailed&nbsp;info&nbsp;can&nbsp;be&nbsp;found&nbsp;on&nbsp;the&nbsp;wiki):</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;YML:&nbsp;connection&nbsp;provided&nbsp;by&nbsp;data.yml&nbsp;file&nbsp;created&nbsp;in&nbsp;plugin's&nbsp;data&nbsp;folder</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;SOCKET:&nbsp;connection&nbsp;using&nbsp;sockets</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;MYSQL:&nbsp;connection&nbsp;using&nbsp;MySQL&nbsp;database</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">type:&nbsp;</a><a class="yaml-value">SOCKET</a><br>
           &nbsp;&nbsp;...
         </code>
       </div>
     </div>
-    <p>We need to specify how IPWhiteListBukkit will be connected with IPWhiteList.</p>
-    <p><strong>type:</strong> There we need to write the type of the connection, the same as in IPWhiteList's config.yml. We have three options. See more info on <a href="../IPWhiteList/setup.html#connectingToExtension">IPWhiteList's setup page</a>.
-    </p>
+    <p>As already pointed out on IPWhiteList's wiki, IPWhiteListBukkit and IPWhiteList need to be connected. This step is just a copy of what we made in IPWhiteList's setup.</p>
+    <p><strong>type:</strong> There we need to write the type of the connection, the same as in IPWhiteList's config.yml. We have three options. See more info on <a href="../IPWhiteList/setup.html#step-2">IPWhiteList's setup page</a>.</p>
 
     <!--Connection configuration-->
-    <h1 class="sectionTitle" id="connectionConfiguration">3. Connection configuration:</h1>
+    <h1 class="title" id="step-3">3. Connection configuration:</h1>
     <!--YML connection-->
-    <h2>3A. YML connection:</h2>
+    <h2 class="subtitle" id="step-3a">3A. YML connection:</h2>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
-    <div class="codeBlock">
-      <div style="width: 1000px;">
-        <code class="codeInBlock">
-          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
-          <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;...
-          &nbsp;&nbsp;<a class="yamlComment">#Full&nbsp;path&nbsp;to&nbsp;data.yml&nbsp;file&nbsp;in&nbsp;IPWhiteList's&nbsp;folder&nbsp;(on&nbsp;BungeeCord):</a><br>
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yaml-key">connect:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Full&nbsp;path&nbsp;to&nbsp;data.yml&nbsp;file&nbsp;in&nbsp;IPWhiteList's&nbsp;folder&nbsp;(on&nbsp;BungeeCord):</a><br>
           &nbsp;&nbsp;<a
-            class="yamlComment">#NOTE!&nbsp;You&nbsp;can&nbsp;use&nbsp;../&nbsp;strings&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;path&nbsp;to&nbsp;go&nbsp;one&nbsp;folder&nbsp;up&nbsp;(begins&nbsp;at&nbsp;folder&nbsp;where&nbsp;this&nbsp;plugin's&nbsp;.jar&nbsp;file&nbsp;is).</a><br>
-          &nbsp;&nbsp;<a class="yamlComment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;directory&nbsp;and&nbsp;file&nbsp;separator&nbsp;please&nbsp;use&nbsp;\\&nbsp;(on&nbsp;Windows)&nbsp;or&nbsp;/&nbsp;(on&nbsp;Linux).</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">bungeePath:&nbsp;</a><a class="yamlValue">'home\BungeeCord\plugins\IPWhiteList\data.yml'</a><br>
+            class="yaml-comment">#NOTE!&nbsp;You&nbsp;can&nbsp;use&nbsp;../&nbsp;strings&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;path&nbsp;to&nbsp;go&nbsp;one&nbsp;folder&nbsp;up&nbsp;(begins&nbsp;at&nbsp;folder&nbsp;where&nbsp;this&nbsp;plugin's&nbsp;.jar&nbsp;file&nbsp;is).</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;directory&nbsp;and&nbsp;file&nbsp;separator&nbsp;please&nbsp;use&nbsp;\\&nbsp;(on&nbsp;Windows)&nbsp;or&nbsp;/&nbsp;(on&nbsp;Linux).</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">bungeePath:&nbsp;</a><a class="yaml-value">'home\BungeeCord\plugins\IPWhiteList\data.yml'</a><br>
           &nbsp;&nbsp;...
         </code>
       </div>
     </div>
-    <p>If we chose <code>YML</code> connection type, we must set the system path to the <code>data.yml</code> file which is located in the IPWhiteList's plugin folder.</p>
+    <p>If using <code>YML</code> connection type, we need to set the system path to the <code>data.yml</code> file located in the IPWhiteList's plugin folder.</p>
     <p>Please mind following:</p>
     <ul>
       <li>
-        <p><strong>Path needs to be full system path</strong> - This means path must be <code>C:\abc\def\data.yml</code>, <code>home/abc/def/data.yml</code>, etc...</p>
+        <p><strong>Path must be full system path</strong> - This means path must be <code>C:\abc\def\data.yml</code>, <code>home/abc/def/data.yml</code>, etc. (this doesn't apply if using <code>../</code> code)</p>
       </li>
       <li>
-        <p><strong>Parent folder ../ code is supported</strong> - At the beggining of the path we can specify <code>../</code> code which will go to the upper (parent) folder. If used, the path begins in the <code>/plugins/</code> server folder.
-          <strong>For example</strong>, we have IPWhiteListBukkit located in <code>home/Spigot/plugins/</code> and IPWhiteList <code>data.yml</code> file in <code>home/BungeeCord/plugins/IPWhiteList/data.yml</code>. We start in
+        <p><strong>Parent folder ../ code is supported</strong> - At the beggining of the path we can specify <code>../</code> code which will go to the upper (parent) folder. If used, the route begins in <code>/plugins/</code> folder.
+          For example, we have IPWhiteListBukkit located in <code>home/Spigot/plugins/</code> and IPWhiteList's <code>data.yml</code> file in <code>home/BungeeCord/plugins/IPWhiteList/data.yml</code>. As already metioned, we start in
           <code>home/Spigot/plugins/</code> folder.
-          We would use first <code>../</code>, we would go from <code>home/Spigot/plugins/</code> to <code>home/Spigot/</code>. After that we would use the second one, which would get us to the <code>home/</code> folder. And now we are in folder
-          where the BungeeCord is. So add that part <code>BungeeCord/plugins/IPWhiteList/data.yml</code> to the path. The path should look like <code>../../BungeeCord/plugins/IPWhiteList/data.yml</code>. Here we go!</p>
+          If we use the first <code>../</code>, we would go from <code>home/Spigot/plugins/</code> to <code>home/Spigot/</code>. After that we use the second one, which would get us to the <code>home/</code> folder - folder
+          where the BungeeCord is. So add the rest path to the data.yml file <code>BungeeCord/plugins/IPWhiteList/data.yml</code>. The final path should look like <code>../../BungeeCord/plugins/IPWhiteList/data.yml</code>.</p>
       </li>
       <li>
         <p><strong>Different OS, different file separator</strong> - If using Windows, please use <code>\\</code> file separator (example usage: <code>C:\\Desktop\\abc.yml</code>), if using Linux, Debian or Ubuntu, please use <code>/</code> (example
@@ -130,92 +123,110 @@
     </ul>
 
     <!--Socket connection-->
-    <h2>3B. Socket connection:</h2>
+    <h2 class="subtitle" id="step-3b">3B. Socket connection:</h2>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
-    <div class="codeBlock">
-      <div style="width: 1000px;">
-        <code class="codeInBlock">
-          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
-          <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;...
-          &nbsp;&nbsp;<a class="yamlComment">#Socket&nbsp;configuration:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">socket:</a><br>
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yaml-key">connect:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Socket&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">socket:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yamlComment">#IP&nbsp;of&nbsp;the&nbsp;server&nbsp;(IP&nbsp;of&nbsp;the&nbsp;machine&nbsp;where&nbsp;is&nbsp;server&nbsp;with&nbsp;IPWhiteList&nbsp;plugin&nbsp;hosted,&nbsp;or&nbsp;127.0.0.1&nbsp;if&nbsp;on&nbsp;the&nbsp;same&nbsp;machine):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">ip:&nbsp;</a><a class="yamlValue">127.0.0.1</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port&nbsp;of&nbsp;the&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue">4444</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Automatic&nbsp;connection&nbsp;check&nbsp;delay&nbsp;(in&nbsp;ticks):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">connectionCheck:&nbsp;</a><a class="yamlValue">20</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Reconnect&nbsp;delay&nbsp;when&nbsp;failed&nbsp;to&nbsp;connect&nbsp;or&nbsp;connection&nbsp;failed&nbsp;(in&nbsp;seconds):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">2</a><br>
+            class="yaml-comment">#IP&nbsp;of&nbsp;the&nbsp;server&nbsp;(IP&nbsp;of&nbsp;the&nbsp;machine&nbsp;where&nbsp;is&nbsp;server&nbsp;with&nbsp;IPWhiteList&nbsp;plugin&nbsp;hosted,&nbsp;or&nbsp;127.0.0.1&nbsp;if&nbsp;on&nbsp;the&nbsp;same&nbsp;machine):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">ip:&nbsp;</a><a class="yaml-value">127.0.0.1</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Port&nbsp;of&nbsp;the&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value">4444</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Automatic&nbsp;connection&nbsp;check&nbsp;delay&nbsp;(in&nbsp;ticks):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">connectionCheck:&nbsp;</a><a class="yaml-value">20</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Reconnect&nbsp;delay&nbsp;when&nbsp;failed&nbsp;to&nbsp;connect&nbsp;or&nbsp;connection&nbsp;failed&nbsp;(in&nbsp;seconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">2</a><br>
           &nbsp;&nbsp;...
         </code>
       </div>
     </div>
-    <p>If we chose <code>SOCKET<sup><a href="#term1">1</a></sup></code> connection type, we need to configure a few things about the connection.</p>
-    <p><strong>ip:</strong> The IP on which is is BungeeCord server hosted on, or <code>127.0.0.1</code> if hosted on the same machine.</p>
-    <p><strong>port:</strong> The port on which is IPWhiteList's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socketPort</code> in <code>config.yml</code> of IPWhiteList; learn more <a
-        href="../IPWhiteList/setup.html#connectingToExtension">here</a>.</p>
-    <p><strong>connectionCheck:</strong> This specifies the delay in ticks between IPWhiteListBukkit sends a test message to IPWhiteList to check connection.</p>
-    <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts when connection unexpectedly closed or failed to connect and trying again.</p>
+    <p>If using <code>SOCKET</code> connection type, we need to configure following things:</p>
 
-    <h2>3C. MySQL connection:</h2>
+    <div class="no-margin">
+      <p><strong>ip:</strong> The IP on which is is BungeeCord server hosted, or <code>127.0.0.1</code> if hosted locally (on the same machine).</p>
+      <p><strong>port:</strong> The port on which is IPWhiteList's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socketPort</code> in IPWhiteList; more info
+        <a href="../IPWhiteList/setup.html#step-3a">here</a>.</p>
+      <p><strong>connectionCheck:</strong> This specifies delay in ticks between each IPWhiteListBukkit's test message (sent to IPWhiteList) to check the connection).</p>
+      <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</p>
+    </div>
+
+    <h2 class="subtitle" id="step-3c">3C. MySQL connection:</h2>
     <!--Config.yml part-->
     <!--davidcubesvk's YML to HTML converter-->
-    <div class="codeBlock">
-      <div style="width: 1000px;">
-        <code class="codeInBlock">
-          <a class="yamlComment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
-          <a class="yamlKey">connect:</a><br>
-          &nbsp;&nbsp;...
-          &nbsp;&nbsp;<a class="yamlComment">#MySQL&nbsp;connection:</a><br>
-          &nbsp;&nbsp;<a class="yamlKey">mysql:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Host:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">host:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Port:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">port:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Username</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">username:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Password:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">password:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Database:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">database:&nbsp;</a><a class="yamlValue yamlStringValue">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Table&nbsp;name&nbsp;to&nbsp;use&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">table:&nbsp;</a><a class="yamlValue yamlStringValue">"ipwhitelist"</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">useSSL:&nbsp;</a><a class="yamlValue">true</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlComment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yamlKey">reconnect:&nbsp;</a><a class="yamlValue">3</a><br>
+    <div class="code-block">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#Connecting&nbsp;to&nbsp;bungeeCord:</a><br>
+          <a class="yaml-key">connect:</a><br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#MySQL&nbsp;connection:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Host:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">host:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Port:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Username</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">username:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Password:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">password:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Table&nbsp;name&nbsp;to&nbsp;use&nbsp;(as&nbsp;set&nbsp;in&nbsp;IPWhiteList's&nbsp;config.yml):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">table:&nbsp;</a><a class="yaml-value yaml-string-value">"ipwhitelist"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">useSSL:&nbsp;</a><a class="yaml-value">true</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Delay&nbsp;between&nbsp;reconnecting&nbsp;attempts,&nbsp;when&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(in&nbsp;seconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Waiting&nbsp;timeout&nbsp;before&nbsp;reading&nbsp;from&nbsp;the&nbsp;database&nbsp;when&nbsp;player&nbsp;joins&nbsp;the&nbsp;server&nbsp;(in&nbsp;milliseconds).</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;If&nbsp;you&nbsp;have&nbsp;trouble&nbsp;connecting,&nbsp;this&nbsp;may&nbsp;be&nbsp;the&nbsp;solution.&nbsp;Value&nbsp;should&nbsp;be&nbsp;a&nbsp;bit&nbsp;bigger&nbsp;than&nbsp;the&nbsp;time&nbsp;MySQL</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert&nbsp;operation&nbsp;(when&nbsp;the&nbsp;player&nbsp;joins&nbsp;the&nbsp;network)&nbsp;run&nbsp;by&nbsp;IPWhiteList&nbsp;takes.&nbsp;Please&nbsp;read&nbsp;the&nbsp;wiki&nbsp;for&nbsp;more</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;information.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">waitRead:&nbsp;</a><a class="yaml-value">0</a><br>
         </code>
       </div>
     </div>
-    <p>If we chose <code>MYSQL</code> connection type, we need to configure all connection data and also what table we want IPWhiteList and IPWhiteListBukkit to use and the reconnect delay.</p>
-    <p><strong>host:</strong> IP of the database host. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>port:</strong> Port on which is the database hosted. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>username:</strong> Username to connect with to the database. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>password:</strong> Password for the username. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>database:</strong> Name of the database to use. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>table:</strong> Table to be used by IPWhiteList. <strong>Must be the same as in IPWhiteList's config.yml.</strong></p>
-    <p><strong>useSSL:</strong> Use SSL certificate to connect.</p>
-    <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed or failed to connect and trying again.</p>
-
-    <!--Finish-->
-    <h1 class="sectionTitle" id="finish">4. Finish:</h1>
-    <p>If you completed all steps above and have IPWhiteList set up, restart all servers.</p>
-
-    <div class="termDesc">
-      <p id="term1"><sup>1</sup><strong>socket</strong> - type of communication over the internet which consists of one server
-        and clients (server is IPWhiteList and clients IPWhiteListBukkit plugins in this case). Server is hosted on some port and clients connect to this server so they can share information between each other. Pretty the same like you
-        join any game server as a client.</p>
+    <p>If using <code>MYSQL</code> connection type, we need to configure all connection data and <code>waitRead</code> value:</p>
+    <p><strong>Please note </strong> that <code>host</code>, <code>port</code>, <code>username</code>, <code>password</code>, <code>database</code> and <code>table</code> value must be the same as in IPWhiteList's configuration.
+      Please see <a href="../IPWhiteList/setup.html#step-3b">this</a> for more info.</p>
+    <div class="no-margin">
+      <p><strong>host:</strong> IP of the database host.</p>
+      <p><strong>port:</strong> Port on which is the database hosted (usually <code>3306</code>).</p>
+      <p><strong>username:</strong> Username to connect with to the database.</p>
+      <p><strong>password:</strong> Password for the username.</p>
+      <p><strong>database:</strong> Name of the database to use.</p>
+      <p><strong>table:</strong> Table to be used by IPWhiteList. <strong>Do not create the specified table! IPWhiteList will create it by itself with needed columns.</strong></p>
+      <p><strong>useSSL:</strong> Use SSL certificate to connect.</p>
+      <p><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</p>
+      <p><strong>waitRead:</strong> Timeout in milliseconds to wait before reading from the database when a player is joining the server. IPWhiteList uses the fact that proxy's (IPWhiteList's) login event is called before backend server's (IPWhiteListBukkit's).
+        From that next statement can be derived, IPWhiteListBukkit must read from the database after IPWhiteList's operation finishes (both operations in login events). Unfortunately, sometimes IPWhiteList's database operation finishes after IPWhiteListBukkit's,
+        which will result in player's disconnection. To solve this, you can specify the time to wait before reading from the database when the login event is called,
+        to make sure IPWhiteList has finished it's operation at the time when IPWhiteListBukkit processes the login event. During the waiting phase, the player is freezed in ,,Logging in..." screen. <strong>The timeout should be set to needed value,
+        not unnecessarily big, since it can result in timed out connection between the server and player.</strong></p>
     </div>
+    <!--Finish-->
+    <h1 class="title" id="step-4">4. Restart:</h1>
+    <p>If you completed all steps above and have IPWhiteList set up, restart all servers.</p>
   </div>
 </body>
 
 <!--Footer-->
-<footer style="margin-top: 0;">
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+<footer>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

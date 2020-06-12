@@ -2,12 +2,12 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wikiNavigation.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
 
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
@@ -15,45 +15,43 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../../../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-  </nav>
+    </div>
 </header>
 
-<body onload="positionFooter(); wikiNavigation();">
-  <!--Wiki navigation-->
-  <ul class="wikiNavigation">
-    <li class="wikiNavigation title">
-      <svg>
-        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
-        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
-        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
-      </svg>
-      <a>Pages</a></li>
-    <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">Overview</a></li>
-    <li class="wikiNavigation hoverable"><a href="setup.html">Setup</a></li>
-    <li class="wikiNavigation current"><a>Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
-    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
-    <li class="wikiNavigation hoverable"><a href="api.html">API</a></li>
-  </ul>
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/ip-whitelist.png" alt="IPWhiteList's logo">
+      <p>IPWhiteList v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../IPWhiteList">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="current"><a>Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
 
-  <div class="wikiSection">
-    <h1 class="sectionTitle" id="commands">Commands:</h1>
-    <p>The base command is <code class="code">/ipWhiteList</code> and <code class="code">/ipwl</code> . All commands can be ran by player and console.
-    you can also use permission <code>ipWhiteList.*</code> which will grant you permission for all commands.</p>
+  <div class="wiki-section">
+    <p>The base command is <code>/ipWhiteList</code> (or shortened: <code>/ipwl</code>). All commands can be ran by player and console.
+    Permission <code>ipWhiteList.*</code> is an universal permission for all commands.</p>
 
-    <table class="wikiTable" style="width: 100%;">
+    <table class="wiki-table">
       <tr>
         <th>Command:</th>
         <th>Permission:</th>
@@ -76,10 +74,10 @@
       </tr>
       <!--/ipwl list-->
       <tr>
-        <td>/ipwl list &#60;page&#62;</td>
+        <td>/ipwl list [page]</td>
         <td>ipWhiteList.list</td>
-        <td>&#60;page&#62; - page to display</td>
-        <td>Lists the whitelisted IPs on the specified page.</td>
+        <td>[page] - page to display</td>
+        <td>Lists the whitelisted IPs on the specified page (or 1st page if not specified).</td>
       </tr>
       <!--/ipwl setup-->
       <tr>
@@ -103,12 +101,15 @@
         <td>Displays help page.</td>
       </tr>
     </table>
+
+    <p><code>&#60;&#62;</code> - required argument</p>
+    <p><code>[]</code> - optional argument</p>
   </div>
 </body>
 
 <!--Footer-->
 <footer>
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 

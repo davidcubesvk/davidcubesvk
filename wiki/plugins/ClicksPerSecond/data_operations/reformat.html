@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/code.css">
+
+  <script src="../../../../script/footer.js"></script>
+  <script src="../../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../">Overview</a></div>
+      <div class="hoverable"><a href="../setup.html">Setup</a></div>
+      <div class="hoverable"><a href="../commands.html">Commands</a></div>
+      <div class="hoverable"><a href="../configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="../actions.html">Actions</a></div>
+      <div class="current expandable expandable-navigation-item open">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="copy.html">Copying</a></div>
+          <div class="item currentItem"><a>Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="../api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Basic info-->
+    <p>Reformats all data in all scoreboards (that use an outdated data format from plugin version 2.4 and lower)
+      in currently used data storage.
+      As of version 2.5, many things changed about data formatting. CPS-test records are saved differently in
+      both scoreboard.yml and MySQL database to reduce disk usage and improve efficiency. Therefore, all data need to be reformatted.</p>
+    <p>ClicksPerSecond plugin automatically checks the data format version of all scoreboards when it enables and everytime
+      it connects to a database. If it detects an outdated data format version in any scoreboard, all processes and commands
+      will be blocked, except the reformat and reload command (data-fetching processes would not work as the code is designed for newer format version,
+      CPS-test records could be queued, but any server restart will lose these - so just run the process and everything will be functional once again).</p>
+    <p>If using MySQL, format checking can take some time (depends on the connection speed
+      of your database), please note that again, all processes and commands (except reformat and reload commands) are blocked, until the format versions of all scoreboards
+      is determined. <strong>If checking for format version failed (see the console), plugin reload is needed.</strong></p>
+
+    <!--Command-->
+    <h1 class="title" id="command">Command:</h1>
+    <p>You can reformat all data using the reformat command with this syntax:</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Reformat command syntax</p>
+      </div>
+      <div class="content">
+        <code>/cps reformat</code>
+      </div>
+    </div>
+    <p>If running for the first time, confirmation message will be displayed. To confirm, you must run the command again
+      within the set timeout (20 seconds by default). Please note that only one instance of the command can be active at one time.</p>
+    <p><strong>If you have ClicksPerSecond plugin on more than one server, it is enough if only one instance reformats the data.
+        After the operation finishes, you can restart all servers, or use reload command to reload the plugin.</strong></p>
+
+    <!--Requirements-->
+    <h1 class="title" id="requirements">Requirements and recommendations:</h1>
+    <p>To access this operation, several things are required:</p>
+    <ul>
+      <li>Plugin must be connected to the database (if using MySQL as storage type) at the time when running this command.</li>
+      <li>Server can not be shut down (closed) during the operation <strong>as it may cause your data to be lost forever</strong> (do not shut down the server even if you get an error message,
+        do not do this unless you get the ,,finished" message - see all <a href="#errors">errors</a> below).</li>
+    </ul>
+    <p>If the process fails, plugin has backup code to run and finish the operation without losing any data.
+      However, making a copy of the data storage (of all data stored) is strongly recommended in case of any unexpected failure. Developer
+      is not be responsible for any data loses.</p>
+
+    <!--Phases-->
+    <h1 class="title" id="phases">Process phases:</h1>
+    <p>During the whole process the command sender (player or console) will be informed about phase changes.
+      Here you can see all phases, their order, descriptions, corresponding messages in config.yml.
+      <!--Common phases-->
+      <h2 class="subtitle" id="phases-common">Common phases:</h2>
+      <p>These phases are the same no matter if reformatting YML or MYSQL data storage.</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Order</th>
+          <th>Description</th>
+          <th>Corresponding message</th>
+        </tr>
+        <tr>
+          <td>1st</td>
+          <td>Format version of every scoreboard is being rechecked and scoreboards that use an outdated data format are determined.</td>
+          <td><code>command.main.reformat.phase.rechecking</code></td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Process goes through all steps listed below, for every scoreboard, that had been detected before as using an outdated data format version.</td>
+          <td>-</td>
+        </tr>
+      </table>
+      <!--Scoreboard phases-->
+      <h2 class="subtitle" id="phases-scoreboard">Scoreboard reformatting phases:</h2>
+      <p>These phases apply while reformatting a scoreboard in the YML data storage.</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Order</th>
+          <th>Description</th>
+          <th>Corresponding message</th>
+          <th>Data-risky<a href="#term-1"><sup>1</sup></a></th>
+        </tr>
+        <tr>
+          <td>1st</td>
+          <td>All data are being got from the scoreboard.</td>
+          <td><code>command.main.reformat.phase.getting</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Data are being reformatted to the latest format version.</td>
+          <td><code>command.main.reformat.phase.reformatting</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>3rd</td>
+          <td>Checks if the scoreboard is empty, if so, sends a message and the process does not continue for this scoreboard.</td>
+          <td><code>command.main.reformat.phase.skipping</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>4th</td>
+          <td>Reformatted data are being converted into strings (to be saved after), notifies the command sender about progress as per set delay.</td>
+          <td><code>command.main.reformat.phase.yml.converting.message</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>5th</td>
+          <td>Reformatted data are being written into the file (replacing the old scoreboard with the reformatted one).</td>
+          <td><code>command.main.reformat.phase.yml.writing</code></td>
+          <td>Can't fail.</td>
+        </tr>
+        <tr>
+          <td>6th</td>
+          <td>Scoreboard's data format version is being updated (in code and scoreboard.yml file).</td>
+          <td>-</td>
+          <td>Can't fail.</td>
+        </tr>
+        <tr>
+          <td>7th</td>
+          <td>Finished reformatting the scoreboard.</td>
+          <td><code>command.main.reformat.phase.finished</code></td>
+          <td>Can't fail.</td>
+        </tr>
+      </table>
+      <p>These phases apply while reformatting a scoreboard in the MYSQL data storage.</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Order</th>
+          <th>Description</th>
+          <th>Corresponding message</th>
+          <th>Data-risky<a href="#term-1"><sup>1</sup></a></th>
+        </tr>
+        <tr>
+          <td>1st</td>
+          <td>All data are being got from the scoreboard.</td>
+          <td><code>command.main.reformat.phase.getting</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td>Data are being reformatted to the latest format version.</td>
+          <td><code>command.main.reformat.phase.reformatting</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>3rd</td>
+          <td>Checks if the scoreboard is empty, if so, sends a message and the process does not continue for this scoreboard.</td>
+          <td><code>command.main.reformat.phase.skipping</code></td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>4th</td>
+          <td>Database table is being deleted and recreated.</td>
+          <td><code>command.main.reformat.phase.mysql.recreatingTable</code></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>5th</td>
+          <td>Reformatted data are being written into the database, notifies the command sender about progress as per set delay.</td>
+          <td><code>command.main.reformat.phase.mysql.writing.message</code></td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>6th</td>
+          <td>Scoreboard's data format version is being updated (in code).</td>
+          <td>-</td>
+          <td>Can't fail.</td>
+        </tr>
+        <tr>
+          <td>7th</td>
+          <td>Finished reformatting the scoreboard.</td>
+          <td><code>command.main.reformat.phase.finished</code></td>
+          <td>Can't fail.</td>
+        </tr>
+      </table>
+
+      <!--Errors-->
+      <h1 class="title" id="errors">Errors:</h1>
+      <h2 class="subtitle" id="errors-yml">YML errors:</h2>
+      <p>Errors if reformatting the YML data storage. As no phase in YML reformatting is marked as data-risky
+        (data can be lost forever if the process fails in phase marked as data-risky), don't worry if you get this error,
+        no data will be lost, just restart the process.</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Description</th>
+          <th>Corresponding message</th>
+        </tr>
+        <tr>
+          <td>An error has occurred (the error will be displayed in the console).</td>
+          <td><code>command.main.reformat.error.yml.error</code></td>
+        </tr>
+      </table>
+
+      <h2 class="subtitle" id="errors-mysql">MySQL errors:</h2>
+      <p>Errors if reformatting the MYSQL data storage:</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Description</th>
+          <th>Corresponding message</th>
+        </tr>
+        <tr>
+          <td>An error has occurred due to lost connection to the database server.</td>
+          <td><code>command.main.reformat.error.mysql.disconnected</code></td>
+        </tr>
+        <tr>
+          <td>An other error (not caused by disconnection) has occurred (full error will be displayed in the console).</td>
+          <td><code>command.main.reformat.error.mysql.other</code></td>
+        </tr>
+      </table>
+      <p>If the process fails in a data-risky phase and the error you get is:</p>
+      <ul>
+        <li>disconnected - process will be resumed when the plugin reconnects.</li>
+        <li>other - process will retry the last operation and resume in 5 seconds.</li>
+      </ul>
+      <p><strong>Please, don't shut down the server unless you get the ,,finished" message.</strong></p>
+
+      <div class="term-desc">
+        <p id="term-1"><sup>1</sup>data-risky phase - data can be lost forever if the process fails in this phase and the server/plugin is restarted.</p>
+      </div>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

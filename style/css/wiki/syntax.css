@@ -1,56 +1,56 @@
 /*YAML*/
-.yamlComment {
+.yaml-comment {
   color: green;
 }
 
-.yamlKey {
+.yaml-key {
   color: blue;
   font-weight: bold;
 }
 
-.yamlValue {
+.yaml-value {
   color: black;
 }
 
-.yamlStringValue {
+.yaml-string-value {
   color: red;
 }
 
 /*JAVA*/
-.javaKeyword {
+.java-keyword {
   color: purple;
   font-weight: bold;
 }
 
-.javaComment {
+.java-comment {
   color: grey;
   font-style: italic;
 }
 
-.javaDocs {
+.java-docs {
   color: green;
   font-style: italic;
   font-weight: bold;
 }
 
-.javaPrimitiveType {
+.java-primitive-type {
   color: blue;
   font-weight: bold;
 }
 
-.javaString {
+.java-string {
   color: green;
 }
 
-.javaNumber {
+.java-number {
   color: lightblue;
 }
 
-.javaBoolean {
+.java-boolean {
   color: orange;
   font-weight: bold;
 }
 
-.javaChar {
+.java-char {
   color: green;
 }

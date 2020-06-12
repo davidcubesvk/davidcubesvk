@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+    </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="current"><a>Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="actions.html">Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
+          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Plugin commands-->
+    <h1 class="title" id="plugin-commands">Plugin commands:</h1>
+    <p>The base command is <code>/cps</code>. Permissions <code>cps.*</code> and <code>cps.command.*</code>
+      are universal permissions for all commands. Here's a quick summary:</p>
+
+    <table class="wiki-table command-table">
+      <tr>
+        <th>Command:</th>
+        <th>Permission:</th>
+        <th>Description:</th>
+      </tr>
+      <!--/cps stats-->
+      <tr>
+        <td>/cps stats &#60;name|uuid&#62;</td>
+        <td>cps.command.stats</td>
+        <td>Displays statistics of a player represented by an UUID or player's name.
+          If your server is on offline-mode, UUIDs may not work properly. If the player
+          hasn't played on the server before, only UUID version can be used.</td>
+      </tr>
+      <!--/cps scoreboard-->
+      <tr>
+        <td>/cps scoreboard &#60;right|left|hack&#62; [page]</td>
+        <td>cps.command.scoreboard</td>
+        <td>Displays scoreboard on the specified page (or 1st page if not specified).</td>
+      </tr>
+      <!--/cps copy-->
+      <tr>
+        <td>/cps copy &#60;right|left|hack&#62; &#60;yml|mysql&#62;</td>
+        <td>cps.command.copy</td>
+        <td>Copies a scoreboad from the opposite storage (as the specified one) to the specified one. Please see <a href="data_operations/copy.html">copying</a> page.</td>
+      </tr>
+      <!--/cps reformat-->
+      <tr>
+        <td>/cps reformat</td>
+        <td>cps.command.reformat</td>
+        <td>Reformats all data in all scoreboards that use an outdated data format.</td>
+      </tr>
+      <!--/cps reload-->
+      <tr>
+        <td>/cps reload</td>
+        <td>cps.command.reload</td>
+        <td>Reloads the plugin, excluding connection to the MySQL database (if used).</td>
+      </tr>
+      <!--/cps help-->
+      <tr>
+        <td>/cps help</td>
+        <td>cps.command.help</td>
+        <td>Displays the help page.</td>
+      </tr>
+    </table>
+    <p><code>&#60;&#62;</code> - required argument, <code>[]</code> - optional argument</p>
+
+    <!--CPS-test command-->
+    <h1 class="title" id="cps-test-commands">CPS-test commands:</h1>
+    <!--davidcubesvk's YML to HTML converter-->
+    <div class="code-block">
+      <div class="header">
+        <p>CPS-test command configuration from config.yml</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPS&nbsp;TEST</a><br>
+          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
+          <a class="yaml-key">test:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Command&nbsp;to&nbsp;use&nbsp;for&nbsp;CPS-test&nbsp;management:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">command:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Main&nbsp;(base)&nbsp;commands&nbsp;(further&nbsp;referred&nbsp;as&nbsp;/mainCommand),&nbsp;you&nbsp;can&nbsp;also&nbsp;use&nbsp;/cps&nbsp;command&nbsp;(but&nbsp;then&nbsp;make&nbsp;sure&nbsp;that&nbsp;no&nbsp;sub-command&nbsp;matches&nbsp;any&nbsp;built-in&nbsp;/cps&nbsp;sub-command):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;Commands&nbsp;should&nbsp;be&nbsp;written&nbsp;without&nbsp;the&nbsp;first&nbsp;slash&nbsp;("/").</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">main:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"cpstest"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;to&nbsp;use&nbsp;to&nbsp;manage&nbsp;CPS-test:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;If&nbsp;you&nbsp;leave&nbsp;values&nbsp;in&nbsp;both&nbsp;start,&nbsp;end&nbsp;as&nbsp;[],&nbsp;syntax&nbsp;"/mainCommand"&nbsp;will&nbsp;be&nbsp;used&nbsp;to&nbsp;both&nbsp;start&nbsp;and&nbsp;end&nbsp;(cancel)&nbsp;the&nbsp;test.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Messages&nbsp;can&nbsp;be&nbsp;configured&nbsp;in&nbsp;command.test&nbsp;section&nbsp;below.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">sub:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;(syntax:&nbsp;"/mainCommand&nbsp;subCommand")&nbsp;to&nbsp;use&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;CPS-test:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;To&nbsp;use&nbsp;only&nbsp;"/mainCommand"&nbsp;to&nbsp;start&nbsp;the&nbsp;test,&nbsp;leave&nbsp;the&nbsp;value&nbsp;as&nbsp;[].</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">start:&nbsp;</a><a class="yaml-value">[]</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;(syntax:&nbsp;"/mainCommand&nbsp;subCommand")&nbsp;to&nbsp;use&nbsp;to&nbsp;cancel&nbsp;the&nbsp;running&nbsp;CPS-test:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;To&nbsp;use&nbsp;only&nbsp;"/mainCommand"&nbsp;to&nbsp;cancel&nbsp;the&nbsp;test,&nbsp;leave&nbsp;the&nbsp;value&nbsp;as&nbsp;[].</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">cancel:&nbsp;</a><a class="yaml-value">[]</a><br>
+        </code>
+      </div>
+    </div>
+    <p>In <code>test.command.main</code> you can specify all base commands (for example <code>cpstest</code>) to be used for managing CPS-test.
+    These commands should be written without the first slash. If you use <code>cps</code> in this list, please make sure that any configured sub-command
+    does not override any of built-in ones (<code>copy</code>, <code>stats</code>...).</p>
+    <p>Next, you need to specify all sub-commands to use in combination with the base command specified above,
+      to start/cancel a CPS-test. For example, when you set start sub-commands like that:</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Start sub-command configuration example</p>
+      </div>
+      <div class="code">
+        <code><a class="yaml-key">start:&nbsp;</a><br>
+        &nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"start"</a></code>
+      </div>
+    </div>
+    <p>Player will have to use <code>/cpstest start</code> (if the main command is only "cpstest") to start the CPS-test. If this is set only to
+    <code>[]</code> - e.g. no sub-commands, CPS-test start will be bound to the main command. This means that player will have to use <code>/cpstest</code>
+    (if the main command is only "cpstest"). The same applies to the cancel command.</p>
+    <p>If both start and cancel sub-commands are set to <code>[]</code>, start and end actions will be bound to the main command - e.g. player will have to
+      use the main command to both start and cancel the CPS-test.</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="actions.html">Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
+          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
+      <div class="current"><a>API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <h1 class="title" id="how-to-use">How to use:</h1>
+    <ul>
+      <li>Add ClicksPerSecond-0.0.jar into project sources.</li>
+      <li>Add depend or softdepend for the ClicksPerSecond plugin into your plugin's plugin.yml:<br>
+        <!--davidcubesvk's YML to HTML converter-->
+        <div class="code-block">
+          <div class="header">
+            <p>Adding depend or softdepend to your plugin.yml</p>
+          </div>
+          <div class="code">
+            <code>
+              <a class="yaml-key">depend:&nbsp;</a><a class="yaml-value">[ClicksPerSecond]</a><br>
+              OR<br>
+              <a class="yaml-key">softdepend:&nbsp;</a><a class="yaml-value">[ClicksPerSecond]</a><br>
+            </code>
+          </div>
+        </div>
+      </li>
+      <li>Get the API class:<br>
+        <!--davidcubesvk's Java to HTML converter-->
+        <div class="code-block">
+          <div class="header">
+            <p>Getting the API class</p>
+          </div>
+          <div class="code">
+            <code>
+              ClicksPerSecondAPI.getInstance();
+            </code>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <h1 class="title" id="api-classes">API classes:</h1>
+    <p>This project will be open-source in a while. Please wait, or contact me for early documentation.</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/code.css">
+
+  <script src="../../../../script/footer.js"></script>
+  <script src="../../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../../uploads/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../../uploads/icons/plugins/clicks-per-second.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../">Overview</a></div>
+      <div class="hoverable"><a href="../setup.html">Setup</a></div>
+      <div class="hoverable"><a href="../commands.html">Commands</a></div>
+      <div class="hoverable"><a href="../configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="../actions.html">Actions</a></div>
+      <div class="current expandable expandable-navigation-item open">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="item currentItem"><a>Copying</a></div>
+          <div class="item"><a href="reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="../api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Basic info-->
+    <p>Copies all data of a scoreboard from one data storage to the another one. This does not delete
+    any previous data in the target data storage, only updates them with new data (for example if a record in right-mode
+    scoreboard of player XYZ already exists in the target data storage, it is updated - data are replaced with the new ones).</p>
+
+    <!--Command-->
+    <h1 class="title" id="command">Command:</h1>
+    <p>You can copy all data from a scoreboard using the copy command with this syntax:</p>
+    <div class="code-block">
+      <div class="header">
+        <p>Copy command syntax</p>
+      </div>
+      <div class="content">
+        <code>/cps copy &#60;right|left|hack&#62; &#60;yml|mysql&#62;</code>
+      </div>
+    </div>
+    <p>Where:</p>
+    <ul>
+      <li><code>&#60;right|left|hack&#62;</code> is the scoreboard you want to copy</li>
+      <li><code>&#60;yml|mysql&#62;</code> is the target data storage (data will be
+        copied from the opposite one - e.g. if you specify <code>MYSQL</code>, data
+        will be copied from scoreboard.yml file to the database)</li>
+    </ul>
+
+    <!--Requirements-->
+    <h1 class="title" id="requirements">Requirements and recommendations:</h1>
+    <p>To access this operation, several things are required:</p>
+    <ul>
+      <li>Option <code>storageType</code> in configuration file must be set to <code>MYSQL</code>, as
+      this operation manipulates with the database (so stable connection can be estabilished).</li>
+      <li>Plugin must be connected to the database at the time when running this command.</li>
+      <li>Server can not be shut down (closed) during the operation.</li>
+    </ul>
+    <p>Please note that only data available at the start of the operation will be copied. Therefore,
+    you should make sure nobody is running a CPS-test as the data will not be copied.</p>
+
+    <!--Phases-->
+    <h1 class="title" id="phases">Process phases:</h1>
+    <p>During the whole process the command sender (player or console) will be informed about phase changes.
+    Here you can see all phases, their order, descriptions, corresponding messages in config.yml.</p>
+    <table class="wiki-table">
+      <tr>
+        <th>Order</th>
+        <th>Description</th>
+        <th>Corresponding message</th>
+      </tr>
+      <tr>
+        <td>1st</td>
+        <td>All data are being got from the specified scoreboard.</td>
+        <td><code>command.main.copy.phase.getting</code></td>
+      </tr>
+      <tr>
+        <td>2nd</td>
+        <td>Checks if the scoreboard is empty, if so, sends a message and the process does not continue.</td>
+        <td><code>command.main.copy.phase.nothing</code></td>
+      </tr>
+      <tr>
+        <td>3rd</td>
+        <td>Writes all data into the target data storage, notifies the command sender about progress as per set delay.</td>
+        <td><code>command.main.copy.phase.writing.message</code></td>
+      </tr>
+    </table>
+    <p>If no error occurred and all phases have finished, the process finished.</p>
+
+    <!--Errors-->
+    <h1 class="title" id="errors">Errors:</h1>
+    <p>All errors produceable by this operation are listed here. To troubleshoot the error, in which stage it occurred, look
+    at the last phase message (phase information is sent when the certain phase starts, so if an error is displayed and the last phase message
+    you have got is ,,Getting all data", process failed in the 1st phase).</p>
+    <p><strong>If you get any of these errors, you must run the copy command again.
+    As stated at the top of this page, data are updated, not deleted - error occurred in any phase during the process will not cause any data loses.</strong></p>
+
+    <h2 class="subtitle" id="errors-yml">YML-sided errors:</h2>
+    <table class="wiki-table">
+      <tr>
+        <th>Description</th>
+        <th>Corresponding message</th>
+      </tr>
+      <tr>
+        <td>An error has occurred (full error will be displayed in the console).</td>
+        <td><code>command.main.copy.error.yml.error</code></td>
+      </tr>
+    </table>
+    <h2 class="subtitle" id="errors-mysql">MySQL-sided errors:</h2>
+    <table class="wiki-table">
+      <tr>
+        <th>Description</th>
+        <th>Corresponding message</th>
+      </tr>
+      <tr>
+        <td>An error has occurred due to lost connection to the database server.</td>
+        <td><code>command.main.copy.error.mysql.disconnected</code></td>
+      </tr>
+      <tr>
+        <td>An other error (not caused by disconnection) has occurred (full error will be displayed in the console).</td>
+        <td><code>command.main.copy.error.mysql.other</code></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

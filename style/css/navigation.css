@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+div.navigation {
+  /*Size*/
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  /*Position*/
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  padding: 0 100px;
+  /*Background*/
+  background: #162947;
+}
+div.navigation div.left {
+  /*Size*/
+  height: 40px;
+  box-sizing: border-box;
+  /*Position*/
+  float: left;
+  padding: 5px;
+}
+div.navigation div.left img {
+  /*Size*/
+  height: 100%;
+  /*Position*/
+  display: inline;
+}
+div.navigation div.left p {
+  /*Size*/
+  line-height: 30px;
+  /*Position*/
+  vertical-align: super;
+  display: inline;
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 900;
+  font-size: 20px;
+  color: white;
+}
+div.navigation ul.right {
+  /*Size*/
+  height: 100%;
+  /*Position*/
+  margin: 0;
+  float: right;
+}
+div.navigation ul.right li.item {
+  /*Size*/
+  height: 38.5px;
+  /*Position*/
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0 0.5px 0 0;
+}
+div.navigation ul.right li.item a {
+  /*Size*/
+  line-height: 38.5px;
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+div.navigation ul.right li.item:after {
+  /*Size*/
+  height: 1.5px;
+  width: 0;
+  /*Position*/
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  /*Background*/
+  background-color: white;
+  /*Content*/
+  content: "";
+  /*Animations*/
+  transition: 0.5s;
+}
+div.navigation ul.right li.current:after {
+  /*Size*/
+  width: 100%;
+}
+div.navigation ul.right li.hoverable:hover:after {
+  /*Size*/
+  width: 100%;
+}

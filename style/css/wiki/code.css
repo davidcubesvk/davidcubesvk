@@ -1,0 +1,47 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+div.code-block {
+  /*Position*/
+  display: block;
+  margin: 10px 0;
+  /*Background*/
+  background: white;
+  /*Border*/
+  border: solid 1px grey;
+}
+div.code-block div.header {
+  /*Position*/
+  position: sticky;
+  top: 0;
+  padding: 2px;
+  /*Background*/
+  background: lightgrey;
+}
+div.code-block div.header p {
+  /*Position*/
+  margin: 0;
+  /*Font*/
+  font-family: "Raleway";
+  font-weight: 600;
+  text-align: center;
+}
+div.code-block div.code {
+  /*Overflow*/
+  overflow: auto;
+}
+div.code-block:not([class*=expandable-code]) div.code {
+  /*Size*/
+  max-height: 80vh;
+}
+
+div.code-block.expandable-code div.header p::after {
+  /*Position*/
+  float: left;
+  /*Content*/
+  content: "→(Click to show)";
+  color: grey;
+}
+div.code-block.expandable-code.open div.header p::after {
+  /*Content*/
+  content: "↓(Click to hide)";
+}

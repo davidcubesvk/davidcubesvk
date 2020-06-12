@@ -2,12 +2,15 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../../../style/global.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/navigation.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/syntax.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wikiNavigation.js"></script>
+  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
 
   <link rel="icon" href="../../../uploads/icon.png" type="png">
   <title>Wiki - IPWhiteList</title>
@@ -15,140 +18,193 @@
 
 <!--Navigation-->
 <header>
-  <nav id="navigation" class="navigation">
-    <div class="menuImg">
-      <img src="../../../uploads/icon.png" class="menuImg">
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../uploads/icon.png" class="img">
+      <p>Davidcubesvk</p>
     </div>
-    Davidcubesvk
 
-    <ul id="menu" class="menu">
-      <li class="menuItem hoverable"><a href="../../../">HOME</a></li>
-      <li class="menuItem hoverable"><a href="../../../projects/">PROJECTS</a></li>
-      <li class="menuItem current"><a>WIKI</a></li>
-      <li class="menuItem hoverable"><a href="../../../support/">SUPPORT</a></li>
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-  </nav>
+  </div>
 </header>
 
-<body onload="positionFooter(); wikiNavigation();">
-  <!--Wiki navigation-->
-  <ul class="wikiNavigation">
-    <li class="wikiNavigation title">
-      <svg>
-        <path d="M2 3 S6 0 10 3 M10 3 S14 0 18 3" />
-        <path d="M2 3 L2 10 M10 3 L10 10 M18 3 L18 10" />
-        <path d="M2 10 S6 7 10 10 M10 10 S14 7 18 10" />
-      </svg>
-      <a>Pages</a></li>
-    <li class="wikiNavigation hoverable"><a href="../IPWhiteList/">Overview</a></li>
-    <li class="wikiNavigation hoverable"><a href="setup.html">Setup</a></li>
-    <li class="wikiNavigation hoverable"><a href="commands.html">Commands</a></li>
-    <li class="wikiNavigation hoverable"><a href="configuration.html">Configuration</a></li>
-    <li class="wikiNavigation hoverable"><a href="logging.html">Logging</a></li>
-    <li class="wikiNavigation current"><a>API</a></li>
-  </ul>
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../uploads/icons/plugins/ip-whitelist.png" alt="IPWhiteList's logo">
+      <p>IPWhiteList v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../IPWhiteList">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands.html">Commands</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+      <div class="current"><a>API</a></div>
+    </div>
+  </div>
 
-  <!--Page navigation-->
-  <ul class="wikiSideBar">
-    <li class="wikiSideBar title">
-      <svg>
-        <path d="M0 0 L10 0 L10 2 L0 2 L0 0             M0 4 L5 4 L5 6 L0 6 L0 4      M0 8 L8 8 L8 10 L0 10 L0 8 Z">
-      </svg>
-    <a>Contents</a></li>
-    <li class="wikiSideBar hoverable"><a href="#howToUse">How to use</a></li>
-    <li class="wikiSideBar hoverable"><a href="#apiClass">API class</a></li>
-  </ul>
-
-  <div class="wikiSection">
-    <h1 class="sectionTitle" id="howToUse">How to use:</h1>
-    <ul style="font-family: 'Noto Sans', sans-serif;">
-      <li>Add IPWhiteList-0.0.jar into project sources. (Maven repository will be available soon)</li>
-      <li>Add depend or softdepend for the IPWhiteList into your plugin's plugin.yml:<br>
+  <div class="wiki-section">
+    <h1 class="title" id="how-to-use">How to use:</h1>
+    <ul>
+      <li>Add IPWhiteList-0.0.jar into project sources.</li>
+      <li>Add depend or softdepend for the IPWhiteList plugin into your plugin's plugin.yml:<br>
         <!--davidcubesvk's YML to HTML converter-->
-        <div class="codeBlock">
-          <div style="width: 100%;">
-            <code class="codeInBlock">
-              <a class="yamlKey">depend:&nbsp;</a><a class="yamlValue">[IPWhiteList]</a><br>
+        <div class="code-block">
+          <div class="header">
+            <p>Adding depend or softdepend to your plugin.yml</p>
+          </div>
+          <div class="code">
+            <code>
+              <a class="yaml-key">depend:&nbsp;</a><a class="yaml-value">[IPWhiteList]</a><br>
               OR<br>
-              <a class="yamlKey">softdepend:&nbsp;</a><a class="yamlValue">[IPWhiteList]</a><br>
+              <a class="yaml-key">softdepend:&nbsp;</a><a class="yaml-value">[IPWhiteList]</a><br>
             </code>
           </div>
         </div>
       </li>
       <li>Get the API class:<br>
         <!--davidcubesvk's Java to HTML converter-->
-        <div class="codeBlock">
-          <div style="width: 100%;">
-            <code class="codeInBlock">
-              IPWhiteListAPI.getInstance()<br>
+        <div class="code-block">
+          <div class="header">
+            <p>Getting the API class</p>
+          </div>
+          <div class="code">
+            <code>
+              IPWhiteListAPI.getInstance();
             </code>
           </div>
         </div>
       </li>
     </ul>
 
-    <h1 class="sectionTitle" id="apiClass">API class:</h1>
+    <h1 class="title" id="api-classes">API classes (2):</h1>
     <!--davidcubesvk's Java to HTML converter-->
-    <div class="codeBlock">
-      <div style="width: 1000px; height: 50vh;">
-        <code class="codeInBlock">
-          <a class="javaKeyword">public</a>&nbsp;<a class="javaKeyword">class</a>&nbsp;IPWhiteListAPI&nbsp;{<br>
+    <div class="code-block expandable">
+      <div class="header">
+        <p>com.davidcubesvk.ipWhiteList.api.IPWhiteListAPI.java</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="java-keyword">package</a>&nbsp;com.davidcubesvk.ipWhiteList.api;<br>
           <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
+          <a class="java-docs">/**<br>
+            &nbsp;*&nbsp;API&nbsp;class,&nbsp;includes&nbsp;many&nbsp;methods&nbsp;for&nbsp;basic&nbsp;administration.<br>
+            &nbsp;*&nbsp;<br>
+            &nbsp;*&nbsp;Please&nbsp;note,&nbsp;that&nbsp;this&nbsp;class&nbsp;is&nbsp;also&nbsp;used&nbsp;by&nbsp;the&nbsp;plugin&nbsp;itself.<br>
+            &nbsp;*/</a><br>
+          <a class="java-keyword">public</a>&nbsp;<a class="java-keyword">class</a>&nbsp;IPWhiteListAPI&nbsp;{<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Reloads&nbsp;the&nbsp;plugin&nbsp;configuration&nbsp;without&nbsp;kicking&nbsp;all&nbsp;players.<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;<a class="javaKeyword">void</a>&nbsp;reload();<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-keyword">void</a>&nbsp;reload();<br>
           <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Reloads&nbsp;the&nbsp;whitelisted&nbsp;IPs.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-keyword">void</a>&nbsp;reloadWhitelistedIPs();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Checks&nbsp;the&nbsp;connecting&nbsp;player's&nbsp;VirtualHost&nbsp;if&nbsp;the&nbsp;IP&nbsp;player&nbsp;used&nbsp;to&nbsp;connect&nbsp;is&nbsp;one&nbsp;of&nbsp;whitelisted&nbsp;IPs.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;<code>virtualHost</code>&nbsp;parameter&nbsp;should&nbsp;be&nbsp;an&nbsp;instance&nbsp;got&nbsp;from&nbsp;{@link&nbsp;PendingConnection#getVirtualHost()}&nbsp;or&nbsp;similar&nbsp;method.<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;virtualHost&nbsp;player's&nbsp;VirtualHost<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;virtualHost&nbsp;the&nbsp;player's&nbsp;virtual&nbsp;host<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;if&nbsp;the&nbsp;IP&nbsp;player&nbsp;used&nbsp;to&nbsp;connect&nbsp;is&nbsp;whitelisted<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;net.md_5.bungee.api.connection.PendingConnection<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;<a class="javaPrimitiveType">boolean</a>&nbsp;checkConnectingIP(InetSocketAddress&nbsp;virtualHost);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-primitive-type">boolean</a>&nbsp;checkConnectingIP(InetSocketAddress&nbsp;virtualHost);<br>
           <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Sets&nbsp;the&nbsp;public&nbsp;IP&nbsp;of&nbsp;this&nbsp;server&nbsp;in&nbsp;the&nbsp;ip&nbsp;field.<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">private</a>&nbsp;<a class="javaKeyword">void</a>&nbsp;getIP();<br>
-          <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;if&nbsp;plugin&nbsp;is&nbsp;in&nbsp;the&nbsp;setup&nbsp;mode.<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;if&nbsp;the&nbsp;plugin&nbsp;has&nbsp;setup&nbsp;mode&nbsp;enabled<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;<a class="javaPrimitiveType">boolean</a>&nbsp;setupMode();<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-primitive-type">boolean</a>&nbsp;setupMode();<br>
           <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;list&nbsp;containing&nbsp;whitelisted&nbsp;IPs.<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;list&nbsp;containing&nbsp;whitelisted&nbsp;IPs&nbsp;represented&nbsp;by&nbsp;an&nbsp;IPHolder&nbsp;instance.<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;list&nbsp;of&nbsp;whitelisted&nbsp;IPs<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;List<String>&nbsp;getWhiteListed();<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;port,&nbsp;on&nbsp;which&nbsp;is&nbsp;BungeeCord&nbsp;hosted.<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;BungeeCord&nbsp;port<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;<a class="javaPrimitiveType">int</a>&nbsp;getBungeePort();<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;IP&nbsp;of&nbsp;machine&nbsp;on&nbsp;which&nbsp;is&nbsp;BungeeCord&nbsp;hosted.<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;BungeeCord&nbsp;IP<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;String&nbsp;getBungeeIP();<br>
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaDocs">/**<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;API&nbsp;instance.<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;API&nbsp;instance<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a class="javaKeyword">public</a>&nbsp;<a class="javaKeyword">static</a>&nbsp;IPWhiteListAPI&nbsp;getInstance();<br>
-            <br>
-            }<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;List&#60;IPHolder&#62;&nbsp;getWhiteListed();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;port,&nbsp;on&nbsp;which&nbsp;is&nbsp;BungeeCord&nbsp;hosted.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;BungeeCord&nbsp;port<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-primitive-type">int</a>&nbsp;getBungeePort();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;IP&nbsp;of&nbsp;machine&nbsp;on&nbsp;which&nbsp;is&nbsp;BungeeCord&nbsp;hosted.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;BungeeCord&nbsp;IP<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;String&nbsp;getBungeeIP();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;API&nbsp;instance.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;API&nbsp;instance<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-keyword">static</a>&nbsp;IPWhiteListAPI&nbsp;getInstance();<br>
+          <br>
+          }
+        </code>
+      </div>
+    </div>
+
+    <!--davidcubesvk's Java to HTML converter-->
+    <div class="code-block expandable">
+      <div class="header">
+        <p>com.davidcubesvk.ipWhiteList.api.IPHolder.java</p>
+      </div>
+      <div class="code">
+        <code>
+          <a class="java-keyword">package</a>&nbsp;com.davidcubesvk.ipWhiteList.api;<br>
+          <br>
+          <a class="java-docs">/**<br>
+            &nbsp;*&nbsp;Class&nbsp;used&nbsp;to&nbsp;store&nbsp;a&nbsp;whitelisted&nbsp;IP&nbsp;and&nbsp;if&nbsp;it&nbsp;should&nbsp;be&nbsp;compared&nbsp;case-sensitively&nbsp;or&nbsp;not.<br>
+            &nbsp;*/</a><br>
+          <a class="java-keyword">public</a>&nbsp;<a class="java-keyword">class</a>&nbsp;IPHolder&nbsp;{<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Initializes&nbsp;the&nbsp;holder&nbsp;with&nbsp;the&nbsp;given&nbsp;values.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;IP&nbsp;to&nbsp;hold<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;caseSensitive&nbsp;if&nbsp;the&nbsp;IP&nbsp;is&nbsp;case-sensitive&nbsp;or&nbsp;not&nbsp;(if&nbsp;should&nbsp;be&nbsp;compared&nbsp;case-sensitively&nbsp;or&nbsp;not)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;IPHolder(String&nbsp;ip,&nbsp;<a class="java-primitive-type">boolean</a>&nbsp;caseSensitive);<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;IP&nbsp;held&nbsp;by&nbsp;this&nbsp;instance&nbsp;of&nbsp;this&nbsp;class.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;IP&nbsp;held<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;String&nbsp;getIp();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;if&nbsp;this&nbsp;IP&nbsp;is&nbsp;case&nbsp;sensitive.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;if&nbsp;this&nbsp;IP&nbsp;is&nbsp;case&nbsp;sensitive<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-primitive-type">boolean</a>&nbsp;isCaseSensitive();<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-docs">/**<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Sets&nbsp;the&nbsp;IP&nbsp;value&nbsp;held&nbsp;by&nbsp;this&nbsp;instance.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;ip&nbsp;the&nbsp;IP&nbsp;to&nbsp;be&nbsp;held<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="java-keyword">public</a>&nbsp;<a class="java-keyword">void</a>&nbsp;setIp(String&nbsp;ip);<br>
+          <br>
+          }
         </code>
       </div>
     </div>
@@ -157,7 +213,7 @@
 
 <!--Footer-->
 <footer>
-  <p class="footerPersonalData">This page does not collect any personal data about you.</p>
+  <p>This page does not collect any personal data about you.</p>
   <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
 </footer>
 
