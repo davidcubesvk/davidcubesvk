@@ -4,7 +4,7 @@ div.banner {
   height: 90vh;
   width: 100%;
   /*Background*/
-  background-image: url("../../../uploads/backgrounds/background2.png");
+  background-image: url("../../../assets/graphics/local/home/background.png");
   background-attachment: fixed;
   /*Position*/
   position: relative;
