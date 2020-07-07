@@ -43,7 +43,7 @@
     <div class="wiki-navigation">
       <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
       <div class="hoverable"><a href="setup.html">Setup</a></div>
-      <div class="current"><a>Commands</a></div>
+      <div class="current"><a>Commands and permissions</a></div>
       <div class="hoverable"><a href="configuration.html">Configuration</a></div>
       <div class="hoverable"><a href="actions.html">Actions</a></div>
       <div class="hoverable expandable expandable-navigation-item">
@@ -167,6 +167,26 @@
     (if the main command is only "cpstest"). The same applies to the cancel command.</p>
     <p>If both start and cancel sub-commands are set to <code>[]</code>, start and end actions will be bound to the main command - e.g. player will have to
       use the main command to both start and cancel the CPS-test.</p>
+
+    <!--Permissions-->
+    <h1 class="title" id="permissions">Permissions:</h1>
+    <p>Permissions <code>cps.*</code> or <code>cps.bypass.*</code> are available.</p>
+    <table class="wiki-table">
+      <tr>
+        <th>Permission:</th>
+        <th>Description:</th>
+      </tr>
+      <!--Allowed bypass-->
+      <tr>
+        <td>cps.bypass.autoClick</td>
+        <td>Bypasses actions sent if achieved CPS are higher than allowed. Although, the test result will not be saved.</td>
+      </tr>
+      <!--World bypass-->
+      <tr>
+        <td>cps.bypass.world</td>
+        <td>Bypasses allowed world requirement to run a CPS-test command.</td>
+      </tr>
+    </table>
   </div>
 </body>
 
