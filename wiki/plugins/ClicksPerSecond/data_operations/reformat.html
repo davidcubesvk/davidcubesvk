@@ -64,12 +64,12 @@
     <p>Reformats all data in all scoreboards (that use an outdated data format from plugin version 2.4 and lower)
       in currently used data storage.
       As of version 2.5, many things changed about data formatting. CPS-test records are saved differently in
-      both scoreboard.yml and MySQL database to reduce disk usage and improve efficiency. Therefore, all data need to be reformatted.</p>
+      both scoreboard.yml and database to reduce disk usage and improve efficiency. Therefore, all data need to be reformatted.</p>
     <p>ClicksPerSecond plugin automatically checks the data format version of all scoreboards when it enables and everytime
       it connects to a database. If it detects an outdated data format version in any scoreboard, all processes and commands
       will be blocked, except the reformat and reload command (data-fetching processes would not work as the code is designed for newer format version,
       CPS-test records could be queued, but any server restart will lose these - so just run the process and everything will be functional once again).</p>
-    <p>If using MySQL, format checking can take some time (depends on the connection speed
+    <p>If using database, format checking can take some time (max. 3s, depends on the connection speed
       of your database), please note that again, all processes and commands (except reformat and reload commands) are blocked, until the format versions of all scoreboards
       is determined. <strong>If checking for format version failed (see the console), plugin reload is needed.</strong></p>
 
@@ -93,11 +93,11 @@
     <h1 class="title" id="requirements">Requirements and recommendations:</h1>
     <p>To access this operation, several things are required:</p>
     <ul>
-      <li>Plugin must be connected to the database (if using MySQL as storage type) at the time when running this command.</li>
+      <li>Plugin must be connected to the database (if using database as the storage type) at the time when running this command.</li>
       <li>Server can not be shut down (closed) during the operation <strong>as it may cause your data to be lost forever</strong> (do not shut down the server even if you get an error message,
         do not do this unless you get the ,,finished" message - see all <a href="#errors">errors</a> below).</li>
     </ul>
-    <p>If the process fails, plugin has backup code to run and finish the operation without losing any data.
+    <p>If the process fails, plugin is able to run the process again from the last operation and finish it without losing any data.
       However, making a copy of the data storage (of all data stored) is strongly recommended in case of any unexpected failure. Developer
       is not be responsible for any data loses.</p>
 
@@ -107,7 +107,7 @@
       Here you can see all phases, their order, descriptions, corresponding messages in config.yml.
       <!--Common phases-->
       <h2 class="subtitle" id="phases-common">Common phases:</h2>
-      <p>These phases are the same no matter if reformatting YML or MYSQL data storage.</p>
+      <p>These phases are the same no matter if reformatting <code>FILE</code> or <code>DATABASE</code> data storage.</p>
       <table class="wiki-table">
         <tr>
           <th>Order</th>
@@ -127,7 +127,7 @@
       </table>
       <!--Scoreboard phases-->
       <h2 class="subtitle" id="phases-scoreboard">Scoreboard reformatting phases:</h2>
-      <p>These phases apply while reformatting a scoreboard in the YML data storage.</p>
+      <p>These phases apply while reformatting a scoreboard in the <code>FILE</code> data storage.</p>
       <table class="wiki-table">
         <tr>
           <th>Order</th>
@@ -149,20 +149,20 @@
         </tr>
         <tr>
           <td>3rd</td>
-          <td>Checks if the scoreboard is empty, if so, sends a message and the process does not continue for this scoreboard.</td>
+          <td>Checks if the scoreboard is empty, if so, sends a message and the process skips directly to the 6th step.</td>
           <td><code>command.main.reformat.phase.skipping</code></td>
           <td>No</td>
         </tr>
         <tr>
           <td>4th</td>
           <td>Reformatted data are being converted into strings (to be saved after), notifies the command sender about progress as per set delay.</td>
-          <td><code>command.main.reformat.phase.yml.converting.message</code></td>
+          <td><code>command.main.reformat.phase.file.converting.message</code></td>
           <td>No</td>
         </tr>
         <tr>
           <td>5th</td>
           <td>Reformatted data are being written into the file (replacing the old scoreboard with the reformatted one).</td>
-          <td><code>command.main.reformat.phase.yml.writing</code></td>
+          <td><code>command.main.reformat.phase.file.writing</code></td>
           <td>Can't fail.</td>
         </tr>
         <tr>
@@ -178,7 +178,7 @@
           <td>Can't fail.</td>
         </tr>
       </table>
-      <p>These phases apply while reformatting a scoreboard in the MYSQL data storage.</p>
+      <p>These phases apply while reformatting a scoreboard in the <code>DATABASE</code> data storage.</p>
       <table class="wiki-table">
         <tr>
           <th>Order</th>
@@ -200,20 +200,20 @@
         </tr>
         <tr>
           <td>3rd</td>
-          <td>Checks if the scoreboard is empty, if so, sends a message and the process does not continue for this scoreboard.</td>
+          <td>Checks if the scoreboard is empty, if so, sends a message and the process skips directly to the 6th step.</td>
           <td><code>command.main.reformat.phase.skipping</code></td>
           <td>No</td>
         </tr>
         <tr>
           <td>4th</td>
           <td>Database table is being deleted and recreated.</td>
-          <td><code>command.main.reformat.phase.mysql.recreatingTable</code></td>
+          <td><code>command.main.reformat.phase.database.recreatingTable</code></td>
           <td>Yes</td>
         </tr>
         <tr>
           <td>5th</td>
           <td>Reformatted data are being written into the database, notifies the command sender about progress as per set delay.</td>
-          <td><code>command.main.reformat.phase.mysql.writing.message</code></td>
+          <td><code>command.main.reformat.phase.database.writing.message</code></td>
           <td>Yes</td>
         </tr>
         <tr>
@@ -232,8 +232,8 @@
 
       <!--Errors-->
       <h1 class="title" id="errors">Errors:</h1>
-      <h2 class="subtitle" id="errors-yml">YML errors:</h2>
-      <p>Errors if reformatting the YML data storage. As no phase in YML reformatting is marked as data-risky
+      <h2 class="subtitle" id="errors-file">File-sided errors:</h2>
+      <p>Errors if reformatting the <code>FILE</code> data storage. As no phase in file reformatting is marked as data-risky
         (data can be lost forever if the process fails in phase marked as data-risky), don't worry if you get this error,
         no data will be lost, just restart the process.</p>
       <table class="wiki-table">
@@ -243,12 +243,12 @@
         </tr>
         <tr>
           <td>An error has occurred (the error will be displayed in the console).</td>
-          <td><code>command.main.reformat.error.yml.error</code></td>
+          <td><code>command.main.reformat.error.file.error</code></td>
         </tr>
       </table>
 
-      <h2 class="subtitle" id="errors-mysql">MySQL errors:</h2>
-      <p>Errors if reformatting the MYSQL data storage:</p>
+      <h2 class="subtitle" id="errors-database">Database-sided errors:</h2>
+      <p>Errors if reformatting the <code>DATABASE</code> data storage:</p>
       <table class="wiki-table">
         <tr>
           <th>Description</th>
@@ -256,22 +256,36 @@
         </tr>
         <tr>
           <td>An error has occurred due to lost connection to the database server.</td>
-          <td><code>command.main.reformat.error.mysql.disconnected</code></td>
+          <td><code>command.main.reformat.error.database.disconnected</code></td>
         </tr>
         <tr>
           <td>An other error (not caused by disconnection) has occurred (full error will be displayed in the console).</td>
-          <td><code>command.main.reformat.error.mysql.other</code></td>
+          <td><code>command.main.reformat.error.database.other</code></td>
         </tr>
       </table>
-      <p>If the process fails in a data-risky phase and the error you get is:</p>
-      <ul>
-        <li>disconnected - process will be resumed when the plugin reconnects.</li>
-        <li>other - process will retry the last operation and resume in 5 seconds.</li>
-      </ul>
+      <p>After every database error you will get another message (post-error message) informing about how will the process continue:</p>
+      <table class="wiki-table">
+        <tr>
+          <th>Description</th>
+          <th>Corresponding message</th>
+        </tr>
+        <tr>
+          <td>The process did not fail in a data-risky phase, you should restart the process.</td>
+          <td><code>command.main.reformat.error.database.post.restart</code></td>
+        </tr>
+        <tr>
+          <td>The process failed in a data-risky phase because of a disconnection error, the process will be resumed automatically when the plugin reconnects.</td>
+          <td><code>command.main.reformat.error.database.post.resume</code></td>
+        </tr>
+        <tr>
+          <td>The process failed in a data-risky phase because of another error (not caused by diconnection), the process will retry the last operation and continue in 5 seconds.</td>
+          <td><code>command.main.reformat.error.database.post.retryWait</code></td>
+        </tr>
+      </table>
       <p><strong>Please, don't shut down the server unless you get the ,,finished" message.</strong></p>
 
       <div class="term-desc">
-        <p id="term-1"><sup>1</sup>data-risky phase - data can be lost forever if the process fails in this phase and the server/plugin is restarted.</p>
+        <p id="term-1"><sup>1</sup>data-risky phase - data will be lost forever if the process fails in this phase and the server/plugin is restarted.</p>
       </div>
   </div>
 </body>

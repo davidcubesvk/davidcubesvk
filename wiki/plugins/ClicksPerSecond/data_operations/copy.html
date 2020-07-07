@@ -73,14 +73,14 @@
         <p>Copy command syntax</p>
       </div>
       <div class="content">
-        <code>/cps copy &#60;right|left|hack&#62; &#60;yml|mysql&#62;</code>
+        <code>/cps copy &#60;right|left|hack&#62; &#60;file|database&#62;</code>
       </div>
     </div>
     <p>Where:</p>
     <ul>
       <li><code>&#60;right|left|hack&#62;</code> is the scoreboard you want to copy</li>
-      <li><code>&#60;yml|mysql&#62;</code> is the target data storage (data will be
-        copied from the opposite one - e.g. if you specify <code>MYSQL</code>, data
+      <li><code>&#60;file|database&#62;</code> is the target data storage (data will be
+        copied from the opposite one - e.g. if you specify <code>DATABASE</code>, data
         will be copied from scoreboard.yml file to the database)</li>
     </ul>
 
@@ -88,7 +88,7 @@
     <h1 class="title" id="requirements">Requirements and recommendations:</h1>
     <p>To access this operation, several things are required:</p>
     <ul>
-      <li>Option <code>storageType</code> in configuration file must be set to <code>MYSQL</code>, as
+      <li>Option <code>storageType</code> in configuration file must be set to <code>DATABASE</code>, as
       this operation manipulates with the database (so stable connection can be estabilished).</li>
       <li>Plugin must be connected to the database at the time when running this command.</li>
       <li>Server can not be shut down (closed) during the operation.</li>
@@ -132,7 +132,7 @@
     <p><strong>If you get any of these errors, you must run the copy command again.
     As stated at the top of this page, data are updated, not deleted - error occurred in any phase during the process will not cause any data loses.</strong></p>
 
-    <h2 class="subtitle" id="errors-yml">YML-sided errors:</h2>
+    <h2 class="subtitle" id="errors-file">File-sided errors:</h2>
     <table class="wiki-table">
       <tr>
         <th>Description</th>
@@ -140,10 +140,10 @@
       </tr>
       <tr>
         <td>An error has occurred (full error will be displayed in the console).</td>
-        <td><code>command.main.copy.error.yml.error</code></td>
+        <td><code>command.main.copy.error.file.error</code></td>
       </tr>
     </table>
-    <h2 class="subtitle" id="errors-mysql">MySQL-sided errors:</h2>
+    <h2 class="subtitle" id="errors-database">Database-sided errors:</h2>
     <table class="wiki-table">
       <tr>
         <th>Description</th>
@@ -151,11 +151,11 @@
       </tr>
       <tr>
         <td>An error has occurred due to lost connection to the database server.</td>
-        <td><code>command.main.copy.error.mysql.disconnected</code></td>
+        <td><code>command.main.copy.error.database.disconnected</code></td>
       </tr>
       <tr>
         <td>An other error (not caused by disconnection) has occurred (full error will be displayed in the console).</td>
-        <td><code>command.main.copy.error.mysql.other</code></td>
+        <td><code>command.main.copy.error.database.other</code></td>
       </tr>
     </table>
   </div>

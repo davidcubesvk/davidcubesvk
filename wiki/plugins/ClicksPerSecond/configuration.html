@@ -61,7 +61,6 @@
   </div>
 
   <div class="wiki-section">
-    <!--davidcubesvk's YML to HTML converter-->
     <div class="code-block expandable expandable-code">
       <div class="header">
         <p>config.yml</p>
@@ -106,11 +105,11 @@
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;New&nbsp;update&nbsp;of&nbsp;&bClicksPerSecond&nbsp;plugin&nbsp;&7has&nbsp;been&nbsp;released&nbsp;(&b{version_latest}&7).&nbsp;You&nbsp;are&nbsp;using&nbsp;&b{version_current}&7."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;using&nbsp;the&nbsp;latest&nbsp;version:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">latest:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;You&nbsp;are&nbsp;using&nbsp;latest&nbsp;version&nbsp;of&nbsp;&bClicksPerSecond&nbsp;plugin&nbsp;&7(&b{version_current}&7)."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;You&nbsp;are&nbsp;using&nbsp;the&nbsp;latest&nbsp;version&nbsp;of&nbsp;&bClicksPerSecond&nbsp;plugin&nbsp;&7(&b{version_current}&7)."</a><br>
           <a class="yaml-comment">#Data&nbsp;storage&nbsp;used&nbsp;by&nbsp;ClicksPerSecond&nbsp;plugin:</a><br>
-          <a class="yaml-comment">#-&nbsp;YML:&nbsp;the&nbsp;scoreboard.yml&nbsp;file</a><br>
-          <a class="yaml-comment">#-&nbsp;MYSQL:&nbsp;a&nbsp;MySQL&nbsp;database&nbsp;(NOTE!&nbsp;Make&nbsp;sure&nbsp;you&nbsp;have&nbsp;configured&nbsp;the&nbsp;connection&nbsp;below.)</a><br>
-          <a class="yaml-key">dataStorage:&nbsp;</a><a class="yaml-value">YML</a><br>
+          <a class="yaml-comment">#-&nbsp;FILE:&nbsp;the&nbsp;scoreboard.yml&nbsp;file</a><br>
+          <a class="yaml-comment">#-&nbsp;DATABASE:&nbsp;a&nbsp;database&nbsp;(NOTE!&nbsp;Make&nbsp;sure&nbsp;you&nbsp;have&nbsp;configured&nbsp;the&nbsp;connection&nbsp;below.)</a><br>
+          <a class="yaml-key">dataStorage:&nbsp;</a><a class="yaml-value">FILE</a><br>
           <a class="yaml-comment">#Round&nbsp;CPS&nbsp;to&nbsp;this&nbsp;amount&nbsp;of&nbsp;decimal&nbsp;digits&nbsp;(set&nbsp;to&nbsp;0&nbsp;to&nbsp;round&nbsp;to&nbsp;integer):</a><br>
           <a class="yaml-key">roundTo:&nbsp;</a><a class="yaml-value">1</a><br>
           <a class="yaml-comment">#Date&nbsp;and&nbsp;time&nbsp;format&nbsp;in&nbsp;messages&nbsp;(for&nbsp;{date}&nbsp;and&nbsp;{time}&nbsp;placeholders&nbsp;and&nbsp;their&nbsp;aliases):</a><br>
@@ -135,34 +134,53 @@
           &nbsp;&nbsp;<a class="yaml-key">date:&nbsp;</a><a class="yaml-value yaml-string-value">"-"</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#{time}&nbsp;placeholder&nbsp;or&nbsp;it's&nbsp;aliases:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">time:&nbsp;</a><a class="yaml-value yaml-string-value">"-"</a><br>
-          <a class="yaml-comment">#Delay&nbsp;between&nbsp;each&nbsp;scoreboard&nbsp;refreshment&nbsp;(in&nbsp;ticks):</a><br>
+          <a class="yaml-comment">#Delay&nbsp;between&nbsp;each&nbsp;scoreboard&nbsp;refreshment&nbsp;(in&nbsp;milliseconds):</a><br>
           <a class="yaml-comment">#INFO!&nbsp;For&nbsp;better&nbsp;performance,&nbsp;plugin&nbsp;caches&nbsp;all&nbsp;scoreboards&nbsp;and&nbsp;uses&nbsp;them&nbsp;everywhere.&nbsp;Setting&nbsp;this&nbsp;to&nbsp;high</a><br>
           <a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;will&nbsp;affect&nbsp;placeholders,&nbsp;statistics,&nbsp;scoreboards.</a><br>
-          <a class="yaml-key">refresh:&nbsp;</a><a class="yaml-value">1</a><br>
+          <a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;each&nbsp;cycle,&nbsp;all&nbsp;scoreboard&nbsp;types&nbsp;are&nbsp;refreshed.&nbsp;This&nbsp;value&nbsp;indicates&nbsp;the&nbsp;delay&nbsp;between&nbsp;the&nbsp;end&nbsp;of</a><br>
+          <a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;last&nbsp;and&nbsp;the&nbsp;start&nbsp;of&nbsp;the&nbsp;next&nbsp;cycle.</a><br>
+          <a class="yaml-key">refresh:&nbsp;</a><a class="yaml-value">1000</a><br>
           <a class="yaml-comment">#Which&nbsp;way&nbsp;to&nbsp;use&nbsp;to&nbsp;register&nbsp;clicks&nbsp;in&nbsp;a&nbsp;CPS-test:</a><br>
           <a class="yaml-comment">#-&nbsp;EVENTS:&nbsp;handle&nbsp;by&nbsp;server's&nbsp;click&nbsp;event</a><br>
-          <a class="yaml-comment">#-&nbsp;PACKETS:&nbsp;handle&nbsp;using&nbsp;packets&nbsp;(requires&nbsp;ProtocolLib,&nbsp;does&nbsp;not&nbsp;work&nbsp;on&nbsp;1.7)</a><br>
+          <a class="yaml-comment">#-&nbsp;PACKETS:&nbsp;handle&nbsp;using&nbsp;packets&nbsp;(powered&nbsp;by&nbsp;ProtocolLib)</a><br>
           <a class="yaml-key">listenerType:&nbsp;</a><a class="yaml-value">EVENTS</a><br>
           <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
           <a
-            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL&nbsp;CONNECTION</a><br>
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATABASE&nbsp;CONNECTION</a><br>
           <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
-          <a class="yaml-key">mysql:</a><br>
+          <a class="yaml-key">database:</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Host:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">host:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Port:</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value">3306</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Username:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">username:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Password:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">password:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Database:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">database:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
-          &nbsp;&nbsp;<a class="yaml-comment">#Use&nbsp;SSL&nbsp;certificate&nbsp;to&nbsp;connect&nbsp;(secure&nbsp;way&nbsp;for&nbsp;communication,&nbsp;only&nbsp;if&nbsp;you&nbsp;have&nbsp;it):</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">useSSL:&nbsp;</a><a class="yaml-value">true</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#SSL&nbsp;mode&nbsp;(encrypted&nbsp;communication):</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;DISABLED:&nbsp;establish&nbsp;unencrypted&nbsp;connections</a><br>
           &nbsp;&nbsp;<a
+            class="yaml-comment">#-&nbsp;PREFERRED:&nbsp;establish&nbsp;encrypted&nbsp;connections&nbsp;if&nbsp;the&nbsp;server&nbsp;enabled&nbsp;them&nbsp;(otherwise,&nbsp;unencrypted&nbsp;connections&nbsp;will&nbsp;be&nbsp;established)</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;REQUIRED:&nbsp;require&nbsp;encrypted&nbsp;connections</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#INFO:&nbsp;All&nbsp;modes&nbsp;all&nbsp;listed&nbsp;at&nbsp;https://dev.database.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html#sslMode.</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">sslMode:&nbsp;</a><a class="yaml-value">PREFERRED</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Timeout&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">timeout:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Time&nbsp;for&nbsp;the&nbsp;plugin&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;database&nbsp;server&nbsp;until&nbsp;the&nbsp;connection&nbsp;request&nbsp;times&nbsp;out&nbsp;(in&nbsp;milliseconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;You&nbsp;can&nbsp;(should)&nbsp;adjust&nbsp;this&nbsp;by&nbsp;the&nbsp;speed&nbsp;of&nbsp;your&nbsp;database&nbsp;(connection).&nbsp;Set&nbsp;to&nbsp;0&nbsp;for&nbsp;no&nbsp;timeout.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">connect:&nbsp;</a><a class="yaml-value">2000</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Time&nbsp;for&nbsp;each&nbsp;operation&nbsp;to&nbsp;finish&nbsp;until&nbsp;it&nbsp;times&nbsp;out&nbsp;(in&nbsp;milliseconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;You&nbsp;can&nbsp;(should)&nbsp;adjust&nbsp;this&nbsp;by&nbsp;the&nbsp;speed&nbsp;of&nbsp;your&nbsp;database&nbsp;(connection).&nbsp;Set&nbsp;to&nbsp;0&nbsp;for&nbsp;no&nbsp;timeout.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">socket:&nbsp;</a><a class="yaml-value">2000</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
             class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(internet&nbsp;connection&nbsp;failure&nbsp;etc.),&nbsp;wait&nbsp;for&nbsp;this&nbsp;amount&nbsp;of&nbsp;seconds&nbsp;before&nbsp;connecting&nbsp;again:</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Database&nbsp;table&nbsp;name&nbsp;for&nbsp;each&nbsp;scoreboard:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">table:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a
@@ -228,16 +246,16 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"[COMMAND_CONSOLE]kick&nbsp;{player_name}"</a><br>
           &nbsp;&nbsp;<a class="yaml-comment">#Message&nbsp;sent&nbsp;to&nbsp;player&nbsp;if&nbsp;an&nbsp;error&nbsp;occurred&nbsp;while&nbsp;saving&nbsp;their&nbsp;CPS-test&nbsp;data:</a><br>
           &nbsp;&nbsp;<a class="yaml-key">writeError:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#MySQL-sided&nbsp;messages:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;DATABASE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;lost&nbsp;(and&nbsp;the&nbsp;record's&nbsp;writing&nbsp;is&nbsp;queued&nbsp;until&nbsp;it'll&nbsp;reconnect):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">disconnected:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAn&nbsp;error&nbsp;occurred&nbsp;while&nbsp;saving&nbsp;your&nbsp;result&nbsp;(ERR_DISCONNECT).&nbsp;We&nbsp;will&nbsp;try&nbsp;again&nbsp;in&nbsp;a&nbsp;while."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred&nbsp;(error&nbsp;not&nbsp;caused&nbsp;by&nbsp;disconnection,&nbsp;record&nbsp;failed&nbsp;to&nbsp;save):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">other:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAn&nbsp;error&nbsp;occurred&nbsp;while&nbsp;saving&nbsp;your&nbsp;result&nbsp;(ERR_OTHER).&nbsp;Saving&nbsp;failed;&nbsp;please&nbsp;contact&nbsp;staff."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#YML-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;YML&nbsp;data&nbsp;storage):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">yml:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#File-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;FILE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">file:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">error:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAn&nbsp;error&nbsp;occurred&nbsp;while&nbsp;saving&nbsp;your&nbsp;result&nbsp;(ERR_OTHER).&nbsp;Saving&nbsp;failed;&nbsp;please&nbsp;contact&nbsp;staff."</a><br>
@@ -379,28 +397,23 @@
           &nbsp;&nbsp;<a class="yaml-key">main:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;sender&nbsp;uses&nbsp;a&nbsp;wrong&nbsp;usage&nbsp;of&nbsp;the&nbsp;command:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">invalidFormat:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Invalid&nbsp;format.&nbsp;Please&nbsp;use&nbsp;&b/cps&nbsp;help&7."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;trying&nbsp;to&nbsp;run&nbsp;any&nbsp;command&nbsp;that&nbsp;depends&nbsp;on&nbsp;MySQL,&nbsp;but&nbsp;it&nbsp;is&nbsp;disconnected:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysqlError:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cPlugin&nbsp;must&nbsp;be&nbsp;connected&nbsp;to&nbsp;the&nbsp;MySQL&nbsp;database&nbsp;to&nbsp;run&nbsp;this&nbsp;command."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cps&nbsp;copy&nbsp;&#60;RIGHT|LEFT|HACK&#62;&nbsp;&#60;YML|MYSQL&#62;</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{storage_from}&nbsp;-&nbsp;source&nbsp;data&nbsp;storage&nbsp;(YML&nbsp;or&nbsp;MYSQL)</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{storage_to}&nbsp;-&nbsp;target&nbsp;data&nbsp;storage&nbsp;(YML&nbsp;or&nbsp;MYSQL)</a><br>
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cps&nbsp;copy&nbsp;&#60;RIGHT|LEFT|HACK&#62;&nbsp;&#60;FILE|DATABASE&#62;</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{storage_from}&nbsp;-&nbsp;source&nbsp;data&nbsp;storage&nbsp;(FILE&nbsp;or&nbsp;DATABASE)</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{storage_to}&nbsp;-&nbsp;target&nbsp;data&nbsp;storage&nbsp;(FILE&nbsp;or&nbsp;DATABASE)</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">copy:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;storage&nbsp;type&nbsp;is&nbsp;not&nbsp;set&nbsp;to&nbsp;MYSQL:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysqlRequired:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;Option&nbsp;&bstorageType&7&nbsp;must&nbsp;be&nbsp;set&nbsp;to&nbsp;&bMYSQL&nbsp;&7to&nbsp;perform&nbsp;this&nbsp;operation."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;storage&nbsp;type&nbsp;is&nbsp;not&nbsp;set&nbsp;to&nbsp;DATABASE:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">databaseRequired:&nbsp;</a><a
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;Option&nbsp;&bstorageType&7&nbsp;must&nbsp;be&nbsp;set&nbsp;to&nbsp;&bDATABASE&nbsp;&7to&nbsp;perform&nbsp;this&nbsp;operation."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Phase&nbsp;messages:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">phase:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Getting&nbsp;all&nbsp;data&nbsp;from&nbsp;the&nbsp;opposite&nbsp;storage&nbsp;as&nbsp;the&nbsp;target&nbsp;storage:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">getting:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Getting&nbsp;all&nbsp;data&nbsp;from&nbsp;{storage_from}..."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;no&nbsp;data&nbsp;found&nbsp;to&nbsp;be&nbsp;copied:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yaml-comment">#INFO!&nbsp;This&nbsp;could&nbsp;be&nbsp;also&nbsp;caused&nbsp;when&nbsp;an&nbsp;error&nbsp;occurred&nbsp;in&nbsp;MySQL&nbsp;database&nbsp;operator&nbsp;(while&nbsp;data&nbsp;have&nbsp;been&nbsp;got).</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">nothing:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7No&nbsp;data&nbsp;to&nbsp;copy.&nbsp;&cThis&nbsp;could&nbsp;be&nbsp;caused&nbsp;by&nbsp;an&nbsp;error&nbsp;in&nbsp;MySQL&nbsp;operator.&nbsp;Please&nbsp;check&nbsp;the&nbsp;console&nbsp;if&nbsp;you&nbsp;believe&nbsp;this&nbsp;is&nbsp;an&nbsp;error."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7No&nbsp;data&nbsp;to&nbsp;copy.&nbsp;&cIf&nbsp;you&nbsp;believe&nbsp;this&nbsp;is&nbsp;an&nbsp;error,&nbsp;check&nbsp;the&nbsp;console."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Writing&nbsp;got&nbsp;records:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">writing:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Message&nbsp;delay&nbsp;(in&nbsp;ticks),&nbsp;set&nbsp;to&nbsp;-1&nbsp;to&nbsp;send&nbsp;only&nbsp;once:</a><br>
@@ -415,19 +428,19 @@
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Writing&nbsp;data&nbsp;(records)...&nbsp;(&b{write_amount}&7/&b{write_total}&nbsp;&7-&nbsp;&b{write_percent}%&7)"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Error&nbsp;messages:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">error:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#MySQL-sided&nbsp;messages:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database-sided&nbsp;messages:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;lost:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">disconnected:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cConnection&nbsp;to&nbsp;the&nbsp;database&nbsp;has&nbsp;been&nbsp;lost&nbsp;while&nbsp;writing!"</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cConnection&nbsp;to&nbsp;the&nbsp;database&nbsp;has&nbsp;been&nbsp;lost!"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred&nbsp;(error&nbsp;not&nbsp;caused&nbsp;by&nbsp;disconnection):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">other:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;MySQL&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#YML-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;YML&nbsp;data&nbsp;storage):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">yml:</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;database&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#File-sided&nbsp;errors:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">file:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">error:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAn&nbsp;YML&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;file&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;data&nbsp;have&nbsp;been&nbsp;copied&nbsp;successfully:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">copied:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Successfully&nbsp;copied&nbsp;all&nbsp;data!"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
@@ -447,7 +460,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">timeout:&nbsp;</a><a class="yaml-value">20000</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Confirmation&nbsp;message:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">message:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAre&nbsp;you&nbsp;sure&nbsp;you&nbsp;want&nbsp;to&nbsp;do&nbsp;this?&nbsp;Please&nbsp;make&nbsp;a&nbsp;backup&nbsp;of&nbsp;your&nbsp;data&nbsp;storage&nbsp;and&nbsp;do&nbsp;not&nbsp;turn&nbsp;the&nbsp;system&nbsp;off&nbsp;during&nbsp;the&nbsp;process.&nbsp;If&nbsp;you&nbsp;are&nbsp;using&nbsp;MySQL&nbsp;and&nbsp;another&nbsp;instance&nbsp;of&nbsp;ClicksPerSecond&nbsp;plugin&nbsp;has&nbsp;already&nbsp;reformatted&nbsp;the&nbsp;data,&nbsp;please&nbsp;restart&nbsp;the&nbsp;server&nbsp;or&nbsp;run&nbsp;this&nbsp;command&nbsp;again&nbsp;to&nbsp;recheck&nbsp;the&nbsp;version.&nbsp;If&nbsp;you&nbsp;agree,&nbsp;or&nbsp;you&nbsp;want&nbsp;to&nbsp;recheck&nbsp;the&nbsp;format&nbsp;version,&nbsp;proceed&nbsp;by&nbsp;running&nbsp;this&nbsp;command&nbsp;again&nbsp;within&nbsp;20&nbsp;seconds."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAre&nbsp;you&nbsp;sure&nbsp;you&nbsp;want&nbsp;to&nbsp;do&nbsp;this?&nbsp;Please&nbsp;make&nbsp;a&nbsp;backup&nbsp;of&nbsp;your&nbsp;data&nbsp;storage&nbsp;and&nbsp;do&nbsp;not&nbsp;turn&nbsp;the&nbsp;system&nbsp;off&nbsp;during&nbsp;the&nbsp;process.&nbsp;If&nbsp;you&nbsp;are&nbsp;using&nbsp;database&nbsp;and&nbsp;another&nbsp;instance&nbsp;of&nbsp;ClicksPerSecond&nbsp;plugin&nbsp;has&nbsp;already&nbsp;reformatted&nbsp;the&nbsp;data,&nbsp;please&nbsp;restart&nbsp;the&nbsp;server&nbsp;or&nbsp;run&nbsp;this&nbsp;command&nbsp;again&nbsp;to&nbsp;recheck&nbsp;the&nbsp;version.&nbsp;If&nbsp;you&nbsp;agree,&nbsp;or&nbsp;you&nbsp;want&nbsp;to&nbsp;recheck&nbsp;the&nbsp;format&nbsp;version,&nbsp;proceed&nbsp;by&nbsp;running&nbsp;this&nbsp;command&nbsp;again&nbsp;within&nbsp;20&nbsp;seconds."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Phase&nbsp;messages:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;For&nbsp;more&nbsp;information&nbsp;about&nbsp;the&nbsp;phases&nbsp;and&nbsp;their&nbsp;order,&nbsp;please&nbsp;visit&nbsp;the&nbsp;wiki.</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">phase:</a><br>
@@ -456,16 +469,16 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Getting&nbsp;all&nbsp;data&nbsp;from&nbsp;a&nbsp;scoreboard:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{scoreboard}&nbsp;-&nbsp;the&nbsp;scoreboard&nbsp;that's&nbsp;being&nbsp;reformatted&nbsp;(RIGHT,&nbsp;LEFT&nbsp;or&nbsp;HACK)</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">getting:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Getting&nbsp;all&nbsp;data&nbsp;from&nbsp;scoreboard&nbsp;{scoreboard}..."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#No&nbsp;data&nbsp;found&nbsp;in&nbsp;a&nbsp;scoreboard,&nbsp;skipping:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{scoreboard}&nbsp;-&nbsp;the&nbsp;scoreboard&nbsp;that's&nbsp;being&nbsp;reformatted&nbsp;(RIGHT,&nbsp;LEFT&nbsp;or&nbsp;HACK)</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">skipping:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Skipping&nbsp;scoreboard,&nbsp;nothing&nbsp;to&nbsp;reformat."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Reformatting&nbsp;scoreboard&nbsp;records:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{scoreboard}&nbsp;-&nbsp;the&nbsp;scoreboard&nbsp;that's&nbsp;being&nbsp;reformatted&nbsp;(RIGHT,&nbsp;LEFT&nbsp;or&nbsp;HACK)</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reformatting:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Reformatting&nbsp;scoreboard&nbsp;{scoreboard}..."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#No&nbsp;data&nbsp;found&nbsp;in&nbsp;a&nbsp;scoreboard,&nbsp;skipping:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{scoreboard}&nbsp;-&nbsp;the&nbsp;scoreboard&nbsp;that's&nbsp;being&nbsp;reformatted&nbsp;(RIGHT,&nbsp;LEFT&nbsp;or&nbsp;HACK)</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">skipping:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Skipping&nbsp;scoreboard,&nbsp;nothing&nbsp;to&nbsp;reformat."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Reformatting&nbsp;process&nbsp;was&nbsp;resumed&nbsp;(or&nbsp;trying&nbsp;again)&nbsp;after&nbsp;an&nbsp;error:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">resumed:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Reformatting&nbsp;resumed/trying&nbsp;again..."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#MySQL-sided&nbsp;phases&nbsp;(if&nbsp;using&nbsp;MySQL&nbsp;data&nbsp;storage):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database-sided&nbsp;phases&nbsp;(if&nbsp;using&nbsp;DATABASE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Recreating&nbsp;database&nbsp;table&nbsp;for&nbsp;a&nbsp;scoreboard:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Placeholders:&nbsp;{scoreboard}&nbsp;-&nbsp;the&nbsp;scoreboard&nbsp;that's&nbsp;being&nbsp;reformatted&nbsp;(RIGHT,&nbsp;LEFT&nbsp;or&nbsp;HACK)</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">recreatingTable:&nbsp;</a><a
@@ -486,8 +499,8 @@
             class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{write_percent}&nbsp;-&nbsp;indicates&nbsp;in&nbsp;percent&nbsp;how&nbsp;many&nbsp;records&nbsp;have&nbsp;been&nbsp;written&nbsp;against&nbsp;the&nbsp;total&nbsp;amount</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">message:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Writing&nbsp;data&nbsp;(records)...&nbsp;(&b{write_amount}&7/&b{write_total}&nbsp;&7-&nbsp;&b{write_percent}%&7)"</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#File-sided&nbsp;phases&nbsp;(if&nbsp;using&nbsp;YML&nbsp;data&nbsp;storage):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">yml:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#File-sided&nbsp;phases&nbsp;(if&nbsp;using&nbsp;FILE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">file:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Converting&nbsp;reformatted&nbsp;records&nbsp;into&nbsp;strings:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">converting:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
@@ -512,14 +525,14 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">finished:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Finished&nbsp;reformatting&nbsp;scoreboard&nbsp;{scoreboard}!"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Error&nbsp;messages:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">error:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#MySQL-sided&nbsp;errors:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">mysql:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;DATABASE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;lost:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">disconnected:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cConnection&nbsp;to&nbsp;the&nbsp;database&nbsp;has&nbsp;been&nbsp;lost.&nbsp;Reformatting&nbsp;failed&nbsp;(depends&nbsp;in&nbsp;which&nbsp;stage&nbsp;the&nbsp;process&nbsp;was)."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cConnection&nbsp;to&nbsp;the&nbsp;database&nbsp;has&nbsp;been&nbsp;lost."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred&nbsp;(error&nbsp;not&nbsp;caused&nbsp;by&nbsp;disconnection):</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">other:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;MySQL&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;database&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Post-error&nbsp;messages&nbsp;informing&nbsp;about&nbsp;the&nbsp;next&nbsp;steps:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">post:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#The&nbsp;process&nbsp;must&nbsp;be&nbsp;restarted:</a><br>
@@ -536,11 +549,11 @@
             class="yaml-comment">#INFO!&nbsp;If&nbsp;you&nbsp;get&nbsp;this&nbsp;message,&nbsp;please&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(restarting...),&nbsp;it&nbsp;will&nbsp;destroy&nbsp;all&nbsp;data.</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">retryWait:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cProcess&nbsp;failed&nbsp;at&nbsp;risky&nbsp;stage,&nbsp;plugin&nbsp;reload&nbsp;(or&nbsp;server&nbsp;restart)&nbsp;will&nbsp;destroy&nbsp;all&nbsp;data.&nbsp;We&nbsp;will&nbsp;try&nbsp;again&nbsp;in&nbsp;5&nbsp;seconds."</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#YML-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;YML&nbsp;data&nbsp;storage):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">yml:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#File-sided&nbsp;errors&nbsp;(if&nbsp;using&nbsp;FILE&nbsp;data&nbsp;storage):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">file:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#An&nbsp;error&nbsp;has&nbsp;occurred:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">error:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cAn&nbsp;YML&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&cA&nbsp;file&nbsp;error&nbsp;has&nbsp;occurred!&nbsp;Please&nbsp;see&nbsp;the&nbsp;console&nbsp;for&nbsp;more&nbsp;details."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Reformatting&nbsp;process&nbsp;finished:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">finished:&nbsp;</a><a class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&aFinished&nbsp;reformatting!"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
@@ -550,7 +563,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reload:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Started&nbsp;reloading:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reloading:&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Reloading,&nbsp;please&nbsp;wait&nbsp;(may&nbsp;take&nbsp;a&nbsp;while&nbsp;if&nbsp;using&nbsp;MySQL)..."</a><br>
+            class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Reloading,&nbsp;please&nbsp;wait&nbsp;(may&nbsp;take&nbsp;a&nbsp;while&nbsp;if&nbsp;using&nbsp;database)..."</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Finished&nbsp;reloading:</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reloaded:&nbsp;</a><a
             class="yaml-value yaml-string-value">"&7[&bCPS&7]&nbsp;&7Plugin&nbsp;successfully&nbsp;reloaded!&nbsp;&oPlease&nbsp;note&nbsp;that&nbsp;several&nbsp;configuration&nbsp;parts&nbsp;were&nbsp;not&nbsp;reloaded&nbsp;as&nbsp;they&nbsp;may&nbsp;cause&nbsp;many&nbsp;internal&nbsp;issues."</a><br>
@@ -702,18 +715,17 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a
             class="yaml-value yaml-string-value">"&b/cps&nbsp;scoreboard&nbsp;&#60;RIGHT|LEFT|HACK&#62;&nbsp;[page]&nbsp;&7-&nbsp;displays&nbsp;top&nbsp;players&nbsp;in&nbsp;a&nbsp;scoreboard&nbsp;on&nbsp;the&nbsp;specified&nbsp;page,&nbsp;or&nbsp;on&nbsp;the&nbsp;first&nbsp;page"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a
-            class="yaml-value yaml-string-value">"&b/cps&nbsp;copy&nbsp;&#60;RIGHT|LEFT|HACK&#62;&nbsp;&#60;YML|MYSQL&#62;&nbsp;&7-&nbsp;copies&nbsp;scoreboard&nbsp;to&nbsp;the&nbsp;specified&nbsp;storage&nbsp;(from&nbsp;opposite-type&nbsp;storage)"</a><br>
+            class="yaml-value yaml-string-value">"&b/cps&nbsp;copy&nbsp;&#60;RIGHT|LEFT|HACK&#62;&nbsp;&#60;FILE|DATABASE&#62;&nbsp;&7-&nbsp;copies&nbsp;scoreboard&nbsp;to&nbsp;the&nbsp;specified&nbsp;storage&nbsp;(from&nbsp;opposite-type&nbsp;storage)"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a
             class="yaml-value yaml-string-value">"&b/cps&nbsp;reformat&nbsp;&7-&nbsp;reformats&nbsp;all&nbsp;data&nbsp;in&nbsp;all&nbsp;scoreboards&nbsp;to&nbsp;the&nbsp;latest&nbsp;format"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"&b/cps&nbsp;reload&nbsp;&7-&nbsp;reloads&nbsp;the&nbsp;plugin"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"&b/cps&nbsp;help&nbsp;&7-&nbsp;shows&nbsp;this&nbsp;page"</a><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"&cFor&nbsp;detailed&nbsp;documentation,&nbsp;please&nbsp;see&nbsp;the&nbsp;wiki."</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"&cFor&nbsp;detailed&nbsp;documentation,&nbsp;see&nbsp;the&nbsp;wiki."</a><br>
         </code>
       </div>
     </div>
-
-    <!--davidcubesvk's YML to HTML converter-->
+    
     <div class="code-block expandable expandable-code">
       <div class="header">
         <p>scoreboard.yml</p>
@@ -739,9 +751,9 @@
           <a class="yaml-comment">#Data&nbsp;format&nbsp;version&nbsp;of&nbsp;each&nbsp;scoreboard:</a><br>
           <a class="yaml-comment">#NOTE!&nbsp;Do&nbsp;not&nbsp;change&nbsp;this,&nbsp;it&nbsp;may&nbsp;break&nbsp;plugin's&nbsp;functionality&nbsp;and&nbsp;damage&nbsp;stored&nbsp;data!</a><br>
           <a class="yaml-key">formatVersion:</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">RIGHT:&nbsp;</a><a class="yaml-value">25</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">LEFT:&nbsp;</a><a class="yaml-value">25</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">HACK:&nbsp;</a><a class="yaml-value">25</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">right:&nbsp;</a><a class="yaml-value">25</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">left:&nbsp;</a><a class="yaml-value">25</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">hack:&nbsp;</a><a class="yaml-value">25</a><br>
         </code>
       </div>
     </div>

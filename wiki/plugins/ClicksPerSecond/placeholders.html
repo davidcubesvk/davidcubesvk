@@ -91,10 +91,10 @@
     <h1 class="title" id="example">Example:</h1>
     <p>To get player's name and CPS achieved on the 1st place in left-mode scoreboard, we'd use these placeholders:</p>
     <ul>
-      <li><code>%cps_left_place_1_player_name%</code> - returns player's name associated with the record on the 1st place in left-mode scoreboard. We specify left scoreboard and place as
-        the data key. Then we use 1 as the data key itself (<code>&#60;value&#62;</code>) and <code>player_name</code> will return us what we want.</li>
-      <li><code>%cps_left_place_1_cps_int%</code> - returns player's CPS (in integer format) associated with the record on the 1st place in left-mode scoreboard. We do the same, except we
-        use <code>cps_int</code> instead of <code>player_name</code> because we want to request CPS.</li>
+      <li><code>%cps_left_place_1_player-name%</code> - returns player's name associated with the record on the 1st place in left-mode scoreboard. We specify left scoreboard and place as
+        the data key. Then we use 1 as the data key itself (<code>&#60;value&#62;</code>) and <code>player-name</code> will return us what we want.</li>
+      <li><code>%cps_left_place_1_cps-int%</code> - returns player's CPS (in integer format, decimal digits are thrown away, not rounded) associated with the record on the 1st place in left-mode scoreboard. We do the same, except we
+        use <code>cps-int</code> instead of <code>player-name</code> because we want to request CPS.</li>
     </ul>
   </div>
 </body>
