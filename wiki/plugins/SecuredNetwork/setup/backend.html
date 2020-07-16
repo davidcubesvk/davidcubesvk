@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/syntax.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/code.css">
+
+  <script src="../../../../script/footer.js"></script>
+  <script src="../../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - SecuredNetwork</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../../assets/graphics/public/plugins/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <p>SecuredNetwork v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../">Overview</a></div>
+      <div class="hoverable expandable expandable-navigation-item open current">
+        <div class="header">
+          <p class="title">Setup</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="proxy.html">Proxy server</a></div>
+          <div class="item currentItem"><a>Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Configuration</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="../configuration/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="../configuration/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../logging.html">Logging</a></div>
+      <div class="hoverable"><a href="../api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <p><strong>Setup SecuredNetwork plugin on your proxy server before reading this.</strong></p>
+    <!--Installation-->
+    <h1 class="title" id="step-1">1. Installation:</h1>
+    <p>Put the same SecuredNetwork.jar file as you put on your proxy server, into
+      the plugins folder of all your backend servers (which are connected to
+      the proxy server where SecuredNetwork is installed) and restart them.
+      Next steps will guide you through the configuration itself.</p>
+
+    <!--Connneting to the plugin on the proxy server-->
+    <h1 class="title" id="step-2">2. Connecting to SecuredNetwork on the proxy server:</h1>
+    <!--config.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code content">
+        <code>
+          <a class="yaml-comment">#Connection&nbsp;to&nbsp;SecuredNetwork&nbsp;on&nbsp;the&nbsp;proxy&nbsp;server:</a><br>
+          <a class="yaml-key">connection:</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Type&nbsp;of&nbsp;the&nbsp;connection&nbsp;(more&nbsp;and&nbsp;detailed&nbsp;info&nbsp;can&nbsp;be&nbsp;found&nbsp;on&nbsp;the&nbsp;wiki):</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;FILE:&nbsp;connection&nbsp;provided&nbsp;by&nbsp;data.yml&nbsp;file&nbsp;created&nbsp;in&nbsp;SecuredNetwork's&nbsp;data&nbsp;folder&nbsp;on&nbsp;the&nbsp;proxy</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;SOCKET:&nbsp;connection&nbsp;using&nbsp;sockets</a><br>
+          &nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;DATABASE:&nbsp;connection&nbsp;using&nbsp;a&nbsp;database</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">type:&nbsp;</a><a class="yaml-value">SOCKET</a><br>
+          &nbsp;&nbsp;...
+        </code>
+      </div>
+    </div>
+    <p>As already pointed out in proxy-side setup, SecuredNetwork plugins need to be connected. This step is just a copy of what we made in the plugin's setup on the proxy server.</p>
+    <p><strong>type:</strong> There we need to write the type of the connection, the same as in SecuredNetwork's <code>config.yml</code> on the proxy. See more info on <a href="proxy.html#step-2">proxy-side setup page</a>.</p>
+
+    <!--Connection configuration-->
+    <h1 class="title" id="step-3">3. Connection configuration:</h1>
+    <!--File-->
+    <h2 class="subtitle" id="step-3a">3A. File:</h2>
+    <!--config.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code content">
+        <code>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#File&nbsp;path&nbsp;(if&nbsp;type&nbsp;=&nbsp;FILE):</a><br>
+          &nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;You&nbsp;can&nbsp;use&nbsp;../&nbsp;strings&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;path&nbsp;to&nbsp;go&nbsp;one&nbsp;folder&nbsp;up&nbsp;(begins&nbsp;at&nbsp;folder&nbsp;where&nbsp;this&nbsp;plugin's&nbsp;.jar&nbsp;file&nbsp;is).</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">file-path:&nbsp;</a><a class="yaml-value yaml-string-value">"home/BungeeCord/plugins/SecuredNetwork/data.yml"</a><br>
+          &nbsp;&nbsp;...
+        </code>
+      </div>
+    </div>
+    <p>If using <code>FILE</code> connection type, we need to set the system path to the <code>data.yml</code> file located in the SecuredNetwork's plugin folder on the proxy.</p>
+    <p>Please mind following:</p>
+    <ul>
+      <li>
+        <p><strong>Path must be full system path</strong> - This means path must be <code>C:\abc\def\data.yml</code>, <code>home/abc/def/data.yml</code>, etc. (this doesn't apply if using <code>../</code> code)</p>
+      </li>
+      <li>
+        <p><strong>Parent folder <code>../</code> code is supported</strong> - At the beggining of the path we can specify <code>../</code> code which will go to the upper (parent) folder. If used, the route begins in <code>/plugins/</code> folder.
+          For example, we have SecuredNetwork (on a backend server) located in <code>home/backend/plugins/</code> and <code>data.yml</code> file on proxy in <code>home/BungeeCord/plugins/SecuredNetwork/data.yml</code>. As already metioned, we start
+          in
+          <code>home/backend/plugins/</code> folder.
+          If we use the first <code>../</code>, we would go from <code>home/backend/plugins/</code> to <code>home/backend/</code>. After that we use the second one, which would get us to the <code>home/</code> folder - folder
+          where the BungeeCord is. So add the rest path to the data.yml file <code>BungeeCord/plugins/SecuredNetwork/data.yml</code>. The final path should look like <code>../../BungeeCord/plugins/SecuredNetwork/data.yml</code>.</p>
+      </li>
+      <li>
+        <p><strong>Different OS, different file separator</strong> - If using Windows OS, please use <code>\\</code> file separator (example usage: <code>C:\\Desktop\\abc.yml</code>), if using an UNIX OS, please use <code>/</code> (example
+          usage: <code>home/abc/def.yml</code>).
+          Also, <code>\</code> file separator should be working, but it's not guaranteed to work everywhere.</p>
+      </li>
+    </ul>
+    <!--Socket-->
+    <h2 class="subtitle" id="step-3b">3B. Socket:</h2>
+    <!--config.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code content">
+        <code>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;<a class="yaml-comment">#Socket&nbsp;connection&nbsp;(if&nbsp;type&nbsp;=&nbsp;SOCKET):</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">socket:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#IP&nbsp;of&nbsp;the&nbsp;proxy&nbsp;server:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">ip:&nbsp;</a><a class="yaml-value yaml-string-value">"127.0.0.1"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Port&nbsp;of&nbsp;the&nbsp;socket&nbsp;server&nbsp;(as&nbsp;set&nbsp;in&nbsp;SecuredNetwork's&nbsp;config.yml&nbsp;on&nbsp;the&nbsp;proxy):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value">4444</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Timeout&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">timeout:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Delay&nbsp;between&nbsp;automatic&nbsp;connection&nbsp;checks&nbsp;(in&nbsp;ticks):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">check-connection:&nbsp;</a><a class="yaml-value">20</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(internet&nbsp;connection&nbsp;failure&nbsp;etc.),&nbsp;wait&nbsp;for&nbsp;this&nbsp;amount&nbsp;of&nbsp;seconds&nbsp;before&nbsp;connecting&nbsp;again:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
+          &nbsp;&nbsp;...
+        </code>
+      </div>
+    </div>
+    <p>If using <code>SOCKET</code> connection type, we need to configure following things:</p>
+    <div class="no-margin">
+      <p><strong>ip:</strong> The IP on which is the proxy server hosted, or <code>127.0.0.1</code> if hosted locally (on the same machine).</p>
+      <p><strong>port:</strong> The port on which is SecuredNetwork's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socket-port</code> in SecuredNetwork's configuration file on the proxy; more info
+        <a href="proxy.html#step-3a">here</a>.</p>
+      <p><strong>timeout:</strong> Timeout configuration:</p>
+      <ul>
+        <li><strong>check-connection:</strong> Timeout in ticks between each connection check.</li>
+        <li><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</li>
+      </ul>
+    </div>
+    <!--Database-->
+    <h2 class="subtitle" id="step-3c">3C. Database:</h2>
+    <!--config.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code content">
+        <code>
+          &nbsp;&nbsp;<a class="yaml-comment">#Database&nbsp;connection&nbsp;(if&nbsp;type&nbsp;=&nbsp;DATABASE):</a><br>
+          &nbsp;&nbsp;<a class="yaml-key">database:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Host:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">host:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Port:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">port:&nbsp;</a><a class="yaml-value">3306</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Username:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">username:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Password:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">password:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Database:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">database:&nbsp;</a><a class="yaml-value yaml-string-value">""</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Table:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">table:&nbsp;</a><a class="yaml-value yaml-string-value">"securednetwork"</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#SSL&nbsp;mode&nbsp;(encrypted&nbsp;communication):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;DISABLED:&nbsp;establish&nbsp;unencrypted&nbsp;connections</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#-&nbsp;PREFERRED:&nbsp;establish&nbsp;encrypted&nbsp;connections&nbsp;if&nbsp;the&nbsp;server&nbsp;enabled&nbsp;them&nbsp;(otherwise,&nbsp;unencrypted&nbsp;connections&nbsp;will&nbsp;be&nbsp;established)</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#-&nbsp;REQUIRED:&nbsp;require&nbsp;encrypted&nbsp;connections</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO:&nbsp;All&nbsp;modes&nbsp;all&nbsp;listed&nbsp;at&nbsp;https://dev.database.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html#sslMode.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">ssl-mode:&nbsp;</a><a class="yaml-value">PREFERRED</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Timeout&nbsp;configuration:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">timeout:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#Time&nbsp;for&nbsp;the&nbsp;plugin&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;database&nbsp;server&nbsp;until&nbsp;the&nbsp;connection&nbsp;request&nbsp;times&nbsp;out&nbsp;(in&nbsp;milliseconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;You&nbsp;can&nbsp;(should)&nbsp;adjust&nbsp;this&nbsp;by&nbsp;the&nbsp;speed&nbsp;of&nbsp;your&nbsp;database&nbsp;(connection).&nbsp;Set&nbsp;to&nbsp;0&nbsp;for&nbsp;no&nbsp;timeout.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">connect:&nbsp;</a><a class="yaml-value">2000</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Time&nbsp;for&nbsp;each&nbsp;operation&nbsp;to&nbsp;finish&nbsp;until&nbsp;it&nbsp;times&nbsp;out&nbsp;(in&nbsp;milliseconds):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;You&nbsp;can&nbsp;(should)&nbsp;adjust&nbsp;this&nbsp;by&nbsp;the&nbsp;speed&nbsp;of&nbsp;your&nbsp;database&nbsp;(connection).&nbsp;Set&nbsp;to&nbsp;0&nbsp;for&nbsp;no&nbsp;timeout.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">socket:&nbsp;</a><a class="yaml-value">2000</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#If&nbsp;connection&nbsp;has&nbsp;been&nbsp;unexpectedly&nbsp;closed&nbsp;(internet&nbsp;connection&nbsp;failure&nbsp;etc.),&nbsp;wait&nbsp;for&nbsp;this&nbsp;amount&nbsp;of&nbsp;seconds&nbsp;before&nbsp;connecting&nbsp;again:</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">reconnect:&nbsp;</a><a class="yaml-value">3</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Waiting&nbsp;timeout&nbsp;before&nbsp;reading&nbsp;from&nbsp;the&nbsp;database&nbsp;when&nbsp;player&nbsp;joins&nbsp;the&nbsp;server&nbsp;(in&nbsp;milliseconds).</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;If&nbsp;you&nbsp;have&nbsp;trouble&nbsp;connecting,&nbsp;this&nbsp;may&nbsp;be&nbsp;the&nbsp;solution.&nbsp;Value&nbsp;should&nbsp;be&nbsp;a&nbsp;bit&nbsp;higher&nbsp;than&nbsp;the&nbsp;time&nbsp;database</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insert&nbsp;operation&nbsp;(when&nbsp;the&nbsp;player&nbsp;joins&nbsp;the&nbsp;network)&nbsp;run&nbsp;by&nbsp;SecuredNetwork&nbsp;takes.&nbsp;Please&nbsp;read&nbsp;the&nbsp;wiki&nbsp;for&nbsp;more</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;information.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">read:&nbsp;</a><a class="yaml-value">0</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Pool&nbsp;size&nbsp;for&nbsp;reading&nbsp;operations&nbsp;(when&nbsp;a&nbsp;player&nbsp;joins):</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#INFO!&nbsp;Statements&nbsp;send&nbsp;requests&nbsp;to&nbsp;the&nbsp;database&nbsp;and&nbsp;process&nbsp;what&nbsp;comes&nbsp;in&nbsp;the&nbsp;return.&nbsp;The&nbsp;sending&nbsp;process&nbsp;of&nbsp;such&nbsp;a&nbsp;statement</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includes&nbsp;compiling&nbsp;of&nbsp;it's&nbsp;request,&nbsp;which&nbsp;takes&nbsp;some&nbsp;time.&nbsp;Once&nbsp;the&nbsp;request&nbsp;is&nbsp;compiled,&nbsp;it&nbsp;can&nbsp;be&nbsp;sent&nbsp;immediately.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;advantage&nbsp;of&nbsp;this&nbsp;is&nbsp;that&nbsp;statements&nbsp;can&nbsp;be&nbsp;reused,&nbsp;so&nbsp;there's&nbsp;a&nbsp;statement&nbsp;pool.&nbsp;This&nbsp;,,pool"&nbsp;contains&nbsp;these&nbsp;compiled</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statements.&nbsp;A&nbsp;statement&nbsp;is&nbsp;taken&nbsp;from&nbsp;the&nbsp;pool&nbsp;when&nbsp;a&nbsp;operation&nbsp;needs&nbsp;to&nbsp;be&nbsp;executed,&nbsp;operation&nbsp;finishes&nbsp;and&nbsp;then&nbsp;it's</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returned&nbsp;to&nbsp;be&nbsp;reused.&nbsp;That's&nbsp;because&nbsp;one&nbsp;statement&nbsp;can't&nbsp;be&nbsp;used&nbsp;by&nbsp;more&nbsp;than&nbsp;1&nbsp;caller&nbsp;at&nbsp;the&nbsp;same&nbsp;time.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;time&nbsp;player&nbsp;joins&nbsp;the&nbsp;server,&nbsp;one&nbsp;statement&nbsp;operation&nbsp;is&nbsp;needed.&nbsp;You&nbsp;should&nbsp;adjust&nbsp;the&nbsp;values&nbsp;below</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;approximately&nbsp;how&nbsp;many&nbsp;player's&nbsp;join&nbsp;your&nbsp;server&nbsp;at&nbsp;the&nbsp;same&nbsp;time&nbsp;and&nbsp;how&nbsp;long&nbsp;one&nbsp;operation&nbsp;takes.&nbsp;If&nbsp;no&nbsp;statement</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;available&nbsp;in&nbsp;the&nbsp;pool&nbsp;(all&nbsp;of&nbsp;them&nbsp;are&nbsp;in&nbsp;use),&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;problem,&nbsp;just&nbsp;the&nbsp;statement&nbsp;needs&nbsp;to&nbsp;be&nbsp;compiled,</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;make&nbsp;a&nbsp;latency&nbsp;of&nbsp;some&nbsp;milliseconds.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#NOTE!&nbsp;Each&nbsp;statement&nbsp;in&nbsp;the&nbsp;pool&nbsp;takes&nbsp;memory&nbsp;as&nbsp;it&nbsp;is&nbsp;compiled.&nbsp;Please&nbsp;adjust&nbsp;the&nbsp;value&nbsp;by&nbsp;the&nbsp;recommendations&nbsp;given&nbsp;above,</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a
+            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;also&nbsp;think&nbsp;about&nbsp;how&nbsp;much&nbsp;RAM&nbsp;do&nbsp;you&nbsp;have.&nbsp;You&nbsp;do&nbsp;not&nbsp;have&nbsp;to&nbsp;fill&nbsp;your&nbsp;RAM&nbsp;completely,&nbsp;adjust&nbsp;the&nbsp;value&nbsp;perfectly.</a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">read-statement-pool-size:&nbsp;</a><a class="yaml-value">10</a><br>
+          &nbsp;&nbsp;...
+        </code>
+      </div>
+    </div>
+    <p>If using <code>DATABASE</code> connection type, we need to configure everything needed for a database connection.
+      Already described <a href="proxy.html#step-3b">here</a>. Please note that both plugins must be connected to the same database and table!</p>
+
+    <!--Finish-->
+    <h1 class="title" id="step-4">4. Restart:</h1>
+    <p>If you completed all steps above and have SecuredNetwork set up everywhere, restart all servers.</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

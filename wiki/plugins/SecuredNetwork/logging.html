@@ -10,15 +10,15 @@
   <script src="../../../script/footer.js"></script>
   <script src="../../../script/wiki/versionGetter.js"></script>
 
-  <link rel="icon" href="../../../assets/graphics/local/icons/website_icon.png" type="png">
-  <title>Wiki - IPWhiteList</title>
+  <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - SecuredNetwork</title>
 </head>
 
 <!--Navigation-->
 <header>
   <div class="navigation">
     <div class="left">
-      <img src="../../../assets/graphics/local/icons/website_icon.png" class="img">
+      <img src="../../../assets/graphics/local/icon.png" class="img">
       <p>Davidcubesvk</p>
     </div>
 
@@ -28,21 +28,37 @@
       <li class="item current"><a>Wiki</a></li>
       <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-    </div>
+  </div>
 </header>
 
 <body>
   <div class="wiki-side-bar">
     <div class="header-box">
-      <img src="../../../assets/graphics/local/icons/plugins/ip-whitelist.png" alt="IPWhiteList's logo">
-      <p>IPWhiteList v<a id="plugin-version"></a></p>
+      <img src="../../../assets/graphics/public/plugins/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <p>SecuredNetwork v<a id="plugin-version"></a></p>
     </div>
     <!--Wiki navigation-->
     <div class="wiki-navigation">
-      <div class="hoverable"><a href="../IPWhiteList">Overview</a></div>
-      <div class="hoverable"><a href="setup.html">Setup</a></div>
-      <div class="hoverable"><a href="commands.html">Commands</a></div>
-      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="../SecuredNetwork/">Overview</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Setup</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="setup/proxy.html">Proxy</a></div>
+          <div class="child"><a href="setup/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Configuration</p>
+        </div>
+        <div class="content">
+          <div class="child"><a href="configuration/proxy.html">Proxy</a></div>
+          <div class="child"><a href="configuration/backend.html">Backend server</a></div>
+        </div>
+      </div>
       <div class="current"><a>Logging</a></div>
       <div class="hoverable"><a href="api.html">API</a></div>
     </div>
@@ -51,8 +67,8 @@
   <div class="wiki-section">
     <!--Basic information-->
     <h1 class="title" id="basic-information">Basic information:</h1>
-    <p>IPWhiteList has logging system built-in for easier troubleshooting from both
-      user's and developer's side. Customization is available in IPWhiteList's config.yml
+    <p>SecuredNetwork has logging system built-in for easier troubleshooting from both
+      user's and developer's side. Customization is available in SecuredNetwork's config.yml
       file. It is recommended to have logs disabled if you don't experience any problems with the plugin
       to save disk space.</p>
     <!--Log files-->
@@ -61,21 +77,21 @@
       till it's disabled. All log files are saved in folder named ,,logs" located in plugin's
       folder and are saved in format <code>yyyy-MM-dd_HH:mm:ss.log</code> represeting date and time
       of the file creation. All entries in log file are saved in format:</p>
-      <div class="code-block">
-        <div class="header">
-          <p>Log file entry format</p>
-        </div>
-        <div class="code">
-          <code>[yyyy-MM-dd HH:mm:ss.SSS] LEVEL: [PREFIX] message</code>
-        </div>
+    <div class="code-block">
+      <div class="header">
+        <p>Log file entry format</p>
       </div>
-      <p>Please continue reading the wiki for more information about levels and prefixes.</p>
+      <div class="code">
+        <code>[yyyy-MM-dd HH:mm:ss.SSS] LEVEL: [PREFIX] message</code>
+      </div>
+    </div>
+    <p>Please continue reading the wiki for more information about levels and prefixes.</p>
     <!--Log entry parts-->
-    <h1 class="title" id="log-entry">Log entry parts:</h1>
+    <h1 class="title" id="entry">Log entry parts:</h1>
     <!--Timestamp-->
-    <h2 class="subtitle" id="log-entry-timestamp">Timestamp:</h2>
+    <h2 class="subtitle" id="entry-timestamp">Timestamp:</h2>
     <p>Log entry timestamp is formatted into following format: <code>[yyyy-MM-dd HH:mm:ss.SSS]</code>. The following table
-    describes each replacement:</p>
+      describes each replacement:</p>
     <table class="wiki-table center-table">
       <tr>
         <th>Replacement</th>
@@ -112,7 +128,7 @@
     </table>
 
     <!--Levels-->
-    <h2 class="subtitle" id="log-entry-levels">Levels:</h2>
+    <h2 class="subtitle" id="entry-levels">Levels:</h2>
     <p>Information in log files are logged on 3 different levels:</p>
     <table class="wiki-table">
       <tr>
@@ -133,7 +149,7 @@
       </tr>
     </table>
     <!--Prefixes-->
-    <h2 class="subtitle" id="log-entry-prefixes">Prefixes:</h2>
+    <h2 class="subtitle" id="entry-prefixes">Prefixes:</h2>
     <p>Every logged message has it's own prefix representing the source of the message:</p>
     <table class="wiki-table">
       <tr>
@@ -145,16 +161,16 @@
         <td>General message (example: ,,Registering listeners and commands.").</td>
       </tr>
       <tr>
-        <td>YML</td>
-        <td>Messages related to <code>YML</code> connection type.</td>
+        <td>FILE</td>
+        <td>Messages related to the file connection type.</td>
       </tr>
       <tr>
         <td>SOCKET</td>
-        <td>Messages related to <code>SOCKET</code> connection type.</td>
+        <td>Messages related to the socket connection type.</td>
       </tr>
       <tr>
-        <td>MYSQL</td>
-        <td>Messages related to <code>MYSQL</code> connection type.</td>
+        <td>DATABASE</td>
+        <td>Messages related to the database connection type.</td>
       </tr>
       <tr>
         <td>CONNECTOR</td>
@@ -166,33 +182,20 @@
       </tr>
       <tr>
         <td>API</td>
-        <td>Messages related to plugin's API (example: ,,Getting BungeeCord's port.").</td>
+        <td>Messages related to plugin's API. Used only if on the proxy server; the API is not available if on a backend server.</td>
+      </tr>
+      <tr>
+        <td>WHITELIST</td>
+        <td>Messages related to the IP whitelist. Used only if on the proxy server; the whitelist is not available if on a backend server.</td>
       </tr>
     </table>
     <!--Comparision to console-->
     <h1 class="title" id="comparision">Comparision to console:</h1>
     <p>The most important messages are also printed into the console.
-      However, if you want to find something, it always better to look into IPWhiteList's log files,
-      as they are more organised.
-      Example:</p>
-      <div class="code-block">
-        <div class="header">
-          <p>Log example from console</p>
-        </div>
-        <div class="code">
-          <code>14:01:51 [INFO] [IPWhiteList] ServerSocket started on port 4444.</code>
-        </div>
-      </div>
-      <div class="code-block">
-        <div class="header">
-          <p>Log example from IPWhiteList's log file</p>
-        </div>
-        <div class="code">
-          <code>[2020-03-05 14:01:51.182] INFO: [SOCKET] Started on port 4444.</code>
-        </div>
-      </div>
+      However, if you want to find something, it always better to look into SecuredNetwork's log files,
+      as they are more organised, thanks to the prefixes and detailed.</p>
     <p>Also, to keep console clear and to prevent error floods, no error stacktraces are logged into the console.
-    Since this fact, if you find any problem, please look into log files.</p>
+      Since this fact, if you find any problem, please look into the log file.</p>
   </div>
 </body>
 

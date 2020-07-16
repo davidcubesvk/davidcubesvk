@@ -31,7 +31,13 @@ h3 {
   font-weight: normal;
 }
 
+img {
+  /*Size*/
+  max-width: 100%;
+}
+
 div.vertical-align-parent {
+  /*Position*/
   position: relative;
 }
 
