@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/code.css">
+
+  <script src="../../../../script/footer.js"></script>
+  <script src="../../../../script/wiki/version_get.js"></script>
+  <script src="../../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - SecuredNetwork</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../../assets/graphics/public/plugin/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <p>SecuredNetwork v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../">Overview</a></div>
+      <div class="hoverable expandable expandable-navigation-item open current">
+        <div class="header">
+          <p class="title">Setup</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="proxy.html">Proxy server</a></div>
+          <div class="item currentItem"><a>Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Configuration</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="../configuration/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="../configuration/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../logging.html">Logging</a></div>
+      <div class="hoverable"><a href="../api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <p><strong>Setup SecuredNetwork plugin on your proxy server before reading this.</strong></p>
+    <!--Installation-->
+    <h1 class="title" id="step-1">1. Installation:</h1>
+    <p>Put the same SecuredNetwork.jar file as you put on your proxy server, into
+      the plugins folder of all your backend servers (which are connected to
+      the proxy server where SecuredNetwork is installed) and restart them.
+      Next steps will guide you through the configuration itself.</p>
+
+    <!--Connneting to the plugin on the proxy server-->
+    <h1 class="title" id="step-2">2. Connecting to SecuredNetwork on the proxy server:</h1>
+    <!--Reference-->
+    <p><i>This step refers to configuration at <code>connection.type</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>As already pointed out in proxy-side setup, SecuredNetwork plugins need to be connected. This step is just a copy of what we made in the plugin's setup on the proxy server.</p>
+    <p><strong>type:</strong> There we need to write the type of the connection, the same as in SecuredNetwork's <code>config.yml</code> on the proxy. See more info on <a href="proxy.html#step-2">proxy-side setup page</a>.</p>
+
+    <!--Connection configuration-->
+    <h1 class="title" id="step-3">3. Connection configuration:</h1>
+    <!--File-->
+    <h2 class="subtitle" id="step-3a">3A. File:</h2>
+    <!--Reference-->
+    <p><i>This step refers to configuration at <code>connection.file-path</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>If using <code>FILE</code> connection type, we need to set the system path to the <code>data.yml</code> file located in the SecuredNetwork's plugin folder on the proxy.</p>
+    <p>Please mind following:</p>
+    <ul>
+      <li>
+        <p><strong>Path must be full system path</strong> - This means path must be <code>C:\abc\def\data.yml</code>, <code>home/abc/def/data.yml</code>, etc. (this doesn't apply if using <code>../</code> code)</p>
+      </li>
+      <li>
+        <p><strong>Parent folder <code>../</code> code is supported</strong> - At the beggining of the path we can specify <code>../</code> code which will go to the upper (parent) folder. If used, the route begins in <code>/plugins/</code> folder.
+          For example, we have SecuredNetwork (on a backend server) located in <code>home/backend/plugins/</code> and <code>data.yml</code> file on proxy in <code>home/BungeeCord/plugins/SecuredNetwork/data.yml</code>. As already metioned, we start
+          in
+          <code>home/backend/plugins/</code> folder.
+          If we use the first <code>../</code>, we would go from <code>home/backend/plugins/</code> to <code>home/backend/</code>. After that we use the second one, which would get us to the <code>home/</code> folder - folder
+          where the BungeeCord is. So add the rest path to the data.yml file <code>BungeeCord/plugins/SecuredNetwork/data.yml</code>. The final path should look like <code>../../BungeeCord/plugins/SecuredNetwork/data.yml</code>.</p>
+      </li>
+      <li>
+        <p><strong>Different OS, different file separator</strong> - If using Windows OS, please use <code>\\</code> file separator (example usage: <code>C:\\Desktop\\abc.yml</code>), if using an UNIX OS, please use <code>/</code> (example
+          usage: <code>home/abc/def.yml</code>).
+          Also, <code>\</code> file separator should be working, but it's not guaranteed to work everywhere.</p>
+      </li>
+    </ul>
+    <!--Socket-->
+    <h2 class="subtitle" id="step-3b">3B. Socket:</h2>
+    <!--Reference-->
+    <p><i>This step refers to configuration section at <code>connection.socket</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>If using <code>SOCKET</code> connection type, we need to configure following things:</p>
+    <div class="no-margin">
+      <p><strong>ip:</strong> The IP on which is the proxy server hosted, or <code>127.0.0.1</code> if hosted locally (on the same machine).</p>
+      <p><strong>port:</strong> The port on which is SecuredNetwork's socket server hosted on, by default <code>4444</code>. Must be the same as <code>socket-port</code> in SecuredNetwork's configuration file on the proxy; more info
+        <a href="proxy.html#step-3a">here</a>.</p>
+      <p><strong>timeout:</strong> Timeout configuration:</p>
+      <ul>
+        <li><strong>check-connection:</strong> Timeout in ticks between each connection check.</li>
+        <li><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</li>
+      </ul>
+    </div>
+    <!--Database-->
+    <h2 class="subtitle" id="step-3c">3C. Database:</h2>
+    <!--Reference-->
+    <p><i>This step refers to configuration section at <code>connection.database</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>If using <code>DATABASE</code> connection type, we need to configure everything needed for a database connection.
+      Main part is already described <a href="proxy.html#step-3b">here</a>. Please note that both plugins must be connected to the same database and table!</p>
+    <p>Now, let's cover what's not covered there:</p>
+    <p><strong>timeout.read:</strong> The timeout in milliseconds, to wait before reading from the database when a player joins the backend server. When a player joins
+      your network, at first SecuredNetwork on the proxy does it's database operation as proxy's login event is fired earlier than backend's one. Then, the plugin on your backend server
+      reads from the database. It must be guaranteed that backend-side reads from the database after the database operation from proxy's side is finished. Therefore, if you can't join,
+      this may be the problem. These value should be set to approximately how long the proxy-side writing database operation takes (see the delay between processing and finished messages).</p>
+    <p><strong>read-statement-pool-size:</strong> The pool size for reading operations (when a player joins the backend server). Statement pools are described on SecuredNetwork's setup page for proxy.</p>
+
+    <!--Finish-->
+    <h1 class="title" id="step-4">4. Restart:</h1>
+    <p>If you completed all steps above and have SecuredNetwork set up everywhere, restart all servers.</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

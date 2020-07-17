@@ -5,11 +5,10 @@
   <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
 
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
   <script src="../../../script/wiki/spoiler.js"></script>
 
   <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
@@ -36,7 +35,7 @@
 <body>
   <div class="wiki-side-bar">
     <div class="header-box">
-      <img src="../../../assets/graphics/public/plugins/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <img src="../../../assets/graphics/public/plugin/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
       <p>SecuredNetwork v<a id="plugin-version"></a></p>
     </div>
     <!--Wiki navigation-->
@@ -47,8 +46,8 @@
           <p class="title">Setup</p>
         </div>
         <div class="content">
-          <div class="child"><a href="setup/proxy.html">Proxy</a></div>
-          <div class="child"><a href="setup/backend.html">Backend server</a></div>
+          <div class="item"><a href="setup/proxy.html">Proxy</a></div>
+          <div class="item"><a href="setup/backend.html">Backend server</a></div>
         </div>
       </div>
       <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
@@ -57,49 +56,17 @@
           <p class="title">Configuration</p>
         </div>
         <div class="content">
-          <div class="child"><a href="configuration/proxy.html">Proxy</a></div>
-          <div class="child"><a href="configuration/backend.html">Backend server</a></div>
+          <div class="item"><a href="configuration/proxy.html">Proxy</a></div>
+          <div class="item"><a href="configuration/backend.html">Backend server</a></div>
         </div>
       </div>
-      <div class="current"><a>Logging</a></div>
-      <div class="hoverable"><a href="api.html">API</a></div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+      <div class="current"><a>API</a></div>
     </div>
   </div>
 
   <div class="wiki-section">
-    <p> <strong>Please note that the API is available only if using SecuredNetwork's API on the proxy.</strong></p>
-    <h1 class="title" id="how-to-use">How to use:</h1>
-    <ul>
-      <li>Add SecuredNetwork-0.0.jar into project sources.</li>
-      <li>Add depend or softdepend for the SecuredNetwork plugin into your plugin's plugin.yml:<br>
-        <div class="code-block">
-          <div class="header">
-            <p>Adding depend or softdepend to your plugin.yml</p>
-          </div>
-          <div class="code">
-            <code>
-              <a class="yaml-key">depend:&nbsp;</a><a class="yaml-value">[SecuredNetwork]</a><br>
-              OR<br>
-              <a class="yaml-key">softdepend:&nbsp;</a><a class="yaml-value">[SecuredNetwork]</a><br>
-            </code>
-          </div>
-        </div>
-      </li>
-      <li>Get the API class:<br>
-        <div class="code-block">
-          <div class="header">
-            <p>Getting the API class</p>
-          </div>
-          <div class="code">
-            <code>
-              SecuredNetworkAPI.getInstance();
-            </code>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <h1 class="title" id="api-classes">API classes:</h1>
+    <p><strong>Please note that the API is available only if using SecuredNetwork's API on the proxy.</strong></p>
     <p>Please, contact me for the documentation.</p>
   </div>
 </body>

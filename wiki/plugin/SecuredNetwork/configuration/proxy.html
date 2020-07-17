@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../../style/css/wiki/code.css">
+  <link rel="stylesheet" type="text/css" href="../../../../assets/highlighter/prism.css">
+
+  <script src="../../../../script/footer.js"></script>
+  <script src="../../../../script/wiki/version_get.js"></script>
+  <script src="../../../../script/wiki/spoiler.js"></script>
+  <script src="../../../../assets/highlighter/prism.js"></script>
+  <script src="../../../../script/wiki/highlighter_spacing.js"></script>
+
+  <link rel="icon" href="../../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - SecuredNetwork</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../../assets/graphics/public/plugin/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <p>SecuredNetwork v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../">Overview</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Setup</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="../setup/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="../setup/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable expandable expandable-navigation-item open current">
+        <div class="header">
+          <p class="title">Configuration</p>
+        </div>
+        <div class="content">
+          <div class="item currentItem"><a>Proxy server</a></div>
+          <div class="item"><a href="backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="../logging.html">Logging</a></div>
+      <div class="hoverable"><a href="../api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--config.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>config.yml</p>
+      </div>
+      <div class="code content">
+        <pre data-src="../../../../assets/config/plugin/SecuredNetwork/proxy_config.yml" class="language-yaml line-numbers"></pre>
+      </div>
+    </div>
+
+    <!--data.yml-->
+    <div class="code-block expandable expandable-code">
+      <div class="header">
+        <p>data.yml</p>
+      </div>
+      <div class="code content">
+        <pre data-src="../../../../assets/config/plugin/SecuredNetwork/proxy_data.yml" class="language-yaml line-numbers"></pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - ClicksPerSecond</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../assets/graphics/public/plugin/ClicksPerSecond/icon.png" alt="ClicksPerSecond's logo">
+      <p>ClicksPerSecond v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../ClicksPerSecond">Overview</a></div>
+      <div class="current"><a>Setup</a></div>
+      <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable"><a href="configuration.html">Configuration</a></div>
+      <div class="hoverable"><a href="actions.html">Actions</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Data operations</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="data-operations/copy.html">Copying</a></div>
+          <div class="item"><a href="data-operations/reformat.html">Reformatting</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Installation-->
+    <h1 class="title" id="step-1">1. Installation:</h1>
+    <p>Download the latest version of the plugin available from the official plugin page on SpigotMC.
+      If not installed, download the required dependency
+      <a href="https://www.spigotmc.org/resources/protocollib.1997/" target="_blank">ProtocolLib</a>, too.
+      Put the .jar file(s) into the plugins folder of your Spigot server and restart it.
+      This plugin is drag-and-drop, so after finished installation it is ready to use. However, you
+      may want to continue reading.</p>
+
+    <h1 class="title" id="step-2">2. Choosing storage type:</h1>
+    <!--Reference-->
+    <p><i>This step refers to configuration at <code>dataStorage</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>Test scoreboards need to be saved somewhere. You can choose between 2 options:</p>
+    <ul>
+      <li>
+        <p><code>FILE</code> - plugin saves scoreboards inside the <code>scoreboard.yml</code> file generated
+          in plugin's folder.</p>
+      </li>
+      <li>
+        <p><code>DATABASE</code> - plugin saves scoreboards inside a database.</p>
+      </li>
+    </ul>
+
+    <!--Comparision-->
+    <h2 class="subtitle" id="step-2-comparision">Comparision:</h2>
+    <p>Here are pros and cons of each storage type:</p>
+    <table class="wiki-table">
+      <tr>
+        <th>Storage type</th>
+        <th>Pros (+)</th>
+        <th>Cons (-)</th>
+      </tr>
+      <tr>
+        <td><code>FILE</code></td>
+        <td>Reliable, suitable for networks with only one server with ClicksPerSecond plugin.</td>
+        <td>May be slow (does not affect perfomance in case of low refresh speed).</td>
+      </tr>
+      <tr>
+        <td><code>DATABASE</code></td>
+        <td>Fast, reliable, can use SSL, easy and familiar to set up, database is standard for many servers.
+          Supports synchronization across multiple ClicksPerSecond plugins.</td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <!--Database setup-->
+    <h1 class="title" id="step-3">3. Setting up a database connection:</h1>
+    <!--Reference-->
+    <p><i>This step refers to configuration section at <code>dataStorage</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
+    <p>If we chose <code>DATABASE</code> storage type, we need to configure everything needed for a connection.</p>
+    <div class="no-margin">
+      <p><strong>host:</strong> IP of the database host.</p>
+      <p><strong>port:</strong> Port on which is the database hosted (usually <code>3306</code>).</p>
+      <p><strong>username:</strong> Username to connect with to the database.</p>
+      <p><strong>password:</strong> Password for the username.</p>
+      <p><strong>database:</strong> Name of the database to use.</p>
+      <p><strong>sslMode:</strong> Indicates which connections should the driver (plugin) create to the server (more options are shown <a
+          href="https://dev.database.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html#sslMode" target="_blank">here</a>):</p>
+      <ul>
+        <li><code>DISABLED</code> - establish unencrypted connections,</li>
+        <li><code>PREFERRED</code> - establish encrypted connections if the server enabled them, otherwise use unencrypted connections,</li>
+        <li><code>DISABLED</code> - establish encrypted connections, if not enabled by the server, do not connect.</li>
+      </ul>
+      <p><strong>timeout:</strong> Timeout configuration:
+        <ul>
+          <li><strong>connect:</strong> Time in milliseconds for the plugin to establish a connection to the database, until the request times out.</li>
+          <li><strong>socket:</strong> Time in milliseconds for any operation to finish, until it becomes timed out.</li>
+          <li><strong>reconnect:</strong> Delay in seconds between reconnecting attempts, when connection unexpectedly failed (or initially failed to connect) and trying to connect again. Set to <code>0</code> for instant reconnecting.</li>
+        </ul>
+        <p><strong>table:</strong> Tables to be used by ClicksPerSecond for storing data of each scoreboard. Do not create the specified tables! The plugin will create it by itself with needed columns.</p>
+    </div>
+    <p>If using a database to store data, synchronization across multiple ClicksPerSecond plugins is supported.
+      Simply, if you have more than one server in your network that uses this plugin, connect them to the same database (and tables)
+      and all plugin instances will synchronize all data.</p>
+
+    <!--If upgrading from an older version of the plugin-->
+    <h1 class="title" id="step-4">4. Upgrading from an older version of the plugin?</h1>
+    <p>When ClicksPerSecond plugin enables, it checks for data format version. As of plugin version 2.5, stored data have changed,
+      <code>scoreboard.yml</code> file formatting and database table structure has changed. If ClicksPerSecond plugin detects an outdated
+      format version, it will lock all operations (commands, CPS-tests...) except the reformat and reload command, until you use <code>/cps reformat</code>
+      and the operation finishes. Please see the <a href="data-operations/reformat.html">reformatting page</a> for more information.</p>
+    <p><strong>If you are using a database to store scoreboards,</strong> set table name for right scoreboard to <code>cps_right</code>,
+      left to <code>cps_left</code> and for hack scoreboad to <code>cps_hack</code>. In older versions table names weren't configurable,
+      names were fixed in-code like that. You can get rid of these table names after reformatting, by copying all data to the file and then
+      back to desired database tables.</p>
+    <!--Finish-->
+    <h1 class="title" id="step-5">5. Restart:</h1>
+    <p>Restart the server. Pretty short setup instructions right? Have fun competing in who has higher CPS!</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

@@ -5,12 +5,14 @@
   <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/highlighter/prism.css">
 
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
   <script src="../../../script/wiki/spoiler.js"></script>
+  <script src="../../../assets/highlighter/prism.js"></script>
+  <script src="../../../script/wiki/highlighter_spacing.js"></script>
 
   <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
   <title>Wiki - ClicksPerSecond</title>
@@ -36,7 +38,7 @@
 <body>
   <div class="wiki-side-bar">
     <div class="header-box">
-      <img src="../../../assets/graphics/public/plugins/ClicksPerSecond/icon.png" alt="ClicksPerSecond's logo">
+      <img src="../../../assets/graphics/public/plugin/ClicksPerSecond/icon.png" alt="ClicksPerSecond's logo">
       <p>ClicksPerSecond v<a id="plugin-version"></a></p>
     </div>
     <!--Wiki navigation-->
@@ -51,8 +53,8 @@
           <p class="title">Data operations</p>
         </div>
         <div class="content">
-          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
-          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+          <div class="item"><a href="data-operations/copy.html">Copying</a></div>
+          <div class="item"><a href="data-operations/reformat.html">Reformatting</a></div>
         </div>
       </div>
       <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
@@ -90,7 +92,7 @@
       <tr>
         <td>/cps copy &#60;right|left|hack&#62; &#60;file|database&#62;</td>
         <td>cps.command.copy</td>
-        <td>Copies a scoreboad from the opposite storage (as the specified one) to the specified one. Please see <a href="data_operations/copy.html">copying</a> page.</td>
+        <td>Copies a scoreboad from the opposite storage (as the specified one) to the specified one. Please see <a href="data-operations/copy.html">copying</a> page.</td>
       </tr>
       <!--/cps reformat-->
       <tr>
@@ -115,51 +117,22 @@
 
     <!--CPS-test command-->
     <h1 class="title" id="cps-test-commands">CPS-test commands:</h1>
-    <div class="code-block">
-      <div class="header">
-        <p>CPS-test command configuration from config.yml</p>
-      </div>
-      <div class="code">
-        <code>
-          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
-          <a
-            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPS&nbsp;TEST</a><br>
-          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
-          <a class="yaml-key">test:</a><br>
-          &nbsp;&nbsp;<a class="yaml-comment">#Command&nbsp;to&nbsp;use&nbsp;for&nbsp;CPS-test&nbsp;management:</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">command:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yaml-comment">#Main&nbsp;(base)&nbsp;commands&nbsp;(further&nbsp;referred&nbsp;as&nbsp;/mainCommand),&nbsp;you&nbsp;can&nbsp;also&nbsp;use&nbsp;/cps&nbsp;command&nbsp;(but&nbsp;then&nbsp;make&nbsp;sure&nbsp;that&nbsp;no&nbsp;sub-command&nbsp;matches&nbsp;any&nbsp;built-in&nbsp;/cps&nbsp;sub-command):</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;Commands&nbsp;should&nbsp;be&nbsp;written&nbsp;without&nbsp;the&nbsp;first&nbsp;slash&nbsp;("/").</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">main:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"cpstest"</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;to&nbsp;use&nbsp;to&nbsp;manage&nbsp;CPS-test:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yaml-comment">#INFO!&nbsp;If&nbsp;you&nbsp;leave&nbsp;values&nbsp;in&nbsp;both&nbsp;start,&nbsp;end&nbsp;as&nbsp;[],&nbsp;syntax&nbsp;"/mainCommand"&nbsp;will&nbsp;be&nbsp;used&nbsp;to&nbsp;both&nbsp;start&nbsp;and&nbsp;end&nbsp;(cancel)&nbsp;the&nbsp;test.</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Messages&nbsp;can&nbsp;be&nbsp;configured&nbsp;in&nbsp;command.test&nbsp;section&nbsp;below.</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">sub:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;(syntax:&nbsp;"/mainCommand&nbsp;subCommand")&nbsp;to&nbsp;use&nbsp;to&nbsp;start&nbsp;a&nbsp;new&nbsp;CPS-test:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;To&nbsp;use&nbsp;only&nbsp;"/mainCommand"&nbsp;to&nbsp;start&nbsp;the&nbsp;test,&nbsp;leave&nbsp;the&nbsp;value&nbsp;as&nbsp;[].</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">start:&nbsp;</a><a class="yaml-value">[]</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-            class="yaml-comment">#Sub-commands&nbsp;of&nbsp;the&nbsp;main&nbsp;command&nbsp;(syntax:&nbsp;"/mainCommand&nbsp;subCommand")&nbsp;to&nbsp;use&nbsp;to&nbsp;cancel&nbsp;the&nbsp;running&nbsp;CPS-test:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-comment">#INFO!&nbsp;To&nbsp;use&nbsp;only&nbsp;"/mainCommand"&nbsp;to&nbsp;cancel&nbsp;the&nbsp;test,&nbsp;leave&nbsp;the&nbsp;value&nbsp;as&nbsp;[].</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">cancel:&nbsp;</a><a class="yaml-value">[]</a><br>
-        </code>
-      </div>
-    </div>
+    <!--Reference-->
+    <p><i>This step refers to configuration section at <code>test.command</code> in <code>config.yml</code> file.</i></p>
+    <!--Text-->
     <p>In <code>test.command.main</code> you can specify all base commands (for example <code>cpstest</code>) to be used for managing CPS-test.
     These commands should be written without the first slash. If you use <code>cps</code> in this list, please make sure that any configured sub-command
     does not override any of built-in ones (<code>copy</code>, <code>stats</code>...).</p>
     <p>Next, you need to specify all sub-commands to use in combination with the base command specified above,
       to start/cancel a CPS-test. For example, when you set start sub-commands like that:</p>
+    <!--Example configuration-->
     <div class="code-block">
       <div class="header">
         <p>Start sub-command configuration example</p>
       </div>
       <div class="code">
-        <code><a class="yaml-key">start:&nbsp;</a><br>
-        &nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"start"</a></code>
+        <pre class="language-yaml"><code>start:
+  - "start"</code></pre>
       </div>
     </div>
     <p>Player will have to use <code>/cpstest start</code> (if the main command is only "cpstest") to start the CPS-test. If this is set only to

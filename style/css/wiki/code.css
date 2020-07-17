@@ -25,15 +25,10 @@ div.code-block div.header p {
   font-weight: 600;
   text-align: center;
 }
-div.code-block div.code {
-  /*Overflow*/
-  overflow: auto;
-}
-div.code-block:not([class*=expandable-code]) div.code {
+div.code-block div.code pre {
   /*Size*/
-  max-height: 80vh;
+  max-height: 60vh;
 }
-
 div.code-block.expandable-code div.header p::after {
   /*Position*/
   float: left;

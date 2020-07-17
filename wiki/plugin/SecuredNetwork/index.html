@@ -5,11 +5,9 @@
   <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
 
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
   <script src="../../../script/wiki/spoiler.js"></script>
 
   <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
@@ -30,35 +28,35 @@
       <li class="item current"><a>Wiki</a></li>
       <li class="item hoverable"><a href="../../../support">Support</a></li>
     </ul>
-    </div>
+  </div>
 </header>
 
 <body>
   <div class="wiki-side-bar">
     <div class="header-box">
-      <img src="../../../assets/graphics/public/plugins/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <img src="../../../assets/graphics/public/plugin/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
       <p>SecuredNetwork v<a id="plugin-version"></a></p>
     </div>
     <!--Wiki navigation-->
     <div class="wiki-navigation">
-      <div class="hoverable"><a href="../SecuredNetwork/">Overview</a></div>
+      <div class="current"><a>Overview</a></div>
       <div class="hoverable expandable expandable-navigation-item">
         <div class="header">
           <p class="title">Setup</p>
         </div>
         <div class="content">
-          <div class="child"><a href="setup/proxy.html">Proxy</a></div>
-          <div class="child"><a href="setup/backend.html">Backend server</a></div>
+          <div class="item"><a href="setup/proxy.html">Proxy</a></div>
+          <div class="item"><a href="setup/backend.html">Backend server</a></div>
         </div>
       </div>
-      <div class="current"><a>Commands and permissions</a></div>
+      <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
       <div class="hoverable expandable expandable-navigation-item">
         <div class="header">
           <p class="title">Configuration</p>
         </div>
         <div class="content">
-          <div class="child"><a href="configuration/proxy.html">Proxy</a></div>
-          <div class="child"><a href="configuration/backend.html">Backend server</a></div>
+          <div class="item"><a href="configuration/proxy.html">Proxy</a></div>
+          <div class="item"><a href="configuration/backend.html">Backend server</a></div>
         </div>
       </div>
       <div class="hoverable"><a href="logging.html">Logging</a></div>
@@ -67,38 +65,12 @@
   </div>
 
   <div class="wiki-section">
-    <!--Plugin commands-->
-    <h1 class="title" id="plugin-commands">Plugin commands:</h1>
-    <p>The base command is <code>/securedNetwork</code>, or <code>/sn</code>. Parent permission <code>securedNetwork.*</code> is also available.
-       The plugin contains only one command, so nobody can disable the protection in-game:</p>
-    <table class="wiki-table command-table">
-      <tr>
-        <th>Command:</th>
-        <th>Permission:</th>
-        <th>Description:</th>
-      </tr>
-      <!--/sn-->
-      <tr>
-        <td>/sn</td>
-        <td>securedNetwork.command</td>
-        <td>Reloads the plugin (except the connection type).</td>
-      </tr>
-    </table>
-
-    <!--Permissions-->
-    <h1 class="title" id="permissions">Permissions:</h1>
-    <p>Parent permission <code>securedNetwork.*</code> is also available.</p>
-    <table class="wiki-table">
-      <tr>
-        <th>Permission:</th>
-        <th>Description:</th>
-      </tr>
-      <!--Updater-->
-      <tr>
-        <td>securedNetwork.updater</td>
-        <td>Everytime you join the server, you will be notified about the latest plugin version.</td>
-      </tr>
-    </table>
+    <!-- Top -->
+    <img src="../../../assets/graphics/public/plugin/SecuredNetwork/section/top.png" alt="Banner - top">
+    <!-- Features -->
+    <img src="../../../assets/graphics/public/plugin/SecuredNetwork/section/features.png" alt="Banner - features">
+    <!-- Images -->
+    <img src="../../../assets/graphics/public/plugin/SecuredNetwork/section/images.png" alt="Banner - images">
   </div>
 </body>
 

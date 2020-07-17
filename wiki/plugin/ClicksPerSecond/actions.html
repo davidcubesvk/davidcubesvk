@@ -5,12 +5,14 @@
   <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
-  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/syntax.css">
   <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/highlighter/prism.css">
 
   <script src="../../../script/footer.js"></script>
-  <script src="../../../script/wiki/versionGetter.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
   <script src="../../../script/wiki/spoiler.js"></script>
+  <script src="../../../assets/highlighter/prism.js"></script>
+  <script src="../../../script/wiki/highlighter_spacing.js"></script>
 
   <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
   <title>Wiki - ClicksPerSecond</title>
@@ -36,7 +38,7 @@
 <body>
   <div class="wiki-side-bar">
     <div class="header-box">
-      <img src="../../../assets/graphics/public/plugins/ClicksPerSecond/icon.png" alt="ClicksPerSecond's logo">
+      <img src="../../../assets/graphics/public/plugin/ClicksPerSecond/icon.png" alt="ClicksPerSecond's logo">
       <p>ClicksPerSecond v<a id="plugin-version"></a></p>
     </div>
     <!--Wiki navigation-->
@@ -51,8 +53,8 @@
           <p class="title">Data operations</p>
         </div>
         <div class="content">
-          <div class="child"><a href="data_operations/copy.html">Copying</a></div>
-          <div class="child"><a href="data_operations/reformat.html">Reformatting</a></div>
+          <div class="item"><a href="data-operations/copy.html">Copying</a></div>
+          <div class="item"><a href="data-operations/reformat.html">Reformatting</a></div>
         </div>
       </div>
       <div class="hoverable"><a href="placeholders.html">Placeholders</a></div>
@@ -71,6 +73,7 @@
     <!--Specification-->
     <h1 class="title" id="specification">Specification:</h1>
     <p>Each action block is a list of strings, each string contains one action. Each action has this format:</p>
+    <!--Action format-->
     <div class="code-block">
       <div class="header">
         <p>Action format</p>
@@ -79,28 +82,30 @@
         <code>[TYPE]value</code>
       </div>
     </div>
-    <p>Above this list there's always a comment descibing when the action is run (and some useful information - placeholders...). It should look like this:</p>
+    <p>So in summary, an action block looks like this:</p>
+    <!--Action block-->
     <div class="code-block">
       <div class="header">
         <p>Example actions from config.yml</p>
       </div>
       <div class="code">
-        <code>
-          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
-          <a
-            class="yaml-comment">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;START</a><br>
-          <a class="yaml-comment">#Actions&nbsp;to&nbsp;run&nbsp;when&nbsp;player&nbsp;started&nbsp;the&nbsp;CPS-test.</a><br>
-          <a class="yaml-comment">#-------------------------------------------------------------------------------------------------------</a><br>
-          <a class="yaml-key">start:</a><br>
-          &nbsp;&nbsp;<a class="yaml-comment">#Actions&nbsp;to&nbsp;send&nbsp;once:</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">once:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a
-            class="yaml-value yaml-string-value">"[MESSAGE]&7[&bCPS&7]&nbsp;Click&nbsp;to&nbsp;start&nbsp;the&nbsp;test,&nbsp;or&nbsp;use&nbsp;&b/cpstest&nbsp;&7again&nbsp;to&nbsp;cancel&nbsp;the&nbsp;test."</a><br>
-          &nbsp;&nbsp;<a class="yaml-comment">#Actions&nbsp;which&nbsp;are&nbsp;sent&nbsp;to&nbsp;player&nbsp;every&nbsp;1&nbsp;tick&nbsp;until&nbsp;the&nbsp;player's&nbsp;first&nbsp;click:</a><br>
-          &nbsp;&nbsp;<a class="yaml-comment">#NOTE!&nbsp;If&nbsp;using&nbsp;titles,&nbsp;fade-in&nbsp;and&nbsp;stay&nbsp;property&nbsp;should&nbsp;be&nbsp;set&nbsp;as&nbsp;following:&nbsp;fade-in=0,&nbsp;stay=3.</a><br>
-          &nbsp;&nbsp;<a class="yaml-key">permanent:</a><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="yaml-key">-&nbsp;</a><a class="yaml-value yaml-string-value">"[TITLE]&7Waiting...///&bfor&nbsp;the&nbsp;first&nbsp;click.///0///3///20"</a><br>
-        </code>
+        <pre class="language-yaml"><code>example:
+  - "[TYPE]value"
+  - "[TYPE]value"
+  ...</code></pre>
+      </div>
+    </div>
+    <p>Above this list there's always a comment descibing when the action is run (and some useful information - placeholders...).
+      Example action block:</p>
+    <!--Example action block-->
+    <div class="code-block">
+      <div class="header">
+        <p>Example action block from config.yml</p>
+      </div>
+      <div class="code">
+        <pre class="language-yaml"><code>start:
+  once:
+    - "[MESSAGE]&7[&bCPS&7] Click to start the test, or use &b/cpstest &7again to cancel the test."</code></pre>
       </div>
     </div>
     <p>Also, do pay attention to <code>NOTE!</code> and <code>INFO!</code> signs. They show you

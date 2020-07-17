@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
-$max-code-height: 80vh;
-$max-expandable-height: 81vh;
+$max-code-height: 60vh;
 
 div.code-block {
   /*Position*/
@@ -30,14 +29,15 @@ div.code-block {
   }
 
   div.code {
-    /*Overflow*/
-    overflow: auto;
+    pre {
+      /*Size*/
+      max-height: $max-code-height;
+    }
   }
 
   &:not([class*="expandable-code"]) {
     div.code {
-      /*Size*/
-      max-height: 80vh;
+
     }
   }
 }

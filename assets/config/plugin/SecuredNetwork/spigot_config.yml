@@ -1,0 +1,132 @@
+#┌-----┐                                            ┌--┐ ┌--┐  ┌--┐           ┌--┐                             ┌--┐
+#|   ┌-┘                                            |  | |   \ |  |           |  |                             |  |
+#|   └-┐ ┌-----┐ ┌-----┐ ┌-┐ ┌-┐ ┌-----┐ ┌-----┐ ┌--┘  | |    \|  | ┌-----┐ ┌-┘  └-┐ ┌-┐┌-┐┌-┐ ┌-----┐ ┌-----┐ |  | ┌--┐
+#└--┐  | |  -  | |  ┌--┘ | | | | |  ┌--┘ |  -  | | ┌-┐ | |  \  \  | |  -  | └-┐  ┌-┘ | || || | | ┌-┐ | |  ┌--┘ |  └┘  /
+#   |  | | ┌---┘ |  |    | | | | |  |    | ┌---┘ | | | | |  |\    | | ┌---┘   |  |   | || || | | | | | |  |    |  ┌┐  \
+#┌--┘  | | └---┐ |  └--┐ | └-┘ | |  |    | └---┐ | └-┘ | |  | \   | | └---┐   |  |   | └┘ └┘ | | └-┘ | |  |    |  |\   \
+#└-----┘ └-----┘ └-----┘ └-----┘ └--┘    └-----┘ └-----┘ └--┘  └--┘ └-----┘   └--┘   └-------┘ └-----┘ └--┘    └--┘ └--┘
+#Plugin made by davidcubesvk.
+#
+# ► Don't understand / know how to set up?
+# All terms and setup process are available on my website. Link is in all of my plugins' descriptions.
+# ► Need any help?
+# Contact me through any of listed methods on my website, I'd like to help!
+#
+#Connection to SecuredNetwork on the proxy server:
+connection:
+  #Type of the connection (more and detailed info can be found on the wiki):
+  #- FILE: connection provided by data.yml file created in SecuredNetwork's data folder on the proxy
+  #- SOCKET: connection using sockets
+  #- DATABASE: connection using a database
+  type: SOCKET
+  #File path (if type = FILE):
+  #INFO! You can use ../ strings at the beginning of the path to go one folder up (begins at folder where this plugin's .jar file is).
+  file-path: "home/BungeeCord/plugins/SecuredNetwork/data.yml"
+  #Socket connection (if type = SOCKET):
+  socket:
+    #IP of the proxy server:
+    ip: "127.0.0.1"
+    #Port of the socket server (as set in SecuredNetwork's config.yml on the proxy):
+    port: 4444
+    #Timeout configuration:
+    timeout:
+      #Delay between automatic connection checks (in ticks):
+      check-connection: 20
+      #If connection has been unexpectedly closed (internet connection failure etc.), wait for this amount of seconds before connecting again:
+      reconnect: 3
+  #Database connection (if type = DATABASE):
+  database:
+    #Host:
+    host: ""
+    #Port:
+    port: 3306
+    #Username:
+    username: ""
+    #Password:
+    password: ""
+    #Database:
+    database: ""
+    #Table:
+    table: "securednetwork"
+    #SSL mode (encrypted communication):
+    #- DISABLED: establish unencrypted connections
+    #- PREFERRED: establish encrypted connections if the server enabled them (otherwise, unencrypted connections will be established)
+    #- REQUIRED: require encrypted connections
+    #INFO: All modes all listed at https://dev.database.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html#sslMode.
+    ssl-mode: PREFERRED
+    #Timeout configuration:
+    timeout:
+      #Time for the plugin to connect to the database server until the connection request times out (in milliseconds):
+      #INFO! You can (should) adjust this by the speed of your database (connection). Set to 0 for no timeout.
+      connect: 2000
+      #Time for each operation to finish until it times out (in milliseconds):
+      #INFO! You can (should) adjust this by the speed of your database (connection). Set to 0 for no timeout.
+      socket: 2000
+      #If connection has been unexpectedly closed (internet connection failure etc.), wait for this amount of seconds before connecting again:
+      reconnect: 3
+      #Waiting timeout before reading from the database when player joins the server (in milliseconds).
+      #INFO! If you have trouble connecting, this may be the solution. Value should be a bit higher than the time database
+      #      insert operation (when the player joins the network) run by SecuredNetwork takes. Please read the wiki for more
+      #      information.
+      read: 0
+    #Pool size for reading operations (when a player joins):
+    #INFO! Statements send requests to the database and process what comes in the return. The sending process of such a statement
+    #      includes compiling of it's request, which takes some time. Once the request is compiled, it can be sent immediately.
+    #      The advantage of this is that statements can be reused, so there's a statement pool. This ,,pool" contains these compiled
+    #      statements. A statement is taken from the pool when a operation needs to be executed, operation finishes and then it's
+    #      returned to be reused. That's because one statement can't be used by more than 1 caller at the same time.
+    #      Each time player joins the server, one statement operation is needed. You should adjust the values below
+    #      approximately how many player's join your server at the same time and how long one operation takes. If no statement
+    #      is available in the pool (all of them are in use), this is not a problem, just the statement needs to be compiled,
+    #      which will make a latency of some milliseconds.
+    #NOTE! Each statement in the pool takes memory as it is compiled. Please adjust the value by the recommendations given above,
+    #      but also think about how much RAM do you have. You do not have to fill your RAM completely, adjust the value perfectly.
+    read-statement-pool-size: 10
+#Disconnect messages (use \n for new line):
+disconnect:
+  #If player tries to bypass the proxy and join directly:
+  bypass: "&7[&6SecuredNetwork&7] &cPlease connect with IP: yourserver.com!"
+  #If the connection is not established and player tries to join:
+  failure: "&7[&6SecuredNetwork&7] &cWe are now having technical problems.\n\n&cPlease try again in a while."
+  #If player tries to connect as player that's already online:
+  online: "&7[&6SecuredNetwork&7] &cAlready connected to the server!\n\n&cIf you believe this is an error, contact staff."
+#Logging:
+log:
+  #Enable logging (recommended = false, in case you don't have any problem or error):
+  enabled: true
+  #Enable or disable logging of specific messages:
+  specific:
+    #[SOCKET] messages:
+    socket:
+      #Log the CHECK_CONNECTION data input message (if connection.type = SOCKET):
+      #INFO! Connection messages are also logged - e.g. data input and output of socket, what is being written in the database.
+      #      If using socket connection, SecuredNetwork on Spigot sends the CHECK_CONNECTION message to SecuredNetwork on proxy to check the connection.
+      #      Checking connection is set to every second (can be changed at connection.socket.timeout.check-connection), so you get this message
+      #      every one second in log file. This may lead to 4.3MB/24h logs only from this message.
+      check-connection: false
+#Update checker:
+updater:
+  #Enable checking for updates:
+  enabled: true
+  #Delay between re-checking for updates in minutes (set to -1 to check only once):
+  delay: 60
+  #Messages for players with updater permission (to disable a message, leave it as ""):
+  #Placeholders: {version_latest} - the latest plugin version
+  #              {version_current} - currently used plugin version
+  messages:
+    #If there is a new update available:
+    update: "&7[&6SecuredNetwork&7] New update of &6SecuredNetwork plugin &7has been released (&6{latest_version}&7). You are using &6{current_version}&7."
+    #If using the latest version:
+    latest: ""
+#Command messages:
+command:
+  #If player has not permission:
+  no-permission: "&7[&6SecuredNetwork&7] You do not have permission."
+  #If sender used invalid format of command:
+  invalid-format: "&7[&6SecuredNetwork&7] Invalid format! Please use &6/sn &7to reload the plugin."
+  #If plugin configuration is being reloaded (/sn):
+  reload:
+    #When started reloading:
+    reloading: "&7[&6SecuredNetwork&7] Reloading..."
+    #When finished reloading:
+    reloaded: "&7[&6SecuredNetwork&7] Plugin has been reloaded!"
