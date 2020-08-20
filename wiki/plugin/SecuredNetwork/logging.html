@@ -41,22 +41,22 @@
     <!--Wiki navigation-->
     <div class="wiki-navigation">
       <div class="hoverable"><a href="../SecuredNetwork/">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
       <div class="hoverable expandable expandable-navigation-item">
         <div class="header">
-          <p class="title">Setup</p>
+          <p class="title">Commands and permissions</p>
         </div>
         <div class="content">
-          <div class="item"><a href="setup/proxy.html">Proxy</a></div>
-          <div class="item"><a href="setup/backend.html">Backend server</a></div>
+          <div class="item"><a href="commands_permissions/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="commands_permissions/backend.html">Backend server</a></div>
         </div>
       </div>
-      <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
       <div class="hoverable expandable expandable-navigation-item">
         <div class="header">
           <p class="title">Configuration</p>
         </div>
         <div class="content">
-          <div class="item"><a href="configuration/proxy.html">Proxy</a></div>
+          <div class="item"><a href="configuration/proxy.html">Proxy server</a></div>
           <div class="item"><a href="configuration/backend.html">Backend server</a></div>
         </div>
       </div>
@@ -141,7 +141,7 @@
         <td>Messages informing about statuses or processes in the plugin.</td>
       </tr>
       <tr>
-        <td>WARNING</td>
+        <td>WARN</td>
         <td>Messages related to wrong configuration or invalid values.</td>
       </tr>
       <tr>
@@ -149,6 +149,7 @@
         <td>Messages related to errors (example: ,,Error while connecting to the database server!").</td>
       </tr>
     </table>
+
     <!--Prefixes-->
     <h2 class="subtitle" id="entry-prefixes">Prefixes:</h2>
     <p>Every logged message has it's own prefix representing the source of the message:</p>
@@ -162,41 +163,34 @@
         <td>General message (example: ,,Registering listeners and commands.").</td>
       </tr>
       <tr>
-        <td>FILE</td>
-        <td>Messages related to the file connection type.</td>
+        <td>API</td>
+        <td>Messages related to plugin's API. Proxy-only.</td>
       </tr>
       <tr>
-        <td>SOCKET</td>
-        <td>Messages related to the socket connection type.</td>
-      </tr>
-      <tr>
-        <td>DATABASE</td>
-        <td>Messages related to the database connection type.</td>
+        <td>AUTHENTICATOR</td>
+        <td>Authenticator messages displaying the passphrase authentication results.</td>
       </tr>
       <tr>
         <td>CONNECTOR</td>
-        <td>Messages informing if player is allowed to join, or if not, displays the cause.</td>
+        <td>Messages informing whether a player is allowed to join, or if not, displays the cause.</td>
       </tr>
       <tr>
         <td>UPDATER</td>
-        <td>Updater messages.</td>
-      </tr>
-      <tr>
-        <td>API</td>
-        <td>Messages related to plugin's API. Used only if on the proxy server; the API is not available if on a backend server.</td>
+        <td>Updater messages. Proxy-only.</td>
       </tr>
       <tr>
         <td>WHITELIST</td>
-        <td>Messages related to the IP whitelist. Used only if on the proxy server; the whitelist is not available if on a backend server.</td>
+        <td>Messages related to the IP whitelist. Proxy-only.</td>
       </tr>
     </table>
+
     <!--Comparision to console-->
     <h1 class="title" id="comparision">Comparision to console:</h1>
     <p>The most important messages are also printed into the console.
       However, if you want to find something, it always better to look into SecuredNetwork's log files,
-      as they are more organised, thanks to the prefixes and detailed.</p>
+      as they are more organised and detailed, thanks to the prefixes.</p>
     <p>Also, to keep console clear and to prevent error floods, no error stacktraces are logged into the console.
-      Since this fact, if you find any problem, please look into the log file.</p>
+      Since this fact, if you find any error, please look into the log file.</p>
   </div>
 </body>
 

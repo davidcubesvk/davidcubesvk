@@ -12,134 +12,68 @@
 # ► Need any help?
 # Contact me through any of listed methods on my website, I'd like to help!
 #
-#Connection to SecuredNetwork on Spigot servers:
-connection:
-  #Type of the connection (more and detailed info can be found on the wiki):
-  #- FILE: connection provided by data.yml file created in plugin's data folder
-  #- SOCKET: connection using sockets
-  #- DATABASE: connection using a database
-  type: SOCKET
-  #Socket port (if type = SOCKET):
-  socket-port: 4444
-  #Database connection (if type = DATABASE):
-  database:
-    #Host:
-    host: ""
-    #Port:
-    port: 3306
-    #Username:
-    username: ""
-    #Password:
-    password: ""
-    #Database:
-    database: ""
-    #Table:
-    table: "securednetwork"
-    #SSL mode (encrypted communication):
-    #- DISABLED: establish unencrypted connections
-    #- PREFERRED: establish encrypted connections if the server enabled them (otherwise, unencrypted connections will be established)
-    #- REQUIRED: require encrypted connections
-    #INFO: All modes all listed at https://dev.database.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html#sslMode.
-    ssl-mode: PREFERRED
-    #Timeout configuration:
-    timeout:
-      #Time for the plugin to connect to the database server until the connection request times out (in milliseconds):
-      #INFO! You can (should) adjust this by the speed of your database (connection). Set to 0 for no timeout.
-      connect: 2000
-      #Time for each operation to finish until it times out (in milliseconds):
-      #INFO! You can (should) adjust this by the speed of your database (connection). Set to 0 for no timeout.
-      socket: 2000
-      #If connection has been unexpectedly closed (internet connection failure etc.), wait for this amount of seconds before connecting again:
-      reconnect: 3
-    #Statement pool sizes:
-    #INFO! Statements send requests to the database and process what comes in the return. The sending process of such a statement
-    #      includes compiling of it's request, which takes some time. Once the request is compiled, it can be sent immediately.
-    #      The advantage of this is that statements can be reused, so there's a statement pool. This ,,pool" contains these compiled
-    #      statements. A statement is taken from the pool when a operation needs to be executed, operation finishes and then it's
-    #      returned to be reused. That's because one statement can't be used by more than 1 caller at the same time.
-    #      Each time player joins (or quits) the server, one statement operation is needed. You should adjust the values below
-    #      approximately how many player's join (or quit) your server through this proxy at the same time and how long one operation
-    #      takes. If no statement is available in the pool (all of them are in use), this is not a problem, just the statement needs
-    #      to be compiled, which will make a latency of some milliseconds.
-    #NOTE! Each statement in the pool takes memory as it is compiled. Please adjust the value by the recommendations given above,
-    #      but also think about how much RAM do you have. You do not have to fill your RAM completely, adjust the value perfectly.
-    statement-pool-size:
-      #Pool size for writing operations (when a player joins):
-      write: 10
-      #Pool size for deleting operations (when a player quits):
-      delete: 10
-#Disconnect messages (use \n for new line):
+# Property used to forward the passphrase to a backend server:
+property:
+  # Name of the property (can not be "textures"):
+  name: "secured_network"
+  # Value of the property - the actual passphrase (the longer it is, the better):
+  value: ""
+# Disconnect message sent to the player if:
+# - Info: "\n" can be used for a new line.
 disconnect:
-  #If player tries to connect to the server with not whitelisted IP:
+  # A not whitelisted IP was used to join the server:
   whitelist: "&7[&6SecuredNetwork&7] &cPlease connect with IP: yourserver.com!"
-  #If the connection is not established and player tries to join:
-  failure: "&7[&6SecuredNetwork&7] &cWe are now having technical problems.\n\n&cPlease try again in a while."
-  #If player tries to connect as player that's already online:
-  online: "&7[&6SecuredNetwork&7] &cAlready connected to the server!\n\n&cIf you believe this is an error, contact staff."
-  #If plugin reloaded:
-  reload: "&7[&6SecuredNetwork&7] &cPlugin reloaded.\n\n&cPlease rejoin."
-#Logging:
-log:
-  #Enable logging (recommended = false, in case you don't have any problem or error):
-  enabled: true
-  #Enable or disable logging of specific messages:
-  specific:
-    #[CONNECTOR] messages:
-    connector:
-      #Include the IP with which player connects to the server:
-      virtual-host-address: false
-    #[SOCKET] messages:
-    socket:
-      #Log the CHECK_CONNECTION data input message (if connection.type = SOCKET):
-      #INFO! Connection messages are also logged - e.g. data input and output of socket, what is being written in the database.
-      #      If using socket connection, SecuredNetwork on Spigot sends the CHECK_CONNECTION message to SecuredNetwork on proxy to check the connection.
-      #      Checking connection is set to every second (can be changed at connection.socket.timeout.check-connection), so you get this message
-      #      every one second in log file. This may lead to 4.3MB/24h logs only from this message.
-      check-connection: false
-#IP whitelisting:
+  # An error occurred while setting the passphrase into the connection:
+  passphrase-error: "&7[&6SecuredNetwork&7] &cAn error occurred while processing your request.\n\n&7&oPlease try again later."
+# Enable the plugin's own logging system:
+# - Info: Plugin's log files are saved into "logs" folder in it's plugin folder. It is recommended to have it disabled if
+#       you are not encountering any problems and/or errors.
+log: false
+# IP whitelisting:
 ip-whitelist:
-  #Enable:
+  # Enable:
   enabled: false
-  #Whitelisted IPs - these should be the proxy IPs (these are just examples, please, delete them if you want to use this feature):
-  #INFO: 1. To enable all hostnames, insert *. prefix before the whitelisted IP, e.g. *.yourserver.com will allow players connecting with
-  #         abc.yourserver.com, xyz.yourserver.com..., (useful for servers with AntiDDoS service).
-  #      2. To apply whitelisted IP without hostnames, insert only the IP without any prefix, e.g. yourserver.com will allow only players
-  #         connecting with yourserver.com.
-  #      3. If your server has dynamic IP, use {ip} placeholder as the server's IP (useful for dynamic IP servers).
-  #      4. To allow case-insensitive hostname comparing for the current IP, insert "[CASE_INSENSITIVE]" or "[CASE_SENSITIVE]"
-  #         (for case-sensitive comparing) right before the IP as shown in example IPs below. If not inserted, the default
-  #         setting is case-sensitive.
-  #NOTE: You don't need to write ports there. SecuredNetwork will automatically obtain port where is BungeeCord server hosted on.
-  #      However, if you write port there, BungeeCord port will be overridden by specified port.
+  # Whitelisted IPs - these should be the proxy IPs / DNS names (these are just examples, please, delete them if you want to use this feature):
+  # - Info: 1. To allow all hostnames, insert *. prefix before the whitelisted IP, e.g. "*.yourserver.com" will allow 
+  #          players connecting with "abc.yourserver.com", "xyz.yourserver.com"...
+  #       2. To block any hostname for a IP, simply insert only the IP without any hostname - e.g. "yourserver.com" will
+  #          allow only players connecting with "yourserver.com".
+  #       3. If your server has dynamic IP, use the "{ip}" placeholder as the server's IP.
+  #       4. To allow case-insensitive hostname comparing for the current IP, insert "[CASE_INSENSITIVE]" prefix right
+  #          before the IP as shown in an example IP below. The "[CASE_SENSITIVE]" prefix indicates case-sensitive
+  #          comparing. If there's no prefix, the IP is compared case-sensitively.
+  #       5. Writing a port is recommended but not required. If not specified, the plugin will automatically use
+  #          the port on which is the proxy server hosted.
   ips:
-    - 'yourserver.com'
-    - 'localhost'
-    - '[NOT_CASE_SENSITIVE]abc.yourserver.com'
-  #Website for obtaining the {ip} placeholder (any website with only one line displayed on your browser - your IP):
+    - "{ip}:25577"
+    - "yourserver.com"
+    - "localhost"
+    - "[NOT_CASE_SENSITIVE]abc.yourserver.com"
+  # Website used to obtain the value of the "{ip}" placeholder:
+  # - Info: This should be a website that returns only your IP on the GET request (if you open it on your browser).
   ip-website: "https://checkip.amazonaws.com/"
-#Update checker:
+# Update checker:
 updater:
-  #Enable checking for updates:
+  # Enable:
   enabled: true
-  #Delay between re-checking for updates in minutes (set to -1 to check only once):
+  # Delay between re-checking for update in minutes (set to -1 to check only once):
   delay: 60
-  #Messages (to disable a message, leave it as ""):
-  #Placeholders: {version_latest} - the latest plugin version
-  #              {version_current} - currently used plugin version
+  # Messages:
+  # - Info: To disable a message, leave it as "".
+  # - Placeholders: {version_latest} - the latest plugin version
+  #               {version_current} - currently used plugin version
   messages:
-    #If there is a new update available:
+    # If there is a new update available:
     update: "&7[&6SecuredNetwork&7] New update of &6SecuredNetwork plugin &7has been released (&6{latest_version}&7). You are using &6{current_version}&7."
-    #If using the latest version:
+    # If using the latest version:
     latest: ""
-#Command messages:
+# Command messages:
 command:
-  #If player has not permission:
-  no-permission: "&7[&6SecuredNetwork&7] You do not have permission."
-  #If sender used invalid format of command:
-  invalid-format: "&7[&6SecuredNetwork&7] Invalid format! Please use &6/sn &7to reload the plugin."
-  #If plugin configuration is being reloaded (/sn):
-  reload:
-    #When started reloading:
-    reloading: "&7[&6SecuredNetwork&7] Reloading..."
-    #When finished reloading:
-    reloaded: "&7[&6SecuredNetwork&7] Plugin has been reloaded! If using socket connection, reload SecuredNetwork plugin on other servers as well."
+  # If player runs the command:
+  console-only: "&7[&6SecuredNetwork&7] Command is available only in the console."
+  # If sender uses an invalid format of a command:
+  invalid-format: "&7[&6SecuredNetwork&7] Invalid format! Please use &6/sn generate <length, greater than 0> &7to generate a new passphrase of the specified length, or &6/sn reload &7to reload the plugin."
+  # If a new passphrase is being generated (/sn generate <length>):
+  generate: "&7[&6SecuredNetwork&7] New passphrase has been generated and set into the configuration file. Please, use &6/sn reload &7to apply the new passphrase now."
+  # If plugin configuration is being reloaded (/sn reload):
+  reload: "&7[&6SecuredNetwork&7] The plugin (except the logger) has been reloaded!"

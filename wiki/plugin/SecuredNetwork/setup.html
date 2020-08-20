@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - SecuredNetwork</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../assets/graphics/public/plugin/SecuredNetwork/icon.png" alt="SecuredNetwork's logo">
+      <p>SecuredNetwork v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../SecuredNetwork/">Overview</a></div>
+      <div class="current"><a>Setup</a></div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Commands and permissions</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="commands_permissions/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="commands_permissions/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable expandable expandable-navigation-item">
+        <div class="header">
+          <p class="title">Configuration</p>
+        </div>
+        <div class="content">
+          <div class="item"><a href="configuration/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="configuration/backend.html">Backend server</a></div>
+        </div>
+      </div>
+      <div class="hoverable"><a href="logging.html">Logging</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Installation-->
+    <h1 class="title" id="step-1">1. Installation:</h1>
+    <!--Text-->
+    <p>Download the latest version of the plugin available from the official
+      plugin page on SpigotMC. Put the .jar file into the plugins folder of all
+      your servers (backend and proxy servers) and restart them.</p>
+
+    <!--Generating a new passphrase-->
+    <h1 class="title" id="step-2">2. Generating a new passphrase:</h1>
+    <!--Text-->
+    <p>Each player has his data representation called GameProfile. This object
+      contains data such as the player UUID, or properties. Properties are used
+      to store skin textures (if the server is in online-mode). These properties
+      are then forwarded to the backend server by the proxy. On the proxy,
+      SecuredNetwork inserts a passphrase into these properties. Backend servers
+      then verify it and if the configured passphrase and the received one equal,
+      the connection is accepted.<br>
+      Therefore, the passphrase should be unique and completely random. Open the
+      console on any of your proxy servers and use command
+      <code>/sn generate &#60;length&#62;</code>. The <code>length</code> argument
+      indicates the length of the newly-generated passphrase. It should be greater
+      than <code>0</code> and the longer the new passphrase is, the better.
+      In fact, there's no upper limit on this value, but don't enter too big, like
+      <code>1000000000</code> or so, to make sure you don't lag your server while
+      generating (you can always stick multiple generations to big one). The
+      generated passphrase was automatically saved into the config.yml file of
+      SecuredNetwork.</p>
+
+    <!--Applying the passphrase-->
+    <h1 class="title" id="step-3">3. Applying the passphrase:</h1>
+    <!--Text-->
+    <p>The command also prompted you to reload to apply the passphrase now. We
+      will do it later. Now, open the config.yml file of the plugin and copy the
+      passphrase located under <code>property.value</code>. Then, paste the
+      passphrase into <code>property.value</code> in all config.yml files of
+      SecuredNetwork plugin (on all proxy and backend servers). Simply make sure,
+      that <code>property.value</code> fields equal in all config.yml files. To
+      apply the passphrase, run <code>/sn reload</code> on all your servers.</p>
+
+    <!--The second passphrase-->
+    <h1 class="title" id="step-4">4. The second passphrase:</h1>
+    <!--Text-->
+    <p><i>This step is completely optional.</i> As properties are identified by
+      their names and store a value (passphrase is the value), this option is also
+      configurable in all config.yml files under <code>property.name</code>. If
+      you want, you can use this as the second passphrase. Just, make sure all
+      <code>property.name</code> fields in all config.yml files equal and reload
+      all plugins again.</p>
+
+    <!--IP whitelisting-->
+    <h1 class="title" id="step-5">5. IP-whitelisting:</h1>
+    <!--Text-->
+    <p><i>This step is completely optional.</i> If you want to restrict the
+      players to use only your domain, not the numeric IP, etc., you can, thanks
+      to the IP-whitelisting feature.</p>
+    <p>Each player connecting with any of these IPs will be allowed to connect,
+      others will get disconnected during the logging in process. You can
+      whitelist number-IPs, domains, hostnames and ports. At first, set
+      <code>enabled:</code> to <code>true</code> in the config.yml file of
+      SecuredNetwork on the proxy to enable the IP-whitelist feature. Then,
+      whitelist IPs by adding them to <code>ips</code> list following these
+      rules:</p>
+    <ul>
+      <li>
+        <p><strong>Whitelisting ports</strong> - Easily, just specify the IP and
+          the wanted port separated with a colon, for example
+          <code>yourserver.com:25565</code> will allow players connecting only
+          with this IP and port. If not specified, SecuredNetwork will obtain and
+          use the port on which is the proxy server hosted. For example, you have
+          the proxy server hosted on port <code>25565</code> and you have
+          whitelisted <code>yourserver.com</code>, player connecting with the port
+          <code>25565</code> and this domain will be allowed (with
+          <code>yourserver.com:25565</code>).</p>
+      </li>
+      <li>
+        <p><strong>Whitelisting hostnames</strong> - Hostnames can be
+          whitelisted easily by adding them in front of the IP, for example
+          <code>mc.yourserver.com</code> will allow players connecting with
+          <code>mc.yourserver.com</code> (see the upper point if you'd like to
+          know how ports work). If you want to allow all hostnames, use
+          <code>*.</code> wildcard as hostname before the IP; this means
+          <code>*.yourserver.com</code> will allow players connecting with
+          <code>abc.yourserver.com</code>, <code>xyz.yourserver.com</code> etc.,
+          but it will not allow players connecting with
+          <code>yourserver.com</code> (without any hostname).</p>
+      </li>
+      <li>
+        <p><strong>For servers with dynamic IP address</strong> - If the machine
+          on which is your proxy server hosted has dynamic IP (it's IP changes
+          every server restart), just use placeholder <code>{ip}</code> as a
+          replacement for the machine's IP. As it is just a replacement, you can
+          specify ports, hostnames, without any problems.</p>
+      </li>
+      <li>
+        <p><strong>IP comparing prefixes</strong> - IPs (the one used by player
+          and a whitelisted IP) are compared case-sensitively by default. To
+          change the coparision mode, insert <code>[CASE_SENSITIVE]</code> or
+          <code>[CASE_INSENSITIVE]</code> prefix before the IP. For example,
+          <code>[CASE_INSENSITIVE]abc.yourserver.com</code> will also allow
+          players connecting with <code>aBc.yoUrSerVer.com</code>.</p>
+      </li>
+    </ul>
+    <p>If you have more than one proxy, replicate the process for each of them.
+      Additionally, don't forget to run <code>/sn reload</code> on all your proxy
+      servers.</p>
+
+    <!--Finish-->
+    <h1 class="title" id="step-6">6. Finish:</h1>
+    <!--Text-->
+    <p>Congratulations, you have finished the setup process of SecuredNetwork
+      plugin.</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

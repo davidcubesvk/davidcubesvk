@@ -45,22 +45,22 @@
     <div class="wiki-navigation">
       <div class="hoverable"><a href="../">Overview</a></div>
       <div class="hoverable"><a href="../setup.html">Setup</a></div>
-      <div class="hoverable expandable expandable-navigation-item">
+      <div class="hoverable expandable expandable-navigation-item open current">
         <div class="header">
           <p class="title">Commands and permissions</p>
         </div>
         <div class="content">
-          <div class="item"><a href="../commands_permissions/proxy.html">Proxy server</a></div>
-          <div class="item"><a href="../commands_permissions/backend.html">Backend server</a></div>
+          <div class="item"><a href="proxy.html">Proxy server</a></div>
+          <div class="item currentItem"><a>Backend server</a></div>
         </div>
       </div>
-      <div class="hoverable expandable expandable-navigation-item open current">
+      <div class="hoverable expandable expandable-navigation-item">
         <div class="header">
           <p class="title">Configuration</p>
         </div>
         <div class="content">
-          <div class="item"><a href="proxy.html">Proxy server</a></div>
-          <div class="item currentItem"><a>Backend server</a></div>
+          <div class="item"><a href="../configuration/proxy.html">Proxy server</a></div>
+          <div class="item"><a href="../configuration/backend.html">Backend server</a></div>
         </div>
       </div>
       <div class="hoverable"><a href="../logging.html">Logging</a></div>
@@ -69,15 +69,25 @@
   </div>
 
   <div class="wiki-section">
-    <!--config.yml-->
-    <div class="code-block expandable expandable-code">
-      <div class="header">
-        <p>config.yml</p>
-      </div>
-      <div class="code content">
-        <pre data-src="../../../../assets/config/plugin/SecuredNetwork/backend_config.yml" class="language-yaml line-numbers"></pre>
-      </div>
-    </div>
+    <!--Plugin commands-->
+    <h1 class="title" id="plugin-commands">Plugin commands:</h1>
+    <!--Text-->
+    <p>The base command is <code>/securedNetwork</code> or <code>/sn</code>.
+      All commands can be executed <strong>only</strong> through the console.
+      Here's a quick summary:</p>
+
+    <!--Command table-->
+    <table class="wiki-table command-table">
+      <tr>
+        <th>Command:</th>
+        <th>Description:</th>
+      </tr>
+      <!--/sn reload-->
+      <tr>
+        <td>/sn reload</td>
+        <td>Reloads the plugin, except the logger.</td>
+      </tr>
+    </table>
   </div>
 </body>
 
