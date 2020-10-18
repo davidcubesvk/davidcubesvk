@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+
+  <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - RepairItem</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../assets/graphics/public/plugin/RepairItem/icon.png" alt="RepairItem's logo">
+      <p>RepairItem v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../RepairItem/">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="current"><a>Commands and permissions</a></div>
+      <div class="hoverable"><a href="configuration_files.html">Configuration files</a></div>
+      <div class="hoverable"><a href="blocked_items.html">Blocked items</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Plugin commands-->
+    <h1 class="title" id="plugin-commands">Plugin commands:</h1>
+    <p>The base command is <code>/repair</code>. Permission
+      <code>repairItem.*</code> is an universal permissions for all commands.
+      Here's a quick summary <strong>(please note that actual commands can be
+        reconfigured, commands in the table are shown by default configuration)
+      </strong>:
+    </p>
+
+    <table class="wiki-table command-table">
+      <tr>
+        <th>Command:</th>
+        <th>Permission:</th>
+        <th>Description:</th>
+      </tr>
+      <!--/repair all-->
+      <tr>
+        <td>/repair all [target]</td>
+        <td>repair.all / repair.target.all</td>
+        <td>Repairs all items in your/target's inventory.</td>
+      </tr>
+      <!--/repair inventory-->
+      <tr>
+        <td>/repair inventory [target]</td>
+        <td>repair.inventory / repair.target.inventory</td>
+        <td>Repairs inventory items (except armor contents, including both
+          hands) in your/target's inventory.</td>
+      </tr>
+      <!--/repair armor-->
+      <tr>
+        <td>/repair armor [target]</td>
+        <td>repair.armor / repair.target.armor</td>
+        <td>Repairs armor contents in your/target's inventory.</td>
+      </tr>
+      <!--/repair hotbar-->
+      <tr>
+        <td>/repair hotbar [target]</td>
+        <td>repair.hotbar / repair.target.hotbar</td>
+        <td>Repairs hot-bar items (including both hands) in your/target's inventory.</td>
+      </tr>
+      <!--/repair bothhands-->
+      <tr>
+        <td>/repair bothhands [target]</td>
+        <td>repair.bothhands / repair.target.bothhands</td>
+        <td>Repairs items in your/target's both hands (off-hand only if
+          supported - server version 1.9 and newer).</td>
+      </tr>
+      <!--/repair mainhand-->
+      <tr>
+        <td>/repair mainhand [target]</td>
+        <td>repair.mainhand / repair.target.mainhand</td>
+        <td>Repairs items in your/target's main-hand.</td>
+      </tr>
+      <!--/repair offhand-->
+      <tr>
+        <td>/repair offhand [target]</td>
+        <td>repair.offhand / repair.target.offhand</td>
+        <td>Repairs items in your/target's off-hand (if supported - server
+          version 1.9 and newer)</td>
+      </tr>
+    </table>
+    <p><code>[]</code> - optional argument</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

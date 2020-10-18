@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../style/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/wiki.css">
+  <link rel="stylesheet" type="text/css" href="../../../style/css/wiki/code.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/highlighter/prism.css">
+
+  <script src="../../../script/footer.js"></script>
+  <script src="../../../script/wiki/version_get.js"></script>
+  <script src="../../../script/wiki/spoiler.js"></script>
+  <script src="../../../assets/highlighter/prism.js"></script>
+  <script src="../../../script/wiki/highlighter_spacing.js"></script>
+
+  <link rel="icon" href="../../../assets/graphics/local/icon.png" type="png">
+  <title>Wiki - RepairItem</title>
+</head>
+
+<!--Navigation-->
+<header>
+  <div class="navigation">
+    <div class="left">
+      <img src="../../../assets/graphics/local/icon.png" class="img">
+      <p>Davidcubesvk</p>
+    </div>
+
+    <ul class="right menu">
+      <li class="item hoverable"><a href="../../../">Home</a></li>
+      <li class="item hoverable"><a href="../../../projects">Projects</a></li>
+      <li class="item current"><a>Wiki</a></li>
+      <li class="item hoverable"><a href="../../../support">Support</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+  <div class="wiki-side-bar">
+    <div class="header-box">
+      <img src="../../../assets/graphics/public/plugin/RepairItem/icon.png" alt="RepairItem's logo">
+      <p>RepairItem v<a id="plugin-version"></a></p>
+    </div>
+    <!--Wiki navigation-->
+    <div class="wiki-navigation">
+      <div class="hoverable"><a href="../RepairItem/">Overview</a></div>
+      <div class="hoverable"><a href="setup.html">Setup</a></div>
+      <div class="hoverable"><a href="commands_permissions.html">Commands and permissions</a></div>
+      <div class="hoverable"><a href="configuration_files.html">Configuration files</a></div>
+      <div class="current"><a>Blocked items</a></div>
+      <div class="hoverable"><a href="api.html">API</a></div>
+    </div>
+  </div>
+
+  <div class="wiki-section">
+    <!--Introduction-->
+    <h1 class="title" id="introduction">Introduction:</h1>
+    <!--Text-->
+    <p>This plugin also adds an option to block certain items - it means they
+      will not be able to be repaired (by the plugin). This may be useful if you
+      have any legendary items on your server that you want players not to have
+      infinitely.</p>
+
+    <!--Item specification-->
+    <h1 class="title" id="specification">Specification:</h1>
+    <!--Text-->
+    <p>You can define as many blocked items as you want using configuration
+      lists. The specification of such item is really straigtforward. You can
+      specify these attributes:</p>
+    <!--Attributes-->
+    <table class="wiki-table">
+      <!--Header-->
+      <tr>
+        <th>Attribute</th>
+        <th>Example specification</th>
+      </tr>
+      <!--Type-->
+      <tr>
+        <td>Type of the item (found <a href="https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html" target="_blank">here</a>).</td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>type: "BOW"</code></pre>
+        </td>
+      </tr>
+      <!--Name-->
+      <tr>
+        <td>Name of the item.</td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>name: "&bLegendary bow"</code></pre>
+        </td>
+      </tr>
+      <!--Lore-->
+      <tr>
+        <td>Lore of the item. Empty list (not deleted attribute) means no
+          lore.</td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>lore:
+  - "This item can not be repaired."</code></pre>
+        </td>
+      </tr>
+      <!--Enchantments-->
+      <tr>
+        <td>Enchantments of the item each specified as <code>NAME:LEVEL</code>
+          (for versions 1.11 and lower use <a href="https://hub.spigotmc.org/javadocs/spigot/org/bukkit/enchantments/Enchantment.html" target="_blank">these</a>
+          enchantment names, otherwise use normal enchantment names from the
+          game - e.g. <code>"efficiency:5"</code>, <code>"silk touch:1"</code>).
+          Empty list (not deleted attribute) means no enchantments.
+        </td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>enchantments:
+  - "UNBREAKING:5"</code></pre>
+        </td>
+      </tr>
+      <!--Flags-->
+      <tr>
+        <td>Flags of the item (found <a href="https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/inventory/ItemFlag.html" target="_blank">here</a>).
+          Empty list (not deleted attribute) means no flags.</td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>flags:
+  - "HIDE_ENCHANTS"</code></pre>
+        </td>
+      </tr>
+      <!--Unbreakable-->
+      <tr>
+        <td>Unbreakable state of the item (this can be edited only by plugins; if <code>true</code>, the item will not loose durability)</td>
+        <td>
+          <pre class="language-yaml line-numbers"><code>unbreakable: true</code></pre>
+        </td>
+      </tr>
+    </table>
+
+    <!--Comparing-->
+    <h1 class="title" id="comparing">Comparing:</h1>
+    <!--Text-->
+    <p>If an item meets <strong>all</strong> attributes of any blocked item, it
+      is considered blocked. That means, if we have these blocked items:</p>
+    <pre class="language-yaml line-numbers"><code>blocked-items:
+  # The first item:
+  - type: "NETHERITE_PICKAXE"
+    name: "&bLegendary pickaxe"
+    flags: []
+  # The second item:
+  - type: "NETHERITE_SWORD"
+    unbreakable: true</code></pre>
+    <!--Text-->
+    <p>Only netherite pickaxe with the specified name and no flags / netherite
+      sword with unbreakable state set to <code>true</code> will be blocked.
+      Again, only the specified attributes are compared. If any item has all
+      attributes equal to any blocked item, it is blocked. Unspecified
+      attributes are not compared - both items can have any lore or
+      enchantments...</p>
+  </div>
+</body>
+
+<!--Footer-->
+<footer>
+  <p>This page does not collect any personal data about you.</p>
+  <p>Copyright (c) 2020 davidcubesvk, All Rights Reserved.</p>
+</footer>
+
+</html>

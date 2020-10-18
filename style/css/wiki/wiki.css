@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Open+Sans:wght@300&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Open+Sans:wght@300&family=Roboto&family=Russo+One&family=Rubik&family=Fira+Sans&family=Barlow&display=swap");
 div.wiki-side-bar {
   /*Size*/
   height: 100%;
@@ -32,7 +32,7 @@ div.wiki-side-bar div.header-box p {
   /*Position*/
   text-align: center;
   /*Font*/
-  font-family: "Roboto";
+  font-family: "Rubik";
   font-weight: 800;
   font-size: 15px;
 }
@@ -125,7 +125,7 @@ div.wiki-section h1.title {
   /*Position*/
   padding-bottom: 5px;
   /*Font*/
-  font-family: "Raleway";
+  font-family: "Rubik";
   font-weight: 600;
   font-size: 25px;
   /*Border*/
